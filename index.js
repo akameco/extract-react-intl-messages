@@ -5,7 +5,7 @@ const merge = require('lodash.merge')
 const { transformFile } = require('babel-core')
 const readBabelrcUp = require('read-babelrc-up')
 
-const initObjFromArray = arr =>
+const localeMap = arr =>
   arr.reduce((obj, x) => {
     obj[x] = {}
     return obj
@@ -19,8 +19,6 @@ module.exports = (locales, pattern, opts) => {
   if (typeof pattern !== 'string') {
     Promise.reject(new TypeError(`Expected a string, got ${typeof pattern}`))
   }
-
-  const localeMappings = initObjFromArray(locales)
 
   opts = Object.assign(
     {
@@ -40,18 +38,20 @@ module.exports = (locales, pattern, opts) => {
     return pify(transformFile)(file, {
       presets,
       plugins,
-    }).then(({metadata: result}) => {
-      const json = initObjFromArray(locales)
+    }).then(({ metadata: result }) => {
+      const localeObj = localeMap(locales)
       for (const { id, defaultMessage } of result['react-intl'].messages) {
         for (const locale of locales) {
-          json[locale][id] = opts.defaultLocale === locale ? defaultMessage : ''
+          localeObj[locale][id] = opts.defaultLocale === locale
+            ? defaultMessage
+            : ''
         }
       }
-      return json
+      return localeObj
     })
   }
 
   return pify(glob)(pattern)
-    .then(files => Promise.all(files.map(x => extractFromFile(x))))
-    .then(arr => arr.reduce((h, obj) => merge(h, obj), localeMappings))
+    .then(files => Promise.all(files.map(extractFromFile)))
+    .then(arr => arr.reduce((h, obj) => merge(h, obj), localeMap(locales)))
 }

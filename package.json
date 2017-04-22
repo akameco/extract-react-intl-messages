@@ -48,7 +48,8 @@
     "semicolon": false,
     "rules": {
       "comma-dangle": 0,
-      "object-curly-spacing": 0
+      "object-curly-spacing": 0,
+      "operator-linebreak": 0
     }
   }
 }
