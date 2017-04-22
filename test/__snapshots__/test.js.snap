@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extract from file 1`] = `
+Object {
+  "en": Object {
+    "components/App/hello": "hello",
+    "components/App/world": "world",
+    "components/Greeting/welcome": "Welcome {name}, you have received {unreadCount, plural, =0 {no new messages} one {{formattedUnreadCount} new message} other {{formattedUnreadCount} new messages}} since {formattedLastLoginTime}.",
+  },
+  "ja": Object {
+    "components/App/hello": "",
+    "components/App/world": "",
+    "components/Greeting/welcome": "",
+  },
+}
+`;

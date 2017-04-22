@@ -1,0 +1,54 @@
+{
+  "name": "extract-react-intl",
+  "version": "0.0.0",
+  "description": "Extract react-intl messages",
+  "license": "MIT",
+  "repository": "akameco/extract-react-intl",
+  "author": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com",
+    "url": "akameco.github.io"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "babel",
+    "merge",
+    "message",
+    "react",
+    "react-intl",
+    "extract",
+    "extract-intl",
+    "extract-react-intl"
+  ],
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "glob": "^7.1.1",
+    "lodash.merge": "^4.6.0",
+    "pify": "^2.3.0",
+    "read-babelrc-up": "^0.1.1"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-plugin-react-intl": "^2.3.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "xo": "^0.18.1"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "rules": {
+      "comma-dangle": 0,
+      "object-curly-spacing": 0
+    }
+  }
+}
