@@ -28,6 +28,7 @@ function loadLocaleFiles(locales, buildDir) {
       oldLocaleMaps[locale][messageKey] = messages[messageKey]
     }
   }
+  return oldLocaleMaps
 }
 
 module.exports = (locales, pattern, buildDir, defaultLocale) => {
