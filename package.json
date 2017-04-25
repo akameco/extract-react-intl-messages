@@ -30,6 +30,7 @@
   ],
   "dependencies": {
     "babel-core": "^6.24.1",
+    "babel-plugin-react-intl": "^2.3.1",
     "glob": "^7.1.1",
     "lodash.merge": "^4.6.0",
     "pify": "^2.3.0",
@@ -37,7 +38,6 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
-    "babel-plugin-react-intl": "^2.3.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",

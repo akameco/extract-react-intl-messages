@@ -32,7 +32,7 @@ module.exports = (locales, pattern, opts) => {
     cwd: opts.cwd,
   })
 
-  plugins.push('react-intl')
+  plugins.push(require('babel-plugin-react-intl').default)
 
   const extractFromFile = file => {
     return pify(transformFile)(file, {
