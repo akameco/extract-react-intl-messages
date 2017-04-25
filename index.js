@@ -1,28 +1,18 @@
 'use strict'
 const path = require('path')
+const fs = require('fs')
 const merge = require('lodash.merge')
 const loadJsonFile = require('load-json-file')
 const writeJsonFile = require('write-json-file')
 const extractReactIntl = require('extract-react-intl')
 
-function loadMessagesFromFile(file) {
-  try {
-    return loadJsonFile.sync(file)
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      const obj = {}
-      writeJsonFile.sync(file, obj)
-      return obj
-    }
-    throw err
-  }
-}
-
 function loadLocaleFiles(locales, buildDir) {
   const oldLocaleMaps = {}
   for (const locale of locales) {
     const file = path.resolve(buildDir, `${locale}.json`)
-    const messages = loadMessagesFromFile(file)
+    // Initialize json file
+    fs.writeFileSync(file, {}, { flag: 'wx' })
+    const messages = loadJsonFile.sync(file)
     oldLocaleMaps[locale] = {}
     for (const messageKey of Object.keys(messages)) {
       oldLocaleMaps[locale][messageKey] = messages[messageKey]

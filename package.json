@@ -39,6 +39,12 @@
   },
   "xo": {
     "space": true,
-    "semicolon": false
+    "semicolon": false,
+    "rules": {
+      "object-curly-spacing": [
+        2,
+        "always"
+      ]
+    }
   }
 }
