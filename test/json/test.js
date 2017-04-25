@@ -3,20 +3,10 @@ import path from 'path'
 import test from 'ava'
 import tempy from 'tempy'
 import m from '../../'
+import fixtures from '../fixtures/expected'
 
-const expectedEn = {
-  'a.hello': 'hello',
-  'a.world': 'world',
-  'b.hello': 'hello',
-  'b.world': 'world'
-}
-
-const expectedJa = {
-  'a.hello': '',
-  'a.world': '',
-  'b.hello': '',
-  'b.world': ''
-}
+const expectedEn = fixtures.json.en
+const expectedJa = fixtures.json.ja
 
 test('export json', async t => {
   const tmp = tempy.directory()

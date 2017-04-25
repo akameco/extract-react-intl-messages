@@ -3,15 +3,30 @@ const path = require('path')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
 const merge = require('lodash.merge')
+const yaml = require('js-yaml')
+const pify = require('pify')
+const { flatten, unflatten } = require('flat')
 const loadJsonFile = require('load-json-file')
 const writeJsonFile = require('write-json-file')
 const extractReactIntl = require('extract-react-intl')
 
-function loadLocaleFiles(locales, buildDir) {
+const writeJson = (outputPath, obj) => {
+  return writeJsonFile(`${outputPath}.json`, obj, { indent: 2 })
+}
+
+const writeYaml = (outputPath, obj) => {
+  return pify(fs.writeFile)(`${outputPath}.yml`, yaml.safeDump(obj), 'utf8')
+}
+
+function loadLocaleFiles(locales, buildDir, ext) {
   const oldLocaleMaps = {}
-  mkdirp.sync(buildDir)
+
+  try {
+    mkdirp.sync(buildDir)
+  } catch (err) {}
+
   for (const locale of locales) {
-    const file = path.resolve(buildDir, `${locale}.json`)
+    const file = path.resolve(buildDir, `${locale}.${ext}`)
     // Initialize json file
     try {
       fs.writeFileSync(file, '{}', { flag: 'wx' })
@@ -20,7 +35,13 @@ function loadLocaleFiles(locales, buildDir) {
         throw err
       }
     }
-    const messages = loadJsonFile.sync(file)
+
+    let messages = ext === 'json'
+      ? loadJsonFile.sync(file)
+      : yaml.safeLoad(fs.readFileSync(file, 'utf8'), { json: true })
+
+    messages = flatten(messages)
+
     oldLocaleMaps[locale] = {}
     for (const messageKey of Object.keys(messages)) {
       const message = messages[messageKey]
@@ -32,7 +53,7 @@ function loadLocaleFiles(locales, buildDir) {
   return oldLocaleMaps
 }
 
-module.exports = (locales, pattern, buildDir, defaultLocale) => {
+module.exports = (locales, pattern, buildDir, opts) => {
   if (!Array.isArray(locales)) {
     return Promise.reject(
       new TypeError(`Expected a Array, got ${typeof locales}`)
@@ -51,8 +72,21 @@ module.exports = (locales, pattern, buildDir, defaultLocale) => {
     )
   }
 
-  defaultLocale = defaultLocale || 'en'
-  const oldLocaleMaps = loadLocaleFiles(locales, buildDir)
+  opts = Object.assign(
+    {
+      defaultLocale: 'en',
+      format: 'json',
+      flat: true
+    },
+    opts
+  )
+
+  opts.flat = opts.format !== 'yaml'
+  const ext = opts.format === 'yaml' ? 'yml' : 'json'
+
+  const { defaultLocale } = opts
+
+  const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext)
 
   return extractReactIntl(locales, pattern, {
     defaultLocale
@@ -63,9 +97,15 @@ module.exports = (locales, pattern, buildDir, defaultLocale) => {
         const localeMap = locale === defaultLocale
           ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
           : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
-        return writeJsonFile(`${buildDir}/${locale}.json`, localeMap, {
-          indent: 2
-        })
+
+        const outputPath = path.resolve(buildDir, locale)
+
+        const fomattedLocaleMap = opts.flat ? localeMap : unflatten(localeMap)
+
+        if (opts.format === 'yaml') {
+          return writeYaml(outputPath, fomattedLocaleMap)
+        }
+        return writeJson(outputPath, fomattedLocaleMap)
       })
     )
   })
