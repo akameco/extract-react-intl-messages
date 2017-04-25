@@ -11,6 +11,14 @@ const localeMap = arr =>
     return obj
   }, {})
 
+const getBabelrc = cwd => {
+  try {
+    return readBabelrcUp.sync({ cwd })
+  } catch (err) {
+    return { presets: [], plugins: [] }
+  }
+}
+
 module.exports = (locales, pattern, opts) => {
   if (!Array.isArray(locales)) {
     Promise.reject(new TypeError(`Expected a Array, got ${typeof locales}`))
@@ -23,21 +31,19 @@ module.exports = (locales, pattern, opts) => {
   opts = Object.assign(
     {
       cwd: process.cwd(),
-      defaultLocale: 'en',
+      defaultLocale: 'en'
     },
     opts
   )
 
-  const { babel: { presets, plugins } } = readBabelrcUp.sync({
-    cwd: opts.cwd,
-  })
+  const { presets = [], plugins = [] } = getBabelrc(opts.cwd)
 
   plugins.push(require('babel-plugin-react-intl').default)
 
   const extractFromFile = file => {
     return pify(transformFile)(file, {
       presets,
-      plugins,
+      plugins
     }).then(({ metadata: result }) => {
       const localeObj = localeMap(locales)
       for (const { id, defaultMessage } of result['react-intl'].messages) {
@@ -52,6 +58,11 @@ module.exports = (locales, pattern, opts) => {
   }
 
   return pify(glob)(pattern)
-    .then(files => Promise.all(files.map(extractFromFile)))
+    .then(files => {
+      if (files.length === 0) {
+        return Promise.reject(new Error(`File not found (${pattern})`))
+      }
+      return Promise.all(files.map(extractFromFile))
+    })
     .then(arr => arr.reduce((h, obj) => merge(h, obj), localeMap(locales)))
 }

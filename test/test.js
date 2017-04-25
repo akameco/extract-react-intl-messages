@@ -8,3 +8,7 @@ test('extract from file', async t => {
   const x = await m(locales, pattern, { cwd: './test/fixtures' })
   t.snapshot(x)
 })
+
+test('error', async t => {
+  await t.throws(m(locales, 'notfound'), /File not found/)
+})
