@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const fs = require('fs')
+const mkdirp = require('mkdirp')
 const merge = require('lodash.merge')
 const loadJsonFile = require('load-json-file')
 const writeJsonFile = require('write-json-file')
@@ -8,14 +9,24 @@ const extractReactIntl = require('extract-react-intl')
 
 function loadLocaleFiles(locales, buildDir) {
   const oldLocaleMaps = {}
+  mkdirp.sync(buildDir)
   for (const locale of locales) {
     const file = path.resolve(buildDir, `${locale}.json`)
     // Initialize json file
-    fs.writeFileSync(file, {}, { flag: 'wx' })
+    try {
+      fs.writeFileSync(file, '{}', { flag: 'wx' })
+    } catch (err) {
+      if (err.code !== 'EEXIST') {
+        throw err
+      }
+    }
     const messages = loadJsonFile.sync(file)
     oldLocaleMaps[locale] = {}
     for (const messageKey of Object.keys(messages)) {
-      oldLocaleMaps[locale][messageKey] = messages[messageKey]
+      const message = messages[messageKey]
+      if (message && typeof message === 'string' && message !== '') {
+        oldLocaleMaps[locale][messageKey] = messages[messageKey]
+      }
     }
   }
   return oldLocaleMaps
@@ -46,13 +57,16 @@ module.exports = (locales, pattern, buildDir, defaultLocale) => {
   return extractReactIntl(locales, pattern, {
     defaultLocale
   }).then(newLocaleMaps => {
-    const localeMaps = merge(newLocaleMaps, oldLocaleMaps)
     return Promise.all(
-      locales.map(locale =>
-        writeJsonFile(`${buildDir}/${locale}.json`, localeMaps[locale], {
+      locales.map(locale => {
+        // If the default locale, overwrite the origin file
+        const localeMap = locale === defaultLocale
+          ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
+          : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
+        return writeJsonFile(`${buildDir}/${locale}.json`, localeMap, {
           indent: 2
         })
-      )
+      })
     )
   })
 }
