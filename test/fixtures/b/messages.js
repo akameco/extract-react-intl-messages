@@ -3,11 +3,11 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: {
-    id: 'a/hello',
+    id: 'b.hello',
     defaultMessage: 'hello'
   },
   world: {
-    id: 'a/world',
+    id: 'b.world',
     defaultMessage: 'world'
   }
 })
