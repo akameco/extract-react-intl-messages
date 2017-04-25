@@ -13,7 +13,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo"
+    "test": "xo && ava"
   },
   "files": [
     "index.js"
@@ -35,6 +35,7 @@
     "write-json-file": "^2.0.0"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
     "xo": "^0.18.1"
   },
   "xo": {
@@ -44,7 +45,8 @@
       "object-curly-spacing": [
         2,
         "always"
-      ]
+      ],
+      "operator-linebreak": 0
     }
   }
 }
