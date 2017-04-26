@@ -36,12 +36,9 @@ module.exports = (locales, pattern, opts) => {
     opts
   )
 
-  const babelrc = getBabelrc(opts.cwd)
-  if (!babelrc) {
-    return Promise.reject(new Error('.babelrc not found'))
-  }
+  const babelrc = getBabelrc(opts.cwd) || {}
 
-  const { presets, plugins } = babelrc
+  const { presets = [], plugins = [] } = babelrc
 
   plugins.push(require('babel-plugin-react-intl').default)
 

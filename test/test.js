@@ -14,9 +14,4 @@ test('error', async t => {
     m(locales, 'notfound', { cwd: './test/fixtures' }),
     /File not found/
   )
-
-  await t.throws(
-    m(locales, 'notfound', { cwd: './hoge/fuga' }),
-    /.babelrc not found/
-  )
 })
