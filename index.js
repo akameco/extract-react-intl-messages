@@ -18,6 +18,8 @@ const writeYaml = (outputPath, obj) => {
   return pify(fs.writeFile)(`${outputPath}.yml`, yaml.safeDump(obj), 'utf8')
 }
 
+const isJson = ext => ext === 'json'
+
 function loadLocaleFiles(locales, buildDir, ext) {
   const oldLocaleMaps = {}
 
@@ -29,14 +31,15 @@ function loadLocaleFiles(locales, buildDir, ext) {
     const file = path.resolve(buildDir, `${locale}.${ext}`)
     // Initialize json file
     try {
-      fs.writeFileSync(file, '{}', { flag: 'wx' })
+      const output = isJson(ext) ? JSON.stringify({}) : yaml.safeDump({})
+      fs.writeFileSync(file, output, { flag: 'wx' })
     } catch (err) {
       if (err.code !== 'EEXIST') {
         throw err
       }
     }
 
-    let messages = ext === 'json'
+    let messages = isJson(ext)
       ? loadJsonFile.sync(file)
       : yaml.safeLoad(fs.readFileSync(file, 'utf8'), { json: true })
 
@@ -72,17 +75,15 @@ module.exports = (locales, pattern, buildDir, opts) => {
     )
   }
 
-  opts = Object.assign(
-    {
-      defaultLocale: 'en',
-      format: 'json',
-      flat: true
-    },
-    opts
-  )
+  const jsonOpts = { format: 'json', flat: true }
+  const yamlOpts = { format: 'yaml', flat: false }
+  const defautlOpts = opts && opts.format && !isJson(opts.format)
+    ? yamlOpts
+    : jsonOpts
 
-  opts.flat = opts.format !== 'yaml'
-  const ext = opts.format === 'yaml' ? 'yml' : 'json'
+  opts = Object.assign({ defaultLocale: 'en' }, defautlOpts, opts)
+
+  const ext = isJson(opts.format) ? 'json' : 'yml'
 
   const { defaultLocale } = opts
 
@@ -102,10 +103,8 @@ module.exports = (locales, pattern, buildDir, opts) => {
 
         const fomattedLocaleMap = opts.flat ? localeMap : unflatten(localeMap)
 
-        if (opts.format === 'yaml') {
-          return writeYaml(outputPath, fomattedLocaleMap)
-        }
-        return writeJson(outputPath, fomattedLocaleMap)
+        const fn = isJson(opts.format) ? writeJson : writeYaml
+        return fn(outputPath, fomattedLocaleMap)
       })
     )
   })

@@ -18,9 +18,8 @@ const extractReactIntlMessages = require('extract-react-intl-messages')
 const locales = ['en', 'ja']
 const pattern = 'app/**/!(*.test).js'
 const buildDir = 'app/translations'
-const defaultLocale = 'en'
 
-extractReactIntlMessages(locales, pattern, buildDir, defaultLocale).then(() => {
+extractReactIntlMessages(locales, pattern, buildDir, { format: 'yaml' }).then(() => {
   console.log('finish')
 })
 ```
@@ -28,7 +27,7 @@ extractReactIntlMessages(locales, pattern, buildDir, defaultLocale).then(() => {
 
 ## API
 
-### extractReactIntlMessages(locales, pattern, buildDir, defaultLocale)
+### extractReactIntlMessages(locales, pattern, buildDir, [options])
 
 #### locales
 
@@ -49,10 +48,25 @@ Type: `string`
 
 Export directory.
 
-#### defaultLocale
+#### options
+
+##### defaultLocale
 
 Type: `string`<br>
 Default: `en`
+
+##### format
+
+Type: `json` | `yaml`<br>
+Default: `json`
+
+Set extension to output.
+
+##### flat
+Type: `boolean`<br>
+Default: `true`
+
+If format is `yaml`, set to `false`.
 
 ## License
 

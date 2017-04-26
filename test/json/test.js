@@ -16,3 +16,12 @@ test('export json', async t => {
   t.deepEqual(en, expectedEn)
   t.deepEqual(ja, expectedJa)
 })
+
+test('export json - nest', async t => {
+  const tmp = tempy.directory()
+  await m(['en', 'ja'], 'test/fixtures/**/*.js', tmp, { flat: false })
+  const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
+  const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  t.deepEqual(en, fixtures.nestJson.en)
+  t.deepEqual(ja, fixtures.nestJson.ja)
+})

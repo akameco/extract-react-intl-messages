@@ -23,15 +23,15 @@ test('export yaml', async t => {
   t.deepEqual(yamlLoad(tmp, 'ja.yml'), expectedNestJa)
 })
 
-test('export yaml - nest', async t => {
+test('export yaml - flat', async t => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], fixturesPath, tmp, {
     format: 'yaml',
-    flat: false
+    flat: true
   })
 
-  t.deepEqual(yamlLoad(tmp, 'en.yml'), expectedNestEn)
-  t.deepEqual(yamlLoad(tmp, 'ja.yml'), expectedNestJa)
+  t.deepEqual(yamlLoad(tmp, 'en.yml'), fixtures.json.en)
+  t.deepEqual(yamlLoad(tmp, 'ja.yml'), fixtures.json.ja)
 })
 
 test('exsit yaml', async t => {
