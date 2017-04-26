@@ -13,7 +13,7 @@ const localeMap = arr =>
 
 const getBabelrc = cwd => {
   try {
-    return readBabelrcUp.sync({ cwd })
+    return readBabelrcUp.sync({ cwd }).babel
   } catch (err) {
     return { presets: [], plugins: [] }
   }
