@@ -10,5 +10,13 @@ test('extract from file', async t => {
 })
 
 test('error', async t => {
-  await t.throws(m(locales, 'notfound'), /File not found/)
+  await t.throws(
+    m(locales, 'notfound', { cwd: './test/fixtures' }),
+    /File not found/
+  )
+
+  await t.throws(
+    m(locales, 'notfound', { cwd: './hoge/fuga' }),
+    /.babelrc not found/
+  )
 })
