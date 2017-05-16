@@ -13,6 +13,8 @@
     "node": ">=6"
   },
   "scripts": {
+    "prettier": "prettier --write --single-quote --semi=false '{index,test}.js'",
+    "precommit": "lint-staged",
     "test": "xo && ava"
   },
   "files": [
@@ -39,12 +41,21 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.1",
     "pify": "^2.3.0",
+    "prettier": "^1.3.1",
     "react": "^15.5.4",
     "react-intl": "^2.2.3",
     "temp-write": "^3.2.0",
     "tempy": "^0.1.0",
     "xo": "^0.18.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier",
+      "git add"
+    ]
   },
   "xo": {
     "space": true,
