@@ -13,6 +13,8 @@
     "node": ">=6"
   },
   "scripts": {
+    "prettier": "prettier --write --single-quote --semi=false '{index,test}.js'",
+    "precommit": "lint-staged",
     "test": "xo && ava"
   },
   "files": [
@@ -41,7 +43,16 @@
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "xo": "^0.18.1"
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.1",
+    "prettier": "^1.3.1",
+    "xo": "^0.18.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier",
+      "git add"
+    ]
   },
   "xo": {
     "space": true,
