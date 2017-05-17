@@ -3400,12 +3400,12 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-read-babelrc-up@^0.1.1:
-  version "0.1.1"
-  resolved read-babelrc-up-0.1.1.tgz#5ba46de8d782a81fd44735a124cc5180195f1c4e
+read-babelrc-up@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/read-babelrc-up/-/read-babelrc-up-0.2.0.tgz#bd2a010a2252f7fa82844f72329816f7238ad6c4"
   dependencies:
     find-up "^2.1.0"
-    load-json-file "^2.0.0"
+    json5 "^0.5.1"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
