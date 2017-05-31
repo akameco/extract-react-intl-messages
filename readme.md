@@ -9,21 +9,76 @@
 $ npm install --save-dev extract-react-intl-messages
 ```
 
-
 ## Usage
+
+app/components/App/messages.js
+
+```js
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: {
+    id: 'a.hello',
+    defaultMessage: 'hello'
+  },
+  world: {
+    id: 'a.world',
+    defaultMessage: 'world'
+  }
+})
+```
+
+
+### Run Script
+
+extract-intl.js
 
 ```js
 const extractReactIntlMessages = require('extract-react-intl-messages')
 
-const locales = ['en', 'ja']
 const input = 'app/**/!(*.test).js'
 const buildDir = 'app/translations'
 
-extractReactIntlMessages(locales, input, buildDir, { format: 'yaml' }).then(() => {
+extractReactIntlMessages(['en', 'ja'], input, buildDir, { flat: false }).then(() => {
   console.log('finish')
 })
 ```
 
+```
+$ node extract-intl.js
+```
+
+### Output
+
+app/translations/en.json
+
+```json
+{
+  "a": {
+    "hello": "hello",
+    "world": "world"
+  },
+  "b": {
+    "hello": "hello",
+    "world": "world"
+  }
+}
+```
+
+app/translations/ja.json
+
+```json
+{
+  "a": {
+    "hello": "",
+    "world": ""
+  },
+  "b": {
+    "hello": "",
+    "world": ""
+  }
+}
+```
 
 ## API
 
