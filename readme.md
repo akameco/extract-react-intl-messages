@@ -16,10 +16,10 @@ $ npm install --save-dev extract-react-intl-messages
 const extractReactIntlMessages = require('extract-react-intl-messages')
 
 const locales = ['en', 'ja']
-const pattern = 'app/**/!(*.test).js'
+const input = 'app/**/!(*.test).js'
 const buildDir = 'app/translations'
 
-extractReactIntlMessages(locales, pattern, buildDir, { format: 'yaml' }).then(() => {
+extractReactIntlMessages(locales, input, buildDir, { format: 'yaml' }).then(() => {
   console.log('finish')
 })
 ```
@@ -27,7 +27,7 @@ extractReactIntlMessages(locales, pattern, buildDir, { format: 'yaml' }).then(()
 
 ## API
 
-### extractReactIntlMessages(locales, pattern, buildDir, [options])
+### extractReactIntlMessages(locales, input, buildDir, [options])
 
 #### locales
 
@@ -35,7 +35,7 @@ Type: `Array<string>`
 
 Example: `['en', 'ja']`
 
-#### pattern
+#### input
 
 Type: `Array<string>`
 
