@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`export yaml - flat 1`] = `
+Object {
+  "a.hello": "hello",
+  "a.world": "world",
+  "b.hello": "hello",
+  "b.world": "world",
+}
+`;
+
+exports[`export yaml - flat 2`] = `
+Object {
+  "a.hello": "",
+  "a.world": "",
+  "b.hello": "",
+  "b.world": "",
+}
+`;
+
+exports[`export yaml 1`] = `
+Object {
+  "a": Object {
+    "hello": "hello",
+    "world": "world",
+  },
+  "b": Object {
+    "hello": "hello",
+    "world": "world",
+  },
+}
+`;
+
+exports[`export yaml 2`] = `
+Object {
+  "a": Object {
+    "hello": "",
+    "world": "",
+  },
+  "b": Object {
+    "hello": "",
+    "world": "",
+  },
+}
+`;
+
+exports[`exsit yaml 1`] = `
+Object {
+  "a": Object {
+    "hello": "hello",
+    "world": "world",
+  },
+  "b": Object {
+    "hello": "hello",
+    "world": "world",
+  },
+}
+`;
+
+exports[`exsit yaml 2`] = `
+Object {
+  "a": Object {
+    "hello": "hello2",
+    "world": "",
+  },
+  "b": Object {
+    "hello": "",
+    "world": "",
+  },
+}
+`;

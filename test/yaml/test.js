@@ -5,10 +5,6 @@ import tempy from 'tempy'
 import tempWrite from 'temp-write'
 import yaml from 'js-yaml'
 import m from '../../'
-import fixtures from '../fixtures/expected'
-
-const expectedNestEn = fixtures.nestJson.en
-const expectedNestJa = fixtures.nestJson.ja
 
 const fixturesPath = 'test/fixtures/**/*.js'
 
@@ -19,8 +15,8 @@ test('export yaml', async t => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], fixturesPath, tmp, { format: 'yaml' })
 
-  t.deepEqual(yamlLoad(tmp, 'en.yml'), expectedNestEn)
-  t.deepEqual(yamlLoad(tmp, 'ja.yml'), expectedNestJa)
+  t.snapshot(yamlLoad(tmp, 'en.yml'))
+  t.snapshot(yamlLoad(tmp, 'ja.yml'))
 })
 
 test('export yaml - flat', async t => {
@@ -30,22 +26,19 @@ test('export yaml - flat', async t => {
     flat: true
   })
 
-  t.deepEqual(yamlLoad(tmp, 'en.yml'), fixtures.json.en)
-  t.deepEqual(yamlLoad(tmp, 'ja.yml'), fixtures.json.ja)
+  t.snapshot(yamlLoad(tmp, 'en.yml'))
+  t.snapshot(yamlLoad(tmp, 'ja.yml'))
 })
 
 test('exsit yaml', async t => {
   const x = { a: { hello: 'hello2' } }
 
   const tmpEn = tempWrite.sync(yaml.safeDump(x), 'en.yml')
-  await m(['en'], fixturesPath, path.dirname(tmpEn), {
-    format: 'yaml'
-  })
-  t.deepEqual(yaml.safeLoad(fs.readFileSync(tmpEn, 'utf8')), expectedNestEn)
+  await m(['en'], fixturesPath, path.dirname(tmpEn), { format: 'yaml' })
+  t.snapshot(yaml.safeLoad(fs.readFileSync(tmpEn, 'utf8')))
 
   const tmpJa = tempWrite.sync(yaml.safeDump(x), 'ja.yml')
-  await m(['ja'], fixturesPath, path.dirname(tmpJa), {
-    format: 'yaml'
-  })
-  t.deepEqual(yamlLoad(tmpJa), fixtures.nestJson.ja2)
+  await m(['ja'], fixturesPath, path.dirname(tmpJa), { format: 'yaml' })
+
+  t.snapshot(yaml.safeLoad(fs.readFileSync(tmpJa, 'utf8')))
 })
