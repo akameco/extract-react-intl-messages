@@ -31,21 +31,8 @@ export default defineMessages({
 
 ### Run Script
 
-extract-intl.js
-
-```js
-const extractReactIntlMessages = require('extract-react-intl-messages')
-
-const input = 'app/**/!(*.test).js'
-const buildDir = 'app/translations'
-
-extractReactIntlMessages(['en', 'ja'], input, buildDir, { flat: false }).then(() => {
-  console.log('finish')
-})
 ```
-
-```
-$ node extract-intl.js
+$ extract-messages -l=en,ja -o app/translations -d en --flat false 'app/**/!(*.test).js'
 ```
 
 ### Output
@@ -78,6 +65,29 @@ app/translations/ja.json
     "world": ""
   }
 }
+```
+
+## CLI
+
+```console
+$ extract-messages --help
+
+  Extract react-intl messages
+
+  Usage
+  $ extract-react-intl-messages <input>
+  $ extract-messages <input>
+
+  Options
+  -o, --output       Output directory [require: true]
+  -l, --locales      locales [require: true]
+  -f, --format       json|yaml [default: json]
+  --flat             json [default: true] | yaml [default: false]
+  --default-locale   default locale [default: en]
+
+  Example
+  $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
+  $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
 ```
 
 ## API
