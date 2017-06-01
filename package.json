@@ -17,8 +17,13 @@
     "precommit": "lint-staged",
     "test": "xo && ava"
   },
+  "bin": {
+    "extract-react-intl-messages": "cli.js",
+    "extract-messages": "cli.js"
+  },
   "files": [
-    "index.js"
+    "index.js",
+    "cli.js"
   ],
   "keywords": [
     "react",
