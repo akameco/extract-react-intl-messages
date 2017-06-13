@@ -42,6 +42,7 @@
     "lodash.merge": "^4.6.0",
     "meow": "^3.7.0",
     "mkdirp": "^0.5.1",
+    "sort-keys": "^2.0.0",
     "write-json-file": "^2.2.0"
   },
   "devDependencies": {

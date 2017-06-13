@@ -21,3 +21,25 @@ test('export json - nest', async t => {
   t.snapshot(en)
   t.snapshot(ja)
 })
+
+test('sort keys', async t => {
+  const tmp = tempy.directory()
+  const enPath = path.resolve(tmp, 'en.json')
+  const jaPath = path.resolve(tmp, 'ja.json')
+
+  const x = {
+    'c.hello': 'hello c',
+    'z.hello': 'hello z',
+    'y.hello': 'hello y'
+  }
+
+  fs.writeFileSync(enPath, JSON.stringify(x, null, 2))
+  fs.writeFileSync(jaPath, JSON.stringify(x, null, 2))
+
+  await m(['en', 'ja'], 'test/fixtures/**/*.js', tmp)
+  const en = JSON.parse(fs.readFileSync(enPath))
+  const ja = JSON.parse(fs.readFileSync(jaPath))
+
+  t.snapshot(Object.keys(en))
+  t.snapshot(Object.keys(ja))
+})

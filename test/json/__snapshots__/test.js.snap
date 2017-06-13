@@ -43,3 +43,27 @@ Object {
   "b.world": "",
 }
 `;
+
+exports[`sort keys 1`] = `
+Array [
+  "a.hello",
+  "a.world",
+  "b.hello",
+  "b.world",
+  "c.hello",
+  "y.hello",
+  "z.hello",
+]
+`;
+
+exports[`sort keys 2`] = `
+Array [
+  "a.hello",
+  "a.world",
+  "b.hello",
+  "b.world",
+  "c.hello",
+  "y.hello",
+  "z.hello",
+]
+`;

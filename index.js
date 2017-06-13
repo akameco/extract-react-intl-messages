@@ -9,6 +9,7 @@ const { flatten, unflatten } = require('flat')
 const loadJsonFile = require('load-json-file')
 const writeJsonFile = require('write-json-file')
 const extractReactIntl = require('extract-react-intl')
+const sortKeys = require('sort-keys')
 
 const writeJson = (outputPath, obj) => {
   return writeJsonFile(`${outputPath}.json`, obj, { indent: 2 })
@@ -99,12 +100,13 @@ module.exports = (locales, pattern, buildDir, opts) => {
           ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
           : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
 
-        const outputPath = path.resolve(buildDir, locale)
-
-        const fomattedLocaleMap = opts.flat ? localeMap : unflatten(localeMap)
+        const fomattedLocaleMap = opts.flat
+          ? sortKeys(localeMap)
+          : unflatten(sortKeys(localeMap))
 
         const fn = isJson(opts.format) ? writeJson : writeYaml
-        return fn(outputPath, fomattedLocaleMap)
+
+        return fn(path.resolve(buildDir, locale), fomattedLocaleMap)
       })
     )
   })
