@@ -67,6 +67,10 @@ app/translations/ja.json
 }
 ```
 
+## Recommend
+
+Use with [babel-plugin-react-intl-auto: i18n for the component age. Auto management react-intl ID.](https://github.com/akameco/babel-plugin-react-intl-auto)
+
 ## CLI
 
 ```console
