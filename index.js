@@ -95,10 +95,7 @@ module.exports = (locales, pattern, buildDir, opts) => {
   }).then(newLocaleMaps => {
     return Promise.all(
       locales.map(locale => {
-        // If the default locale, overwrite the origin file
-        const localeMap = locale === defaultLocale
-          ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
-          : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
+        const localeMap = merge(newLocaleMaps[locale], oldLocaleMaps[locale])
 
         const fomattedLocaleMap = opts.flat
           ? sortKeys(localeMap)
