@@ -101,7 +101,7 @@ module.exports = (locales, pattern, buildDir, opts) => {
           : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
 
         const fomattedLocaleMap = opts.flat
-          ? sortKeys(localeMap)
+          ? sortKeys(localeMap, { deep: true })
           : unflatten(sortKeys(localeMap))
 
         const fn = isJson(opts.format) ? writeJson : writeYaml
