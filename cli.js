@@ -31,7 +31,8 @@ const cli = meow(
       d: 'default-locale'
     },
     default: {
-      format: 'json'
+      format: 'json',
+      delimiter: '.'
     }
   }
 )
