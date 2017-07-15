@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`delimiter - nest 1`] = `
+Object {
+  "a.hello": "hello",
+  "a.world": "world",
+  "b.hello": "hello",
+  "b.world": "world",
+}
+`;
+
+exports[`delimiter - nest 2`] = `
+Object {
+  "a.hello": "",
+  "a.world": "",
+  "b.hello": "",
+  "b.world": "",
+}
+`;
+
 exports[`export json - nest 1`] = `
 Object {
   "a": Object {

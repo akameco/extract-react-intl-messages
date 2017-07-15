@@ -21,7 +21,7 @@ const writeYaml = (outputPath, obj) => {
 
 const isJson = ext => ext === 'json'
 
-function loadLocaleFiles(locales, buildDir, ext) {
+function loadLocaleFiles(locales, buildDir, ext, delimiter) {
   const oldLocaleMaps = {}
 
   try {
@@ -44,7 +44,7 @@ function loadLocaleFiles(locales, buildDir, ext) {
       ? loadJsonFile.sync(file)
       : yaml.safeLoad(fs.readFileSync(file, 'utf8'), { json: true })
 
-    messages = flatten(messages)
+    messages = flatten(messages, { delimiter })
 
     oldLocaleMaps[locale] = {}
     for (const messageKey of Object.keys(messages)) {
@@ -78,9 +78,8 @@ module.exports = (locales, pattern, buildDir, opts) => {
 
   const jsonOpts = { format: 'json', flat: true }
   const yamlOpts = { format: 'yaml', flat: false }
-  const defautlOpts = opts && opts.format && !isJson(opts.format)
-    ? yamlOpts
-    : jsonOpts
+  const defautlOpts =
+    opts && opts.format && !isJson(opts.format) ? yamlOpts : jsonOpts
 
   opts = Object.assign({ defaultLocale: 'en' }, defautlOpts, opts)
 
@@ -88,7 +87,9 @@ module.exports = (locales, pattern, buildDir, opts) => {
 
   const { defaultLocale } = opts
 
-  const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext)
+  const delimiter = opts.delimiter ? opts.delimiter : '.'
+
+  const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext, delimiter)
 
   return extractReactIntl(locales, pattern, {
     defaultLocale
@@ -96,13 +97,14 @@ module.exports = (locales, pattern, buildDir, opts) => {
     return Promise.all(
       locales.map(locale => {
         // If the default locale, overwrite the origin file
-        const localeMap = locale === defaultLocale
-          ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
-          : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
+        const localeMap =
+          locale === defaultLocale
+            ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
+            : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
 
         const fomattedLocaleMap = opts.flat
           ? sortKeys(localeMap, { deep: true })
-          : unflatten(sortKeys(localeMap))
+          : unflatten(sortKeys(localeMap), { delimiter })
 
         const fn = isJson(opts.format) ? writeJson : writeYaml
 

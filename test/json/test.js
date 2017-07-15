@@ -43,3 +43,15 @@ test('sort keys', async t => {
   t.snapshot(Object.keys(en))
   t.snapshot(Object.keys(ja))
 })
+
+test('delimiter - nest', async t => {
+  const tmp = tempy.directory()
+  await m(['en', 'ja'], 'test/fixtures/**/*.js', tmp, {
+    flat: false,
+    delimiter: '_'
+  })
+  const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
+  const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  t.snapshot(en)
+  t.snapshot(ja)
+})

@@ -15,6 +15,7 @@ const cli = meow(
   -f, --format          json | yaml [default: json]
   -d, --default-locale  default locale
   --flat                json [default: true] | yaml [default: false]
+  --delimiter           json | yaml [default: .]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -22,7 +23,7 @@ const cli = meow(
 `,
   {
     boolean: ['flat'],
-    strings: ['output', 'locales', 'format'],
+    strings: ['output', 'locales', 'format', 'delimiter'],
     alias: {
       o: 'output',
       l: 'locales',
@@ -30,7 +31,8 @@ const cli = meow(
       d: 'default-locale'
     },
     default: {
-      format: 'json'
+      format: 'json',
+      delimiter: '.'
     }
   }
 )
