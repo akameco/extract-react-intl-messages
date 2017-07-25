@@ -138,6 +138,9 @@ Default: `true`
 
 If format is `yaml`, set to `false`.
 
+Be careful if `false`.
+See [this issue](https://github.com/akameco/extract-react-intl-messages/issues/3).
+
 ## License
 
 MIT © [akameco](http://akameco.github.io)
