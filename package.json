@@ -13,7 +13,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "prettier": "prettier --write --single-quote --semi=false '{index,test}.js'",
+    "prettier": "prettier --write '{index,test}.js'",
     "precommit": "lint-staged",
     "test": "xo && ava"
   },
@@ -47,10 +47,10 @@
   },
   "devDependencies": {
     "ava": "^0.19.1",
-    "husky": "^0.13.4",
-    "lint-staged": "^3.5.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.1.3",
     "pify": "^3.0.0",
-    "prettier": "^1.3.1",
+    "prettier": "^1.6.1",
     "react": "^15.5.4",
     "react-intl": "^2.3.0",
     "temp-write": "^3.3.0",
