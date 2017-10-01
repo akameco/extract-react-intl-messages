@@ -13,13 +13,15 @@
     "node": ">=6"
   },
   "scripts": {
-    "prettier": "prettier --write '{index,test}.js'",
     "precommit": "lint-staged",
+    "fmt": "prettier --write '{{index,test}.js,package.json}'",
     "test": "xo && ava"
   },
-  "files": [
-    "index.js"
-  ],
+  "lint-staged": {
+    "*.js": ["fmt", "git add"],
+    "*.json": ["fmt", "git add"]
+  },
+  "files": ["index.js"],
   "keywords": [
     "babel",
     "merge",
@@ -39,21 +41,15 @@
     "read-babelrc-up": "^0.2.0"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-plugin-react-intl-auto": "^0.8.1",
+    "ava": "^0.22.0",
+    "babel-plugin-react-intl-auto": "^0.10.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "husky": "^0.14.3",
-    "lint-staged": "^4.1.3",
-    "prettier": "^1.6.1",
+    "lint-staged": "^4.2.3",
+    "prettier": "^1.7.3",
     "xo": "^0.18.2"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier",
-      "git add"
-    ]
   },
   "xo": {
     "space": true,

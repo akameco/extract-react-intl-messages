@@ -50,9 +50,8 @@ module.exports = (locales, pattern, opts) => {
       const localeObj = localeMap(locales)
       for (const { id, defaultMessage } of result['react-intl'].messages) {
         for (const locale of locales) {
-          localeObj[locale][id] = opts.defaultLocale === locale
-            ? defaultMessage
-            : ''
+          localeObj[locale][id] =
+            opts.defaultLocale === locale ? defaultMessage : ''
         }
       }
       return localeObj
