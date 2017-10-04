@@ -1,4 +1,5 @@
 # extract-react-intl-messages [![Build Status](https://travis-ci.org/akameco/extract-react-intl-messages.svg?branch=master)](https://travis-ci.org/akameco/extract-react-intl-messages)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 > Extract react-intl messages
 
@@ -140,6 +141,17 @@ If format is `yaml`, set to `false`.
 
 Be careful if `false`.
 See [this issue](https://github.com/akameco/extract-react-intl-messages/issues/3).
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub>akameco</sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Tests") [📖](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Documentation") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars3.githubusercontent.com/u/13161875?v=4" width="100px;"/><br /><sub>Hoan Tran</sub>](http://hoantran.info)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Tests") |
+| :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 ## License
 

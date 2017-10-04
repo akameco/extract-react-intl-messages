@@ -1,0 +1,33 @@
+{
+  "projectName": "extract-react-intl-messages",
+  "projectOwner": "akameco",
+  "files": [
+    "readme.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "akameco",
+      "name": "akameco",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4002137?v=4",
+      "profile": "http://akameco.github.io",
+      "contributions": [
+        "code",
+        "test",
+        "doc",
+        "infra"
+      ]
+    },
+    {
+      "login": "hoantran-it",
+      "name": "Hoan Tran",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13161875?v=4",
+      "profile": "http://hoantran.info",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    }
+  ]
+}

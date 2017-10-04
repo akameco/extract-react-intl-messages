@@ -13,6 +13,7 @@
     "node": ">=6"
   },
   "scripts": {
+    "add-contributor": "all-contributors add",
     "fmt": "prettier --write '{{index,test}.js,*.json}'",
     "precommit": "lint-staged",
     "test": "xo && ava"
@@ -43,11 +44,12 @@
     "write-json-file": "^2.2.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "^4.5.0",
     "ava": "^0.22.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
     "pify": "^3.0.0",
-    "prettier": "^1.7.3",
+    "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-intl": "^2.3.0",
     "temp-write": "^3.3.0",
