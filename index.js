@@ -2,6 +2,7 @@
 const glob = require('glob')
 const pify = require('pify')
 const merge = require('lodash.merge')
+const mergeWith = require('lodash.mergewith')
 const { transformFile } = require('babel-core')
 const readBabelrcUp = require('read-babelrc-up')
 
@@ -13,7 +14,20 @@ const localeMap = arr =>
 
 const getBabelrc = cwd => {
   try {
-    return readBabelrcUp.sync({ cwd }).babel
+    const babelrc = readBabelrcUp.sync({ cwd }).babel
+
+    if (!babelrc.env) {
+      return babelrc
+    }
+
+    const env = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
+    const concatArray = (obj, src) => {
+      if (Array.isArray(obj)) {
+        return obj.concat(src)
+      }
+    }
+
+    return mergeWith(babelrc, babelrc.env[env], concatArray)
   } catch (err) {
     return { presets: [], plugins: [] }
   }

@@ -37,6 +37,7 @@
     "babel-plugin-react-intl": "^2.3.1",
     "glob": "^7.1.1",
     "lodash.merge": "^4.6.0",
+    "lodash.mergewith": "^4.6.0",
     "pify": "^3.0.0",
     "read-babelrc-up": "^0.2.0"
   },

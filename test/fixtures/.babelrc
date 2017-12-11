@@ -8,9 +8,15 @@
     "react"
   ],
   "plugins": [
-    "transform-class-properties",
-    ["react-intl-auto",
-      {"removePrefix": "test/fixtures/"}
-    ]
-  ]
+    "transform-class-properties"
+  ],
+  "env": {
+    "react-intl": {
+      "plugins":[
+        ["react-intl-auto",
+          {"removePrefix": "test/fixtures/"}
+        ]
+      ]
+    }
+  }
 }
