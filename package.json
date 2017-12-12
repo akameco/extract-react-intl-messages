@@ -13,6 +13,7 @@
     "node": ">=6"
   },
   "scripts": {
+    "add-contributors": "all-contributors add",
     "precommit": "lint-staged",
     "lint": "eslint --fix .",
     "fmt": "prettier --write '{{index,test}.js,package.json}'",
@@ -43,6 +44,7 @@
     "read-babelrc-up": "^0.2.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "^4.10.0",
     "ava": "^0.22.0",
     "babel-plugin-react-intl-auto": "^0.13.0",
     "babel-preset-env": "^1.6.1",

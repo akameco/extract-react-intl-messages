@@ -1,7 +1,8 @@
 # extract-react-intl [![Build Status](https://travis-ci.org/akameco/extract-react-intl.svg?branch=master)](https://travis-ci.org/akameco/extract-react-intl)
 
-> Extract react-intl messages
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
+> Extract react-intl messages
 
 ## Install
 
@@ -9,17 +10,16 @@
 $ yarn add --dev extract-react-intl
 ```
 
-
 ## Usage
 
 ```js
-const extractReactIntl = require('extract-react-intl');
+const extractReactIntl = require('extract-react-intl')
 
-const pattern = 'app/**/*.js';
-const locales = ['en', 'ja'];
+const pattern = 'app/**/*.js'
+const locales = ['en', 'ja']
 
 extractReactIntl(locales, pattern).then(result => {
-  console.log(result);
+  console.log(result)
   /*
 {
   en:
@@ -30,9 +30,8 @@ extractReactIntl(locales, pattern).then(result => {
      'components/App/world': '' }
 }
   */
-});
+})
 ```
-
 
 ## API
 
@@ -58,19 +57,32 @@ Additional options.
 
 #### defaultLocale
 
-Type: `string`<br>
-Default: `en`
+Type: `string`<br> Default: `en`
 
 Set default locale for your app.
 
 ##### cwd
 
-Type: `string`<br>
-Default: `.`
+Type: `string`<br> Default: `.`
 
 **You most likely don't need this.**
 
 Change run path.
+
+## Contributors
+
+Thanks goes to these wonderful people
+([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=akameco "Code") [📖](https://github.com/akameco/extract-react-intl/commits?author=akameco "Documentation") [⚠️](https://github.com/akameco/extract-react-intl/commits?author=akameco "Tests") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the
+[all-contributors](https://github.com/kentcdodds/all-contributors)
+specification. Contributions of any kind welcome!
 
 ## License
 
