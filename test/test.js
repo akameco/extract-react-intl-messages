@@ -5,6 +5,7 @@ const pattern = 'test/fixtures/**/*.js'
 const locales = ['en', 'ja']
 
 test('extract from file', async t => {
+  process.env.BABEL_ENV = 'react-intl'
   const x = await m(locales, pattern, { cwd: './test/fixtures' })
   t.snapshot(x)
 })
