@@ -1,0 +1,12 @@
+[ignore]
+.*/test/fixtures/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

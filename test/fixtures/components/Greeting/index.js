@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {
   FormattedMessage,
   FormattedNumber,
-  FormattedRelative,
+  FormattedRelative
 } from 'react-intl'
 import messages from './messages'
 
@@ -11,8 +11,8 @@ type Props = {
   user: {
     name: string,
     unreadCount: number,
-    lastLoginTime: number,
-  },
+    lastLoginTime: number
+  }
 }
 
 export default class Greeting extends Component {
@@ -35,7 +35,7 @@ export default class Greeting extends Component {
             ),
             formattedLastLoginTime: (
               <FormattedRelative value={user.lastLoginTime} />
-            ),
+            )
           }}
         />
       </p>

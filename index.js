@@ -1,3 +1,4 @@
+// @flow weak
 'use strict'
 const glob = require('glob')
 const pify = require('pify')
@@ -12,6 +13,13 @@ const localeMap = arr =>
     return obj
   }, {})
 
+const concatArray = (obj, src) => {
+  if (Array.isArray(obj)) {
+    return obj.concat(src)
+  }
+  return undefined
+}
+
 const getBabelrc = cwd => {
   try {
     const babelrc = readBabelrcUp.sync({ cwd }).babel
@@ -21,11 +29,6 @@ const getBabelrc = cwd => {
     }
 
     const env = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
-    const concatArray = (obj, src) => {
-      if (Array.isArray(obj)) {
-        return obj.concat(src)
-      }
-    }
 
     return mergeWith(babelrc, babelrc.env[env], concatArray)
   } catch (err) {
@@ -54,6 +57,7 @@ module.exports = (locales, pattern, opts) => {
 
   const { presets = [], plugins = [] } = babelrc
 
+  // eslint-disable-next-line global-require
   plugins.push(require('babel-plugin-react-intl').default)
 
   const extractFromFile = file => {

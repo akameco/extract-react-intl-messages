@@ -12,7 +12,7 @@ addLocaleData(jaLocaleData)
 
 const messages = {
   en: enMessages,
-  ja: jaMessages,
+  ja: jaMessages
 }
 
 export default class LanguageProvider extends Component {
@@ -26,7 +26,6 @@ export default class LanguageProvider extends Component {
         <IntlProvider locale={locale} messages={messages[locale]}>
           {this.props.children}
         </IntlProvider>
-
         <a onClick={() => this.setState({ locale: 'en' })}>English</a>
         /
         <a onClick={() => this.setState({ locale: 'ja' })}>日本語</a>

@@ -14,8 +14,9 @@
   },
   "scripts": {
     "precommit": "lint-staged",
+    "lint": "eslint --fix .",
     "fmt": "prettier --write '{{index,test}.js,package.json}'",
-    "test": "xo && ava"
+    "test": "ava"
   },
   "lint-staged": {
     "*.js": ["fmt", "git add"],
@@ -43,22 +44,15 @@
   },
   "devDependencies": {
     "ava": "^0.22.0",
-    "babel-plugin-react-intl-auto": "^0.10.0",
-    "babel-preset-env": "^1.4.0",
+    "babel-plugin-react-intl-auto": "^0.13.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-config-precure": "^0.11.3",
+    "flow-bin": "^0.61.0",
     "husky": "^0.14.3",
-    "lint-staged": "^4.2.3",
-    "prettier": "^1.7.3",
-    "xo": "^0.18.2"
-  },
-  "xo": {
-    "space": true,
-    "semicolon": false,
-    "rules": {
-      "comma-dangle": 0,
-      "object-curly-spacing": 0,
-      "operator-linebreak": 0
-    }
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2"
   }
 }

@@ -9,7 +9,7 @@ export default class App extends Component {
     const user = {
       name: 'Eric',
       unreadCount: 4,
-      lastLoginTime: Date.now() - 1000 * 60 * 60 * 24,
+      lastLoginTime: Date.now() - 1000 * 60 * 60 * 24
     }
 
     return (
