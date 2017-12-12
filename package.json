@@ -17,7 +17,7 @@
     "precommit": "lint-staged",
     "lint": "eslint --fix .",
     "fmt": "prettier --write '**/*.{js,json,md}'",
-    "test": "ava",
+    "test": "jest",
     "test:ci": "yarn flow && yarn lint && yarn test"
   },
   "lint-staged": {
@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.0",
-    "ava": "^0.22.0",
     "babel-plugin-react-intl-auto": "^0.13.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -55,6 +54,7 @@
     "eslint-config-precure": "^0.11.3",
     "flow-bin": "^0.61.0",
     "husky": "^0.14.3",
+    "jest": "^21.2.1",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2"
   }
