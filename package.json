@@ -16,7 +16,7 @@
     "add-contributors": "all-contributors add",
     "precommit": "lint-staged",
     "lint": "eslint --fix .",
-    "fmt": "prettier --write '{{index,test}.js,package.json}'",
+    "fmt": "prettier --write '**/*.{js,json,md}'",
     "test": "ava"
   },
   "lint-staged": {
