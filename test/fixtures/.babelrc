@@ -14,7 +14,7 @@
     "react-intl": {
       "plugins":[
         ["react-intl-auto",
-          {"removePrefix": "test/fixtures/"}
+          {"removePrefix": "test.fixtures"}
         ]
       ]
     }
