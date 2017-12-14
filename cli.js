@@ -22,17 +22,31 @@ const cli = meow(
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
 `,
   {
-    boolean: ['flat'],
-    strings: ['output', 'locales', 'format', 'delimiter'],
-    alias: {
-      o: 'output',
-      l: 'locales',
-      f: 'format',
-      d: 'default-locale'
-    },
-    default: {
-      format: 'json',
-      delimiter: '.'
+    flags: {
+      flat: {
+        type: 'boolean'
+      },
+      output: {
+        type: 'string',
+        alias: 'o'
+      },
+      locales: {
+        type: 'string',
+        alias: 'l'
+      },
+      format: {
+        type: 'string',
+        alias: 'f',
+        default: 'json'
+      },
+      'default-locale': {
+        type: 'string',
+        alias: 'd'
+      },
+      delimiter: {
+        type: 'string',
+        default: '.'
+      }
     }
   }
 )
