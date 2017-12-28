@@ -1,3 +1,4 @@
 flow-typed/npm
 lib
 **/test/fixtures/**
+coverage
