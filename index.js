@@ -4,7 +4,7 @@ const glob = require('glob')
 const pify = require('pify')
 const merge = require('lodash.merge')
 const mergeWith = require('lodash.mergewith')
-const { transformFile } = require('babel-core')
+const { resolvePlugin, resolvePreset, transformFile } = require('babel-core')
 const readBabelrcUp = require('read-babelrc-up')
 
 const localeMap = arr =>
@@ -20,10 +20,15 @@ const concatArray = (obj, src) => {
   return undefined
 }
 
+const createResolveList = fn => (list, cwd) =>
+  list.map(x => (typeof x === 'string' ? fn(x, cwd) : x))
+
+const resolvePresets = createResolveList(resolvePreset)
+const resolvePlugins = createResolveList(resolvePlugin)
+
 const getBabelrc = cwd => {
   try {
     const babelrc = readBabelrcUp.sync({ cwd }).babel
-
     if (!babelrc.env) {
       return babelrc
     }
@@ -35,6 +40,8 @@ const getBabelrc = cwd => {
     return { presets: [], plugins: [] }
   }
 }
+
+const getBabelrcPath = cwd => readBabelrcUp.sync({ cwd }).path
 
 module.exports = (locales, pattern, opts) => {
   if (!Array.isArray(locales)) {
@@ -54,6 +61,7 @@ module.exports = (locales, pattern, opts) => {
   )
 
   const babelrc = getBabelrc(opts.cwd) || {}
+  const babelrcPath = getBabelrcPath(opts.cwd)
 
   const { presets = [], plugins = [] } = babelrc
 
@@ -62,8 +70,8 @@ module.exports = (locales, pattern, opts) => {
 
   const extractFromFile = file => {
     return pify(transformFile)(file, {
-      presets,
-      plugins
+      presets: resolvePresets(presets, babelrcPath),
+      plugins: resolvePlugins(plugins, babelrcPath)
     }).then(({ metadata: result }) => {
       const localeObj = localeMap(locales)
       for (const { id, defaultMessage } of result['react-intl'].messages) {
