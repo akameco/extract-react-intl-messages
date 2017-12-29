@@ -1,9 +1,9 @@
 <!--
 Thanks for your interest in the project. I appreciate bugs filed and PRs submitted!
-English/日本語 (日本語で入力して大丈夫です。あなたが日本人ならその方が迅速です)
+English/日本語(日本語で入力して大丈夫です。日本語の方が迅速です)
 -->
 
-<!-- What changes are being made? (What feature/bug is being fixed here?) / 何が変更されてしますか？ (機能/バグはここで修正されていますか？) -->
+<!-- What changes are being made? (What feature/bug is being fixed here?) / 何が変更されていますか？-->
 **What**:
 
 
@@ -24,3 +24,4 @@ English/日本語 (日本語で入力して大丈夫です。あなたが日本�
 * [ ] Added myself to contributors table <!-- this is optional, see the contributing guidelines for instructions -->
 
 <!-- feel free to add additional comments. -->
+
