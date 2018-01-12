@@ -14,7 +14,7 @@
   },
   "scripts": {
     "add-contributor": "all-contributors add",
-    "fmt": "prettier --write '{{index,test}.js,*.json}'",
+    "fmt": "prettier --write '**/*.{json,js,md}'",
     "precommit": "lint-staged",
     "test": "xo && ava"
   },
@@ -22,7 +22,10 @@
     "extract-react-intl-messages": "cli.js",
     "extract-messages": "cli.js"
   },
-  "files": ["index.js", "cli.js"],
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
   "keywords": [
     "react",
     "i18n",
@@ -49,7 +52,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "pify": "^3.0.0",
-    "prettier": "^1.9.2",
+    "prettier": "^1.10.2",
     "react": "^16.2.0",
     "react-intl": "^2.3.0",
     "temp-write": "^3.4.0",
@@ -57,14 +60,24 @@
     "xo": "^0.18.2"
   },
   "lint-staged": {
-    "*.js": ["fmt", "test", "git add"],
-    "*.json": ["fmt", "git add"]
+    "*.js": [
+      "fmt",
+      "test",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "fmt",
+      "git add"
+    ]
   },
   "xo": {
     "space": true,
     "semicolon": false,
     "rules": {
-      "object-curly-spacing": [2, "always"],
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
       "operator-linebreak": 0
     }
   }

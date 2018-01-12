@@ -1,9 +1,12 @@
 # extract-react-intl-messages
+
 [![Build Status](https://travis-ci.org/akameco/extract-react-intl-messages.svg?branch=master)](https://travis-ci.org/akameco/extract-react-intl-messages)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 > Extract react-intl messages
-
 
 ## Install
 
@@ -29,7 +32,6 @@ export default defineMessages({
   }
 })
 ```
-
 
 ### Run Script
 
@@ -94,6 +96,7 @@ $ extract-messages --help
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
+  $ extract-messages -l=ja,en -o i18n 'src/**/*.js'
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
 ```
 
@@ -135,6 +138,7 @@ Default: `json`
 Set extension to output.
 
 ##### flat
+
 Type: `boolean`<br>
 Default: `true`
 
@@ -148,9 +152,11 @@ See [this issue](https://github.com/akameco/extract-react-intl-messages/issues/3
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
 <!-- prettier-ignore -->
 | [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Tests") [📖](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Documentation") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars3.githubusercontent.com/u/13161875?v=4" width="100px;"/><br /><sub><b>Hoan Tran</b></sub>](http://hoantran.info)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Tests") | [<img src="https://avatars1.githubusercontent.com/u/3383240?v=4" width="100px;"/><br /><sub><b>giantpinkwalrus</b></sub>](https://github.com/giantpinkwalrus)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=giantpinkwalrus "Code") |
 | :---: | :---: | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
