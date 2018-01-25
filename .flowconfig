@@ -1,5 +1,6 @@
 [ignore]
 .*/test/fixtures/.*
+.*/test/resolution/.*
 
 [include]
 

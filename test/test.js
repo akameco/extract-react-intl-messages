@@ -10,6 +10,13 @@ test('extract from file', async () => {
   expect(x).toMatchSnapshot()
 })
 
+test('babelrc path resolution', async () => {
+  const x = await m(['en'], 'test/resolution/**/*.js', {
+    cwd: './test/resolution'
+  })
+  expect(x).toMatchSnapshot()
+})
+
 test('error', async () => {
   expect.assertions(1)
   await m(locales, 'notfound', { cwd: './test/fixtures' }).catch(err => {

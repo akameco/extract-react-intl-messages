@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babelrc path resolution 1`] = `
+Object {
+  "en": Object {
+    "test": "test",
+  },
+}
+`;
+
 exports[`extract from file 1`] = `
 Object {
   "en": Object {
