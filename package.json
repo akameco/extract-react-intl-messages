@@ -21,7 +21,7 @@
     "test:ci": "yarn flow && yarn lint && yarn test"
   },
   "lint-staged": {
-    "*.{js,json,md}": ["fmt", "git add"]
+    "*.{js,json,md}": ["prettier --write", "git add"]
   },
   "files": ["index.js"],
   "keywords": [
