@@ -4,9 +4,9 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
-> Extract react-intl messages
+This package will generate json or yaml files from a glob. It will generate one file per locale, with the ids of each message defined by the [`defineMessages`](https://github.com/yahoo/react-intl/wiki/API#definemessages) function of [react-intl](https://github.com/yahoo/react-intl). The value of each of these keys will be an empty string, except for your `defaultLocale` which will be populated with the [`defaultMessage`](https://github.com/yahoo/react-intl/wiki/API#message-descriptor).
 
 ## Install
 
@@ -154,8 +154,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Tests") [📖](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Documentation") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars3.githubusercontent.com/u/13161875?v=4" width="100px;"/><br /><sub><b>Hoan Tran</b></sub>](http://hoantran.info)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Tests") | [<img src="https://avatars1.githubusercontent.com/u/3383240?v=4" width="100px;"/><br /><sub><b>giantpinkwalrus</b></sub>](https://github.com/giantpinkwalrus)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=giantpinkwalrus "Code") |
-| :---: | :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Tests") [📖](https://github.com/akameco/extract-react-intl-messages/commits?author=akameco "Documentation") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars3.githubusercontent.com/u/13161875?v=4" width="100px;"/><br /><sub><b>Hoan Tran</b></sub>](http://hoantran.info)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Code") [⚠️](https://github.com/akameco/extract-react-intl-messages/commits?author=hoantran-it "Tests") | [<img src="https://avatars1.githubusercontent.com/u/3383240?v=4" width="100px;"/><br /><sub><b>giantpinkwalrus</b></sub>](https://github.com/giantpinkwalrus)<br />[💻](https://github.com/akameco/extract-react-intl-messages/commits?author=giantpinkwalrus "Code") | [<img src="https://avatars3.githubusercontent.com/u/1190640?v=4" width="100px;"/><br /><sub><b>enrique-ramirez</b></sub>](https://github.com/enrique-ramirez)<br />[📖](https://github.com/akameco/extract-react-intl-messages/commits?author=enrique-ramirez "Documentation") |
+| :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
