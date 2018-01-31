@@ -5,7 +5,7 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
-> Extract react-intl messages
+This package allows you to extract all messages from a glob. It will return an object with a key for each locale you pass, which in turn contains an object with the ids of each message defined by the [`defineMessages`](https://github.com/yahoo/react-intl/wiki/API#definemessages) function of react-intl. The value of each of this key will be an empty string, except for your `defaultLocale` which will be populated with the `defaultMessage`.
 
 ## Install
 
