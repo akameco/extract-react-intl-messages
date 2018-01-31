@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/akameco/extract-react-intl.svg?branch=master)](https://travis-ci.org/akameco/extract-react-intl)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
-> Extract react-intl messages
+This package allows you to extract all messages from a glob. It will return an object with a key for each locale you pass, which in turn contains an object with the ids of each message defined by the [`defineMessages`](https://github.com/yahoo/react-intl/wiki/API#definemessages) function of [react-intl](https://github.com/yahoo/react-intl). The value of each of these keys will be an empty string, except for your `defaultLocale` which will be populated with the [`defaultMessage`](https://github.com/yahoo/react-intl/wiki/API#message-descriptor).
 
 ## Install
 
@@ -80,8 +80,8 @@ Thanks goes to these wonderful people
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=akameco "Code") [📖](https://github.com/akameco/extract-react-intl/commits?author=akameco "Documentation") [⚠️](https://github.com/akameco/extract-react-intl/commits?author=akameco "Tests") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars0.githubusercontent.com/u/27622?v=4" width="100px;"/><br /><sub><b>nodaguti</b></sub>](http://about.me/nodaguti)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=nodaguti "Code") [⚠️](https://github.com/akameco/extract-react-intl/commits?author=nodaguti "Tests") | [<img src="https://avatars1.githubusercontent.com/u/11943024?v=4" width="100px;"/><br /><sub><b>fix-fix</b></sub>](https://github.com/fix-fix)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=fix-fix "Code") |
-| :---: | :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=akameco "Code") [📖](https://github.com/akameco/extract-react-intl/commits?author=akameco "Documentation") [⚠️](https://github.com/akameco/extract-react-intl/commits?author=akameco "Tests") [🚇](#infra-akameco "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars0.githubusercontent.com/u/27622?v=4" width="100px;"/><br /><sub><b>nodaguti</b></sub>](http://about.me/nodaguti)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=nodaguti "Code") [⚠️](https://github.com/akameco/extract-react-intl/commits?author=nodaguti "Tests") | [<img src="https://avatars1.githubusercontent.com/u/11943024?v=4" width="100px;"/><br /><sub><b>fix-fix</b></sub>](https://github.com/fix-fix)<br />[💻](https://github.com/akameco/extract-react-intl/commits?author=fix-fix "Code") | [<img src="https://avatars3.githubusercontent.com/u/1190640?v=4" width="100px;"/><br /><sub><b>enrique-ramirez</b></sub>](https://github.com/enrique-ramirez)<br />[📖](https://github.com/akameco/extract-react-intl/commits?author=enrique-ramirez "Documentation") |
+| :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
