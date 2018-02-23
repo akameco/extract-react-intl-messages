@@ -41,7 +41,7 @@
     "lodash.merge": "^4.6.0",
     "lodash.mergewith": "^4.6.0",
     "pify": "^3.0.0",
-    "read-babelrc-up": "^0.2.0"
+    "read-babelrc-up": "^0.3.0"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.1",
@@ -51,11 +51,11 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.14.0",
-    "eslint-config-precure": "^0.11.3",
-    "flow-bin": "^0.62.0",
+    "eslint-config-precure": "^2.4.0",
+    "flow-bin": "^0.66.0",
     "husky": "^0.14.3",
     "jest": "^22.0.4",
-    "lint-staged": "^6.0.0",
+    "lint-staged": "^7.0.0",
     "prettier": "^1.9.2"
   }
 }
