@@ -21,9 +21,14 @@
     "test:ci": "yarn flow && yarn lint && yarn test"
   },
   "lint-staged": {
-    "*.{js,json,md}": ["prettier --write", "git add"]
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "babel",
     "merge",
@@ -38,23 +43,23 @@
     "babel-core": "^6.24.1",
     "babel-plugin-react-intl": "^2.3.1",
     "glob": "^7.1.1",
-    "lodash.merge": "^4.6.0",
-    "lodash.mergewith": "^4.6.0",
+    "lodash.merge": "^4.6.1",
+    "lodash.mergewith": "^4.6.1",
     "pify": "^3.0.0",
     "read-babelrc-up": "^0.3.0"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.10.1",
-    "babel-jest": "^22.0.4",
-    "babel-plugin-react-intl-auto": "^1.0.0",
+    "all-contributors-cli": "^4.11.0",
+    "babel-jest": "^22.4.1",
+    "babel-plugin-react-intl-auto": "^1.1.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^4.14.0",
+    "eslint": "^4.18.1",
     "eslint-config-precure": "^2.4.0",
     "flow-bin": "^0.66.0",
     "husky": "^0.14.3",
-    "jest": "^22.0.4",
+    "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "prettier": "^1.9.2"
   }

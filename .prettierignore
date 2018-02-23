@@ -3,3 +3,4 @@ lib
 **/test/fixtures/**
 coverage
 .github
+package.json
