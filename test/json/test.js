@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import test from 'ava'
 import tempy from 'tempy'
-import m from '../../'
+import m from '../..'
 
 test('export json', async t => {
   const tmp = tempy.directory()

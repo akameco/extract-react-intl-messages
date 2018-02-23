@@ -4,7 +4,7 @@ import test from 'ava'
 import tempy from 'tempy'
 import tempWrite from 'temp-write'
 import yaml from 'js-yaml'
-import m from '../../'
+import m from '../..'
 
 const fixturesPath = 'test/fixtures/**/*.js'
 
