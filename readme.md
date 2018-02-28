@@ -100,6 +100,24 @@ $ extract-messages --help
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
 ```
 
+## For create-react-app
+
+create `.babelrc` like this.
+
+```json
+{
+  "presets": [
+    "react-app"
+  ]
+}
+```
+
+Run with `NODE_ENV=development`.
+
+```
+$ NODE_ENV=development extract-messages ...
+```
+
 ## API
 
 ### extractReactIntlMessages(locales, input, buildDir, [options])
