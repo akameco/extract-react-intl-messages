@@ -100,7 +100,7 @@ $ extract-messages --help
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
 ```
 
-## For create-react-app
+### create-react-app user
 
 create `.babelrc` like this.
 
