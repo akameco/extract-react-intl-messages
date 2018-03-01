@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`babel plugin execution order 1`] = `
+Object {
+  "en": Object {
+    "test.pluginOrdering.test": "auto",
+  },
+}
+`;
+
 exports[`babelrc path resolution 1`] = `
 Object {
   "en": Object {

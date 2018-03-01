@@ -17,6 +17,13 @@ test('babelrc path resolution', async () => {
   expect(x).toMatchSnapshot()
 })
 
+test('babel plugin execution order', async () => {
+  const x = await m(['en'], 'test/pluginOrdering/**/*.js', {
+    cwd: './test/pluginOrdering'
+  })
+  expect(x).toMatchSnapshot()
+})
+
 test('error', async () => {
   expect.assertions(1)
   await m(locales, 'notfound', { cwd: './test/fixtures' }).catch(err => {
