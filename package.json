@@ -37,7 +37,7 @@
     "messages"
   ],
   "dependencies": {
-    "extract-react-intl": "^0.5.1",
+    "extract-react-intl": "^0.5.2",
     "flat": "^4.0.0",
     "js-yaml": "^3.10.0",
     "load-json-file": "^4.0.0",
@@ -53,7 +53,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "pify": "^3.0.0",
-    "prettier": "^1.10.2",
+    "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-intl": "^2.3.0",
     "temp-write": "^3.4.0",
