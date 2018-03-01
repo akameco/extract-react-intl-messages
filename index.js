@@ -67,7 +67,7 @@ module.exports = (locales, pattern, opts) => {
   const { presets = [], plugins = [] } = babelrc
 
   // eslint-disable-next-line global-require
-  plugins.push(require('babel-plugin-react-intl').default)
+  presets.unshift({ plugins: [require('babel-plugin-react-intl').default] })
 
   const extractFromFile = file => {
     return pify(transformFile)(file, {
