@@ -106,9 +106,7 @@ create `.babelrc` like this.
 
 ```json
 {
-  "presets": [
-    "react-app"
-  ]
+  "presets": ["react-app"]
 }
 ```
 
