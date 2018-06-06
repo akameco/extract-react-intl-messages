@@ -37,7 +37,7 @@
     "messages"
   ],
   "dependencies": {
-    "extract-react-intl": "^0.5.2",
+    "extract-react-intl": "^0.6.0",
     "flat": "^4.0.0",
     "js-yaml": "^3.11.0",
     "load-json-file": "^5.0.0",
@@ -50,6 +50,7 @@
   "devDependencies": {
     "all-contributors-cli": "^4.11.1",
     "ava": "^0.25.0",
+    "babel-core": "^6.26.3",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.2",
     "pify": "^3.0.0",
