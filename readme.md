@@ -21,7 +21,7 @@ $ npm install --save-dev extract-react-intl-messages babel-core
 To use this with Babel 7, run
 
 ```
-$ npm install --dave--dev extract-react-intl-messages babel-core@bridge @babel/core
+$ npm install --save-dev extract-react-intl-messages babel-core@bridge @babel/core
 ```
 
 ## Usage
