@@ -13,6 +13,20 @@ test('export json', async t => {
   t.snapshot(ja)
 })
 
+test('export json with removed messages', async t => {
+  const tmp = tempy.directory()
+  await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp)
+  const enBefore = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
+  const jaBefore = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  t.snapshot(enBefore)
+  t.snapshot(jaBefore)
+  await m(['en', 'ja'], 'test/fixtures/removed/**/*.js', tmp)
+  const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
+  const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  t.snapshot(en)
+  t.snapshot(ja)
+})
+
 test('export json - nest', async t => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp, { flat: false })
