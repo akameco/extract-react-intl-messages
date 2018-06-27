@@ -45,15 +45,6 @@ test('sort keys', async t => {
   const enPath = path.resolve(tmp, 'en.json')
   const jaPath = path.resolve(tmp, 'ja.json')
 
-  const x = {
-    'c.hello': 'hello c',
-    'z.hello': 'hello z',
-    'y.hello': 'hello y'
-  }
-
-  fs.writeFileSync(enPath, JSON.stringify(x, null, 2))
-  fs.writeFileSync(jaPath, JSON.stringify(x, null, 2))
-
   await m(['en', 'ja'], 'test/fixtures/unsorted/**/*.js', tmp)
   const en = JSON.parse(fs.readFileSync(enPath))
   const ja = JSON.parse(fs.readFileSync(jaPath))
