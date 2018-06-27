@@ -16,8 +16,12 @@ test('export json', async t => {
 test('export json with removed messages', async t => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp)
-  const enBefore = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
-  const jaBefore = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  const enBefore = JSON.parse(
+    fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8')
+  )
+  const jaBefore = JSON.parse(
+    fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8')
+  )
   t.snapshot(enBefore)
   t.snapshot(jaBefore)
   await m(['en', 'ja'], 'test/fixtures/removed/**/*.js', tmp)
@@ -50,7 +54,7 @@ test('sort keys', async t => {
   fs.writeFileSync(enPath, JSON.stringify(x, null, 2))
   fs.writeFileSync(jaPath, JSON.stringify(x, null, 2))
 
-  await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp)
+  await m(['en', 'ja'], 'test/fixtures/unsorted/**/*.js', tmp)
   const en = JSON.parse(fs.readFileSync(enPath))
   const ja = JSON.parse(fs.readFileSync(jaPath))
 
