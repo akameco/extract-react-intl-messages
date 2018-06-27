@@ -46,6 +46,18 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "hoschi",
+      "name": "Stefan Gojan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/163128?v=4",
+      "profile": "http://stefan-gojan.de",
+      "contributions": [
+        "bug",
+        "code",
+        "test"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }
