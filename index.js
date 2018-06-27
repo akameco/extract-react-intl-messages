@@ -2,7 +2,7 @@
 const path = require('path')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
-const merge = require('lodash.merge')
+const pick = require('lodash.pick')
 const yaml = require('js-yaml')
 const pify = require('pify')
 const { flatten, unflatten } = require('flat')
@@ -97,10 +97,13 @@ module.exports = (locales, pattern, buildDir, opts) => {
     return Promise.all(
       locales.map(locale => {
         // If the default locale, overwrite the origin file
-        const localeMap =
+        let localeMap =
           locale === defaultLocale
-            ? merge(oldLocaleMaps[locale], newLocaleMaps[locale])
-            : merge(newLocaleMaps[locale], oldLocaleMaps[locale])
+            // Create a clone so we can use only current valid messages below
+            ? Object.assign({}, oldLocaleMaps[locale], newLocaleMaps[locale])
+            : Object.assign({}, newLocaleMaps[locale], oldLocaleMaps[locale])
+        // Only keep existing keys
+        localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
 
         const fomattedLocaleMap = opts.flat
           ? sortKeys(localeMap, { deep: true })

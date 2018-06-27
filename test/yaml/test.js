@@ -6,7 +6,7 @@ import tempWrite from 'temp-write'
 import yaml from 'js-yaml'
 import m from '../..'
 
-const fixturesPath = 'test/fixtures/**/*.js'
+const fixturesPath = 'test/fixtures/default/**/*.js'
 
 const yamlLoad = (tmp, file = '') =>
   yaml.safeLoad(fs.readFileSync(path.resolve(tmp, file), 'utf8'))
