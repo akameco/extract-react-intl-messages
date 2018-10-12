@@ -26,7 +26,7 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
 
   try {
     mkdirp.sync(buildDir)
-  } catch (err) {}
+  } catch (error) {}
 
   for (const locale of locales) {
     const file = path.resolve(buildDir, `${locale}.${ext}`)
@@ -34,9 +34,9 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
     try {
       const output = isJson(ext) ? JSON.stringify({}) : yaml.safeDump({})
       fs.writeFileSync(file, output, { flag: 'wx' })
-    } catch (err) {
-      if (err.code !== 'EEXIST') {
-        throw err
+    } catch (error) {
+      if (error.code !== 'EEXIST') {
+        throw error
       }
     }
 
@@ -75,7 +75,7 @@ module.exports = async (locales, pattern, buildDir, opts) => {
   const defautlOpts =
     opts && opts.format && !isJson(opts.format) ? yamlOpts : jsonOpts
 
-  opts = Object.assign({ defaultLocale: 'en' }, defautlOpts, opts)
+  opts = { defaultLocale: 'en', ...defautlOpts, ...opts }
 
   const ext = isJson(opts.format) ? 'json' : 'yml'
 
@@ -95,8 +95,8 @@ module.exports = async (locales, pattern, buildDir, opts) => {
       let localeMap =
         locale === defaultLocale
           ? // Create a clone so we can use only current valid messages below
-            Object.assign({}, oldLocaleMaps[locale], newLocaleMaps[locale])
-          : Object.assign({}, newLocaleMaps[locale], oldLocaleMaps[locale])
+            { ...oldLocaleMaps[locale], ...newLocaleMaps[locale] }
+          : { ...newLocaleMaps[locale], ...oldLocaleMaps[locale] }
       // Only keep existing keys
       localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
 
