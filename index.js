@@ -26,7 +26,7 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
 
   try {
     mkdirp.sync(buildDir)
-  } catch (err) {}
+  } catch (error) {}
 
   for (const locale of locales) {
     const file = path.resolve(buildDir, `${locale}.${ext}`)
@@ -34,9 +34,9 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
     try {
       const output = isJson(ext) ? JSON.stringify({}) : yaml.safeDump({})
       fs.writeFileSync(file, output, { flag: 'wx' })
-    } catch (err) {
-      if (err.code !== 'EEXIST') {
-        throw err
+    } catch (error) {
+      if (error.code !== 'EEXIST') {
+        throw error
       }
     }
 
@@ -57,23 +57,17 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
   return oldLocaleMaps
 }
 
-module.exports = (locales, pattern, buildDir, opts) => {
+module.exports = async (locales, pattern, buildDir, opts) => {
   if (!Array.isArray(locales)) {
-    return Promise.reject(
-      new TypeError(`Expected a Array, got ${typeof locales}`)
-    )
+    throw new TypeError(`Expected a Array, got ${typeof locales}`)
   }
 
   if (typeof pattern !== 'string') {
-    return Promise.reject(
-      new TypeError(`Expected a string, got ${typeof pattern}`)
-    )
+    throw new TypeError(`Expected a string, got ${typeof pattern}`)
   }
 
   if (typeof buildDir !== 'string') {
-    return Promise.reject(
-      new TypeError(`Expected a string, got ${typeof buildDir}`)
-    )
+    throw new TypeError(`Expected a string, got ${typeof buildDir}`)
   }
 
   const jsonOpts = { format: 'json', flat: true }
@@ -81,7 +75,7 @@ module.exports = (locales, pattern, buildDir, opts) => {
   const defautlOpts =
     opts && opts.format && !isJson(opts.format) ? yamlOpts : jsonOpts
 
-  opts = Object.assign({ defaultLocale: 'en' }, defautlOpts, opts)
+  opts = { defaultLocale: 'en', ...defautlOpts, ...opts }
 
   const ext = isJson(opts.format) ? 'json' : 'yml'
 
@@ -91,28 +85,28 @@ module.exports = (locales, pattern, buildDir, opts) => {
 
   const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext, delimiter)
 
-  return extractReactIntl(locales, pattern, {
+  const newLocaleMaps = await extractReactIntl(locales, pattern, {
     defaultLocale
-  }).then(newLocaleMaps => {
-    return Promise.all(
-      locales.map(locale => {
-        // If the default locale, overwrite the origin file
-        let localeMap =
-          locale === defaultLocale
-            // Create a clone so we can use only current valid messages below
-            ? Object.assign({}, oldLocaleMaps[locale], newLocaleMaps[locale])
-            : Object.assign({}, newLocaleMaps[locale], oldLocaleMaps[locale])
-        // Only keep existing keys
-        localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
-
-        const fomattedLocaleMap = opts.flat
-          ? sortKeys(localeMap, { deep: true })
-          : unflatten(sortKeys(localeMap), { delimiter })
-
-        const fn = isJson(opts.format) ? writeJson : writeYaml
-
-        return fn(path.resolve(buildDir, locale), fomattedLocaleMap)
-      })
-    )
   })
+
+  return Promise.all(
+    locales.map(locale => {
+      // If the default locale, overwrite the origin file
+      let localeMap =
+        locale === defaultLocale
+          ? // Create a clone so we can use only current valid messages below
+            { ...oldLocaleMaps[locale], ...newLocaleMaps[locale] }
+          : { ...newLocaleMaps[locale], ...oldLocaleMaps[locale] }
+      // Only keep existing keys
+      localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
+
+      const fomattedLocaleMap = opts.flat
+        ? sortKeys(localeMap, { deep: true })
+        : unflatten(sortKeys(localeMap), { delimiter })
+
+      const fn = isJson(opts.format) ? writeJson : writeYaml
+
+      return fn(path.resolve(buildDir, locale), fomattedLocaleMap)
+    })
+  )
 }
