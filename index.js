@@ -44,22 +44,20 @@ const getBabelrc = cwd => {
 
 const getBabelrcDir = cwd => path.dirname(readBabelrcUp.sync({ cwd }).path)
 
-module.exports = (locales, pattern, opts) => {
+module.exports = async (locales, pattern, opts) => {
   if (!Array.isArray(locales)) {
-    Promise.reject(new TypeError(`Expected a Array, got ${typeof locales}`))
+    throw new TypeError(`Expected a Array, got ${typeof locales}`)
   }
 
   if (typeof pattern !== 'string') {
-    Promise.reject(new TypeError(`Expected a string, got ${typeof pattern}`))
+    throw new TypeError(`Expected a string, got ${typeof pattern}`)
   }
 
-  opts = Object.assign(
-    {
-      cwd: process.cwd(),
-      defaultLocale: 'en'
-    },
-    opts
-  )
+  opts = {
+    cwd: process.cwd(),
+    defaultLocale: 'en',
+    ...opts
+  }
 
   const babelrc = getBabelrc(opts.cwd) || {}
   const babelrcDir = getBabelrcDir(opts.cwd)
@@ -69,28 +67,25 @@ module.exports = (locales, pattern, opts) => {
   // eslint-disable-next-line global-require
   presets.unshift({ plugins: [require('babel-plugin-react-intl').default] })
 
-  const extractFromFile = file => {
-    return pify(transformFile)(file, {
+  const extractFromFile = async file => {
+    const { metadata: result } = await pify(transformFile)(file, {
       presets: resolvePresets(presets, babelrcDir),
       plugins: resolvePlugins(plugins, babelrcDir)
-    }).then(({ metadata: result }) => {
-      const localeObj = localeMap(locales)
-      for (const { id, defaultMessage } of result['react-intl'].messages) {
-        for (const locale of locales) {
-          localeObj[locale][id] =
-            opts.defaultLocale === locale ? defaultMessage : ''
-        }
-      }
-      return localeObj
     })
+    const localeObj = localeMap(locales)
+    for (const { id, defaultMessage } of result['react-intl'].messages) {
+      for (const locale of locales) {
+        localeObj[locale][id] =
+          opts.defaultLocale === locale ? defaultMessage : ''
+      }
+    }
+    return localeObj
   }
 
-  return pify(glob)(pattern)
-    .then(files => {
-      if (files.length === 0) {
-        return Promise.reject(new Error(`File not found (${pattern})`))
-      }
-      return Promise.all(files.map(extractFromFile))
-    })
-    .then(arr => arr.reduce((h, obj) => merge(h, obj), localeMap(locales)))
+  const files = await pify(glob)(pattern)
+  if (files.length === 0) {
+    throw new Error(`File not found (${pattern})`)
+  }
+  const arr = await Promise.all(files.map(extractFromFile))
+  return arr.reduce((h, obj) => merge(h, obj), localeMap(locales))
 }
