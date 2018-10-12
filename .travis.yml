@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - '10'
   - '8'
-  - '6'
+
+cache:
+  yarn: true
 
 notifications:
   email: false
-
-install: npm install

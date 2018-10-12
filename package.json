@@ -10,7 +10,7 @@
     "url": "akameco.github.io"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "scripts": {
     "add-contributor": "all-contributors add",
