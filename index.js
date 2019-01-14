@@ -102,7 +102,7 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
       const fomattedLocaleMap = opts.flat
         ? sortKeys(localeMap, { deep: true })
-        : unflatten(sortKeys(localeMap), { delimiter })
+        : unflatten(sortKeys(localeMap), { delimiter, object: true })
 
       const fn = isJson(opts.format) ? writeJson : writeYaml
 
