@@ -57,6 +57,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "solomon23",
+      "name": "Solomon English",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/857744?v=4",
+      "profile": "https://lithe.net",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
