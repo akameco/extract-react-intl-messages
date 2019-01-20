@@ -37,7 +37,7 @@ const getBabelrc = cwd => {
     const env = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
 
     return mergeWith(babelrc, babelrc.env[env], concatArray)
-  } catch (err) {
+  } catch (error) {
     return { presets: [], plugins: [] }
   }
 }

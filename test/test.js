@@ -26,7 +26,7 @@ test('babel plugin execution order', async () => {
 
 test('error', async () => {
   expect.assertions(1)
-  await m(locales, 'notfound', { cwd: './test/fixtures' }).catch(err => {
-    expect(err.message).toMatch('File not found')
+  await m(locales, 'notfound', { cwd: './test/fixtures' }).catch(error => {
+    expect(error.message).toMatch('File not found')
   })
 })
