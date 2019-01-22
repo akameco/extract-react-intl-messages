@@ -93,6 +93,7 @@ $ extract-messages --help
   --flat             json [default: true] | yaml [default: false]
   --default-locale   default locale [default: en]
   --delimiter        json | yaml [default: .]
+  --module-name         module source name from where components are imported
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
