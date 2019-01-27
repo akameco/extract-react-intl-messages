@@ -54,6 +54,7 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
       }
     }
   }
+
   return oldLocaleMaps
 }
 
