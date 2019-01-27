@@ -1030,12 +1030,12 @@ babel-plugin-jest-hoist@^24.0.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-24.0.0.tgz#3adf030b6fd67e4311479a54b24077bdfc226ec9"
   integrity sha512-ipefE7YWNyRNVaV/MonUb/I5nef53ZRFR74P9meMGmJxqt8s1BJmfhw11YeIMbcjXN4fxtWUaskZZe8yreXE1Q==
 
-babel-plugin-react-intl-auto@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.5.0.tgz#5ebd9e2526ec077f2bcc1d86ac90fc5b655746de"
-  integrity sha512-mjn6fAxXwQkvv+sFEOc6VlBFCVEhUJPmYmWC51lIQnFxhF4cNxnonGvA6U7IsUzA/o3KJ4S6k+UQldPJoq9iGA==
+babel-plugin-react-intl-auto@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.6.0.tgz#6fc2f39941fc4af70ad1429ed8fd47789f8f4559"
+  integrity sha512-nmQoUS67+NG2sR0Z6LPJjTbUQELCqQNdRMzh+fLeCmAwtjewukFWzRc1wAI+jNC1rrKV7S9Uf4SamaH7QaRQMQ==
   dependencies:
-    babel-types "^6.26.0"
+    "@babel/types" "^7.0.0"
     murmurhash3js "^3.0.1"
 
 babel-plugin-react-intl@^3.0.1:
@@ -1054,24 +1054,6 @@ babel-preset-jest@^24.0.0:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread" "^7.0.0"
     babel-plugin-jest-hoist "^24.0.0"
-
-babel-runtime@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
-  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.11.0"
-
-babel-types@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.26.0.tgz#a3b073f94ab49eb6fa55cd65227a334380632497"
-  integrity sha1-o7Bz+Uq0nrb6Vc1lInozQ4BjJJc=
-  dependencies:
-    babel-runtime "^6.26.0"
-    esutils "^2.0.2"
-    lodash "^4.17.4"
-    to-fast-properties "^1.0.3"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -1459,11 +1441,6 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
-
-core-js@^2.4.0:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
-  integrity sha1-isw4NFgk8W2DZbfJtCWRaOjtYD4=
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -3538,11 +3515,6 @@ json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
-json5@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
-  integrity sha1-Hq3nrMASA0rYTiOWdn6tn6VJWCE=
-
 json5@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.1.0.tgz#e7a0c62c48285c628d20a10b85c89bb807c32850"
@@ -4678,13 +4650,13 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-read-babelrc-up@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/read-babelrc-up/-/read-babelrc-up-0.3.0.tgz#33134cf4eea6b9fb2c79bb4b530e85bd1c7ba554"
-  integrity sha512-osyVjp42dgqYoVmDpr7UtrzM6Z4TdW3sIzj9WeqeHlaiG+7voaS6VHx2XE3vG+x7VRSNZKykaszskEX/D5nbLg==
+read-babelrc-up@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/read-babelrc-up/-/read-babelrc-up-0.3.1.tgz#4903b773ce68c00ca9f2aec4cace3ef72f851eb7"
+  integrity sha512-DAFetxQZKpiIAmjpnbxTAJ5lohBaKhRTfcfexApDmkVBGgg8ScbXCFhzZ3KYlagTNK0Bja0xPvQwcGLer6ukxg==
   dependencies:
-    find-up "^2.1.0"
-    json5 "^0.5.1"
+    find-up "^3.0.0"
+    json5 "^2.1.0"
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
@@ -4767,11 +4739,6 @@ regenerate@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
-
-regenerator-runtime@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
-  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.12.0:
   version "0.12.1"
@@ -5509,11 +5476,6 @@ tmpl@1.0.x:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
   integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
-
-to-fast-properties@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
-  integrity sha1-uDVx+k2MJbguIxsG46MFXeTKGkc=
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
