@@ -5,7 +5,7 @@ const glob = require('glob')
 const pify = require('pify')
 const merge = require('lodash.merge')
 const mergeWith = require('lodash.mergewith')
-const { resolvePlugin, resolvePreset, transformFile } = require('babel-core')
+const { resolvePlugin, resolvePreset, transformFile } = require('@babel/core')
 const readBabelrcUp = require('read-babelrc-up')
 
 const localeMap = arr =>

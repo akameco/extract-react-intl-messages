@@ -9,18 +9,8 @@ This package allows you to extract all messages from a glob. It will return an o
 
 ## Install
 
-This project has a peer dependency on `babel-core`.
-
-To use this with Babel 6, run
-
 ```
-$ yarn add --dev extract-react-intl babel-core
-```
-
-To use this with Babel 7, run
-
-```
-$ yarn add --dev extract-react-intl babel-core@bridge @babel/core
+$ yarn add --dev extract-react-intl
 ```
 
 ## Usage
