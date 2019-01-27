@@ -10,18 +10,8 @@ This package will generate json or yaml files from a glob. It will generate one 
 
 ## Install
 
-This project has a peer dependency on `babel-core`.
-
-To use this with Babel 6, run
-
 ```
-$ npm install --save-dev extract-react-intl-messages babel-core
-```
-
-To use this with Babel 7, run
-
-```
-$ npm install --save-dev extract-react-intl-messages babel-core@bridge @babel/core
+$ npm install --save-dev extract-react-intl-messages
 ```
 
 ## Usage
