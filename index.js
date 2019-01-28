@@ -62,13 +62,15 @@ module.exports = async (locales, pattern, opts) => {
   const babelrc = getBabelrc(opts.cwd) || {}
   const babelrcDir = getBabelrcDir(opts.cwd)
 
-  const {moduleSourceName} = opts;
-  const pluginOptions = moduleSourceName ? {moduleSourceName} : {};
+  const { moduleSourceName } = opts
+  const pluginOptions = moduleSourceName ? { moduleSourceName } : {}
 
   const { presets = [], plugins = [] } = babelrc
 
   // eslint-disable-next-line global-require
-  presets.unshift({ plugins: [[require('babel-plugin-react-intl').default, pluginOptions]] })
+  presets.unshift({
+    plugins: [[require('babel-plugin-react-intl').default, pluginOptions]]
+  })
 
   const extractFromFile = async file => {
     const { metadata: result } = await pify(transformFile)(file, {
