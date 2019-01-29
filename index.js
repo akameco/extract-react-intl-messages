@@ -88,7 +88,9 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
   const extractorOptions = { defaultLocale }
 
-  moduleName && (extractorOptions.moduleSourceName = moduleName)
+  if (moduleName) {
+    extractorOptions.moduleSourceName = moduleName
+  }
 
   const newLocaleMaps = await extractReactIntl(
     locales,
