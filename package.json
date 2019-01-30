@@ -36,7 +36,7 @@
     "messages"
   ],
   "dependencies": {
-    "extract-react-intl": "^0.8.1",
+    "extract-react-intl": "^0.9.0",
     "flat": "^4.1.0",
     "js-yaml": "^3.12.1",
     "load-json-file": "^5.1.0",

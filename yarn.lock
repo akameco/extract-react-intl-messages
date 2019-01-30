@@ -2021,10 +2021,10 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extract-react-intl@^0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/extract-react-intl/-/extract-react-intl-0.8.1.tgz#09a585e4c3bd816be993e24f8d77945356b8a8e6"
-  integrity sha512-NsU2pqsxUtYKG4EPaYHIwW1EJTSSd9gmqEjBwbJeq5PNkPJmOui5wp7KzH56MldvopEJp7bKx0UX98L1hkXJIg==
+extract-react-intl@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/extract-react-intl/-/extract-react-intl-0.9.0.tgz#7eb9de48d222d483eefd4975afc965a1a43e667a"
+  integrity sha512-O/AqANf7QIXlZPvXeuBr8aXbK/sFMZ0gn26YcRXUSsBaSSFHEvXVrLlQO6nGTAOOVghLoVRS52im5ylPbpdD6g==
   dependencies:
     "@babel/core" "^7.0.0"
     babel-plugin-react-intl "^3.0.1"

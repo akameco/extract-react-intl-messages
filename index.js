@@ -80,15 +80,23 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
   const ext = isJson(opts.format) ? 'json' : 'yml'
 
-  const { defaultLocale } = opts
+  const { defaultLocale, moduleName } = opts
 
   const delimiter = opts.delimiter ? opts.delimiter : '.'
 
   const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext, delimiter)
 
-  const newLocaleMaps = await extractReactIntl(locales, pattern, {
-    defaultLocale
-  })
+  const extractorOptions = { defaultLocale }
+
+  if (moduleName) {
+    extractorOptions.moduleSourceName = moduleName
+  }
+
+  const newLocaleMaps = await extractReactIntl(
+    locales,
+    pattern,
+    extractorOptions
+  )
 
   return Promise.all(
     locales.map(locale => {

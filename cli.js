@@ -16,6 +16,7 @@ const cli = meow(
   -d, --default-locale  default locale
   --flat                json [default: true] | yaml [default: false]
   --delimiter           json | yaml [default: .]
+  --module-name         module source name from where components are imported
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -46,6 +47,9 @@ const cli = meow(
       delimiter: {
         type: 'string',
         default: '.'
+      },
+      'module-name': {
+        type: 'string'
       }
     }
   }

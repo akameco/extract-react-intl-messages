@@ -64,3 +64,13 @@ test('delimiter - nest', async t => {
   t.snapshot(en)
   t.snapshot(ja)
 })
+
+test('export using custom module', async t => {
+  const tmp = tempy.directory()
+  const opts = { moduleName: '../i18n' }
+  await m(['en', 'ja'], 'test/fixtures/custom/**/*.js', tmp, opts)
+  const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
+  const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  t.snapshot(en)
+  t.snapshot(ja)
+})
