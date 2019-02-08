@@ -8,18 +8,17 @@
 
 This package will generate json or yaml files from a glob. It will generate one file per locale, with the ids of each message defined by the [`defineMessages`](https://github.com/yahoo/react-intl/wiki/API#definemessages) function of [react-intl](https://github.com/yahoo/react-intl). The value of each of these keys will be an empty string, except for your `defaultLocale` which will be populated with the [`defaultMessage`](https://github.com/yahoo/react-intl/wiki/API#message-descriptor).
 
-## Install
+## Dependencies
 
-Babel 7
+### Babel
+
+- 1.x works with Babel 7
+- 0.x works with Babel 6
+
+## Install
 
 ```
 $ npm install --save-dev extract-react-intl-messages
-```
-
-Babel 6
-
-```
-$ npm install --save-dev extract-react-intl-messages@0.11.2
 ```
 
 ## Usage
