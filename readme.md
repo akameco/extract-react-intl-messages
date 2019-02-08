@@ -14,6 +14,13 @@ This package will generate json or yaml files from a glob. It will generate one 
 $ npm install --save-dev extract-react-intl-messages
 ```
 
+Babel 6
+
+```
+$ npm install --save-dev extract-react-intl-messages@0.11.2
+```
+
+
 ## Usage
 
 app/components/App/messages.js
