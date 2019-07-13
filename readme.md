@@ -101,6 +101,7 @@ $ extract-messages --help
   --default-locale   default locale [default: en]
   --delimiter        json | yaml [default: .]
   --module-name      module source name from where components are imported [default: react-intl]
+  --extractFromFormatMessageCall      If set to `true`, Command will extract the messages and IDs from `intl.formatMessage` calls
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -177,6 +178,21 @@ Type: `string`<br>
 Default: `react-intl`
 
 Set from where _defineMessages_, `<FormatterMessage />` and `<FormattedHTML />` are imported.
+
+##### extractFromFormatMessageCall
+
+Type: `boolean`<br>
+Default: `react-intl`
+
+If the value is `true`, Extractor will extract the i18n message and ID from `intl.formatMessage` calls as well.
+i:e
+
+```
+intl.formatMessage({
+                id: 'Supported.file.types',
+                defaultMessage: 'Supported file types',
+            })
+```
 
 ## Contributors
 

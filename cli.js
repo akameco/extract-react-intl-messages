@@ -17,6 +17,7 @@ const cli = meow(
   --flat                json [default: true] | yaml [default: false]
   --delimiter           json | yaml [default: .]
   --module-name         module source name from where components are imported
+  --extractFromFormatMessageCall      If set to 'true', Command will extract the messages and IDs from 'intl.formatMessage' calls
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -50,6 +51,9 @@ const cli = meow(
       },
       'module-name': {
         type: 'string'
+      },
+      extractFromFormatMessageCall: {
+        type: 'boolean'
       }
     }
   }

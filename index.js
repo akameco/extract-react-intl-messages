@@ -80,13 +80,13 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
   const ext = isJson(opts.format) ? 'json' : 'yml'
 
-  const { defaultLocale, moduleName } = opts
+  const { defaultLocale, moduleName, extractFromFormatMessageCall } = opts
 
   const delimiter = opts.delimiter ? opts.delimiter : '.'
 
   const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext, delimiter)
 
-  const extractorOptions = { defaultLocale }
+  const extractorOptions = { defaultLocale, extractFromFormatMessageCall }
 
   if (moduleName) {
     extractorOptions.moduleSourceName = moduleName
