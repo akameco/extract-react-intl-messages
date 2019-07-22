@@ -32,3 +32,36 @@ Object {
   },
 }
 `;
+
+exports[`extract from file with descriptions 1`] = `
+Object {
+  "en": Object {
+    "components.App.hello": Object {
+      "description": "hello message description",
+      "message": "hello",
+    },
+    "components.App.world": Object {
+      "description": "world message description",
+      "message": "world",
+    },
+    "components/Greeting/welcome": Object {
+      "description": "Welcome message description",
+      "message": "Welcome {name}, you have received {unreadCount, plural, =0 {no new messages} one {{formattedUnreadCount} new message} other {{formattedUnreadCount} new messages}} since {formattedLastLoginTime}.",
+    },
+  },
+  "ja": Object {
+    "components.App.hello": Object {
+      "description": "hello message description",
+      "message": "",
+    },
+    "components.App.world": Object {
+      "description": "world message description",
+      "message": "",
+    },
+    "components/Greeting/welcome": Object {
+      "description": "Welcome message description",
+      "message": "",
+    },
+  },
+}
+`;

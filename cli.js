@@ -46,6 +46,10 @@ const cli = meow(
       },
       'module-name': {
         type: 'string'
+      },
+      withDescriptions: {
+        type: 'boolean',
+        default: false
       }
     }
   }
