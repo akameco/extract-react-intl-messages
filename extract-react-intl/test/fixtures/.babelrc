@@ -1,0 +1,32 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        }
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ],
+  "env": {
+    "react-intl": {
+      "plugins": [
+        [
+          "react-intl-auto",
+          {
+            "removePrefix": "extract-react-intl.test.fixtures"
+          }
+        ]
+      ]
+    }
+  }
+}

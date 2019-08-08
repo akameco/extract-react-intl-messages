@@ -75,6 +75,36 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "nodaguti",
+      "name": "nodaguti",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/27622?v=4",
+      "profile": "http://about.me/nodaguti",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "fix-fix",
+      "name": "fix-fix",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11943024?v=4",
+      "profile": "https://github.com/fix-fix",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bradbarrow",
+      "name": "bradbarrow",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1264276?v=4",
+      "profile": "http://bradbarrow.com",
+      "contributions": [
+        "bug",
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github"

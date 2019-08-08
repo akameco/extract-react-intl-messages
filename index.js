@@ -8,8 +8,8 @@ const pify = require('pify')
 const { flatten, unflatten } = require('flat')
 const loadJsonFile = require('load-json-file')
 const writeJsonFile = require('write-json-file')
-const extractReactIntl = require('extract-react-intl')
 const sortKeys = require('sort-keys')
+const extractReactIntl = require('./extract-react-intl')
 
 const writeJson = (outputPath, obj) => {
   return writeJsonFile(`${outputPath}.json`, obj, { indent: 2 })
