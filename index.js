@@ -58,6 +58,7 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
   return oldLocaleMaps
 }
 
+// eslint-disable-next-line max-lines-per-function
 module.exports = async (locales, pattern, buildDir, opts) => {
   if (!Array.isArray(locales)) {
     throw new TypeError(`Expected a Array, got ${typeof locales}`)

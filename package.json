@@ -16,7 +16,8 @@
     "add-contributor": "all-contributors add",
     "fmt": "prettier --write '**/*.{json,js,md}'",
     "example": "./cli.js -l=en,ja -o example/i18n -d en 'example/**/*.js'",
-    "test": "xo && ava"
+    "lint": "eslint index.js cli.js",
+    "test": "npm run lint && ava"
   },
   "bin": {
     "extract-react-intl-messages": "cli.js",
@@ -43,39 +44,33 @@
     "lodash.pick": "^4.4.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
+    "pify": "^4.0.1",
     "sort-keys": "^3.0.0",
     "write-json-file": "^4.1.1"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.8.1",
     "ava": "^2.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-precure": "^4.18.1",
     "husky": "^3.0.2",
     "lint-staged": "^9.2.1",
-    "pify": "^4.0.1",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-intl": "^2.9.0",
     "temp-write": "^4.0.0",
-    "tempy": "^0.3.0",
-    "xo": "^0.24.0"
+    "tempy": "^0.3.0"
   },
   "lint-staged": {
-    "*.{js,json,md}": [
+    "*.{js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
       "prettier --write",
       "git add"
     ]
-  },
-  "xo": {
-    "space": true,
-    "semicolon": false,
-    "rules": {
-      "object-curly-spacing": [
-        2,
-        "always"
-      ],
-      "operator-linebreak": 0,
-      "indent": 0
-    }
   },
   "ava": {
     "helpers": [
