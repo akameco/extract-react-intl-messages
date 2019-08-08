@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`delimiter - nest 1`] = `
+Object {
+  "a.hello": "hello",
+  "a.world": "world",
+  "b.hello": "hello",
+  "b.world": "world",
+}
+`;
+
+exports[`delimiter - nest 2`] = `
+Object {
+  "a.hello": "",
+  "a.world": "",
+  "b.hello": "",
+  "b.world": "",
+}
+`;
+
+exports[`export json - nest 1`] = `
+Object {
+  "a": Object {
+    "hello": "hello",
+    "world": "world",
+  },
+  "b": Object {
+    "hello": "hello",
+    "world": "world",
+  },
+}
+`;
+
+exports[`export json - nest 2`] = `
+Object {
+  "a": Object {
+    "hello": "",
+    "world": "",
+  },
+  "b": Object {
+    "hello": "",
+    "world": "",
+  },
+}
+`;
+
+exports[`export json 1`] = `
+Object {
+  "a.hello": "hello",
+  "a.world": "world",
+  "b.hello": "hello",
+  "b.world": "world",
+}
+`;
+
+exports[`export json 2`] = `
+Object {
+  "a.hello": "",
+  "a.world": "",
+  "b.hello": "",
+  "b.world": "",
+}
+`;
+
+exports[`export json with removed messages 1`] = `
+Object {
+  "a.hello": "hello",
+  "a.world": "world",
+  "b.hello": "hello",
+  "b.world": "world",
+}
+`;
+
+exports[`export json with removed messages 2`] = `
+Object {
+  "a.hello": "",
+  "a.world": "",
+  "b.hello": "",
+  "b.world": "",
+}
+`;
+
+exports[`export json with removed messages 3`] = `
+Object {
+  "a.hello": "hello",
+  "b.hello": "hello",
+  "b.world": "world",
+}
+`;
+
+exports[`export json with removed messages 4`] = `
+Object {
+  "a.hello": "",
+  "b.hello": "",
+  "b.world": "",
+}
+`;
+
+exports[`export using custom module 1`] = `
+Object {
+  "a.custom.hello": "hello",
+  "a.custom.world": "world",
+  "b.custom.message": "Message",
+}
+`;
+
+exports[`export using custom module 2`] = `
+Object {
+  "a.custom.hello": "",
+  "a.custom.world": "",
+  "b.custom.message": "",
+}
+`;
+
+exports[`sort keys 1`] = `
+Array [
+  "a.hello",
+  "a.world",
+  "b.hello",
+  "b.world",
+  "c.hello",
+  "y.hello",
+  "z.hello",
+]
+`;
+
+exports[`sort keys 2`] = `
+Array [
+  "a.hello",
+  "a.world",
+  "b.hello",
+  "b.world",
+  "c.hello",
+  "y.hello",
+  "z.hello",
+]
+`;

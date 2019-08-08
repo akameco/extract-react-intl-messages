@@ -1,19 +1,18 @@
-import fs from 'fs'
-import path from 'path'
-import test from 'ava'
-import tempy from 'tempy'
-import m from '../..'
+const fs = require('fs')
+const path = require('path')
+const tempy = require('tempy')
+const m = require('../..')
 
-test('export json', async t => {
+test('export json', async () => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp)
   const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
   const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
-  t.snapshot(en)
-  t.snapshot(ja)
+  expect(en).toMatchSnapshot()
+  expect(ja).toMatchSnapshot()
 })
 
-test('export json with removed messages', async t => {
+test('export json with removed messages', async () => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp)
   const enBefore = JSON.parse(
@@ -22,25 +21,25 @@ test('export json with removed messages', async t => {
   const jaBefore = JSON.parse(
     fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8')
   )
-  t.snapshot(enBefore)
-  t.snapshot(jaBefore)
+  expect(enBefore).toMatchSnapshot()
+  expect(jaBefore).toMatchSnapshot()
   await m(['en', 'ja'], 'test/fixtures/removed/**/*.js', tmp)
   const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
   const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
-  t.snapshot(en)
-  t.snapshot(ja)
+  expect(en).toMatchSnapshot()
+  expect(ja).toMatchSnapshot()
 })
 
-test('export json - nest', async t => {
+test('export json - nest', async () => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp, { flat: false })
   const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
   const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
-  t.snapshot(en)
-  t.snapshot(ja)
+  expect(en).toMatchSnapshot()
+  expect(ja).toMatchSnapshot()
 })
 
-test('sort keys', async t => {
+test('sort keys', async () => {
   const tmp = tempy.directory()
   const enPath = path.resolve(tmp, 'en.json')
   const jaPath = path.resolve(tmp, 'ja.json')
@@ -49,11 +48,11 @@ test('sort keys', async t => {
   const en = JSON.parse(fs.readFileSync(enPath))
   const ja = JSON.parse(fs.readFileSync(jaPath))
 
-  t.snapshot(Object.keys(en))
-  t.snapshot(Object.keys(ja))
+  expect(Object.keys(en)).toMatchSnapshot()
+  expect(Object.keys(ja)).toMatchSnapshot()
 })
 
-test('delimiter - nest', async t => {
+test('delimiter - nest', async () => {
   const tmp = tempy.directory()
   await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp, {
     flat: false,
@@ -61,16 +60,16 @@ test('delimiter - nest', async t => {
   })
   const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
   const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
-  t.snapshot(en)
-  t.snapshot(ja)
+  expect(en).toMatchSnapshot()
+  expect(ja).toMatchSnapshot()
 })
 
-test('export using custom module', async t => {
+test('export using custom module', async () => {
   const tmp = tempy.directory()
   const opts = { moduleName: '../i18n' }
   await m(['en', 'ja'], 'test/fixtures/custom/**/*.js', tmp, opts)
   const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
   const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
-  t.snapshot(en)
-  t.snapshot(ja)
+  expect(en).toMatchSnapshot()
+  expect(ja).toMatchSnapshot()
 })
