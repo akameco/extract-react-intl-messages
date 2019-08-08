@@ -1,0 +1,13 @@
+[ignore]
+.*/test/fixtures/.*
+.*/test/resolution/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

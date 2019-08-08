@@ -1,0 +1,72 @@
+{
+  "projectName": "extract-react-intl",
+  "projectOwner": "akameco",
+  "files": [
+    "readme.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "akameco",
+      "name": "akameco",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4002137?v=4",
+      "profile": "http://akameco.github.io",
+      "contributions": [
+        "code",
+        "doc",
+        "test",
+        "infra"
+      ]
+    },
+    {
+      "login": "nodaguti",
+      "name": "nodaguti",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/27622?v=4",
+      "profile": "http://about.me/nodaguti",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "fix-fix",
+      "name": "fix-fix",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11943024?v=4",
+      "profile": "https://github.com/fix-fix",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "enrique-ramirez",
+      "name": "enrique-ramirez",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1190640?v=4",
+      "profile": "https://github.com/enrique-ramirez",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "bradbarrow",
+      "name": "bradbarrow",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1264276?v=4",
+      "profile": "http://bradbarrow.com",
+      "contributions": [
+        "bug",
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "Filson14",
+      "name": "Filip \"Filson\" Pasternak",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4540538?v=4",
+      "profile": "https://github.com/Filson14",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "repoType": "github"
+}

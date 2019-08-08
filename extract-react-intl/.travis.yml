@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - '11'
+  - '10'
+  - '8'
+
+cache:
+  yarn: true
+  directories:
+    - ".eslintcache"
+    - "node_modules"
+
+notifications:
+  email: false
+
+script:
+  - yarn run test:ci
+
+branches:
+  only: master
