@@ -3,7 +3,7 @@
 exports[`babel plugin execution order 1`] = `
 Object {
   "en": Object {
-    "test.pluginOrdering.test": "auto",
+    "extract-react-intl.test.pluginOrdering.test": "auto",
   },
 }
 `;

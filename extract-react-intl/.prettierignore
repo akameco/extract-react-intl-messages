@@ -1,6 +1,0 @@
-flow-typed/npm
-lib
-**/test/fixtures/**
-coverage
-.github
-package.json

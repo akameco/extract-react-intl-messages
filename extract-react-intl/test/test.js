@@ -1,32 +1,35 @@
-// @flow weak
 const m = require('..')
 
-const pattern = 'test/fixtures/**/*.js'
+const pattern = 'extract-react-intl/test/fixtures/**/*.js'
 const locales = ['en', 'ja']
 
 test('extract from file', async () => {
   process.env.BABEL_ENV = 'react-intl'
-  const x = await m(locales, pattern, { cwd: './test/fixtures' })
+  const x = await m(locales, pattern, { cwd: `${__dirname}/fixtures` })
   expect(x).toMatchSnapshot()
 })
 
-test('babelrc path resolution', async () => {
-  const x = await m(['en'], 'test/resolution/**/*.js', {
-    cwd: './test/resolution'
+test.only('babelrc path resolution', async () => {
+  const x = await m(['en'], './extract-react-intl/test/resolution/**/*.js', {
+    cwd: `${__dirname}/resolution`
   })
   expect(x).toMatchSnapshot()
 })
 
 test('babel plugin execution order', async () => {
-  const x = await m(['en'], 'test/pluginOrdering/**/*.js', {
-    cwd: './test/pluginOrdering'
-  })
+  const x = await m(
+    ['en'],
+    './extract-react-intl/test/pluginOrdering/**/*.js',
+    { cwd: `${__dirname}/pluginOrdering` }
+  )
   expect(x).toMatchSnapshot()
 })
 
 test('error', async () => {
   expect.assertions(1)
-  await m(locales, 'notfound', { cwd: './test/fixtures' }).catch(error => {
+  await m(locales, 'notfound', {
+    cwd: `${__dirname}/fixtures`
+  }).catch(error => {
     expect(error.message).toMatch('File not found')
   })
 })

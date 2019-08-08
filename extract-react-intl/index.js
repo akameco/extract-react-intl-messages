@@ -1,4 +1,3 @@
-// @flow weak
 'use strict'
 const path = require('path')
 const glob = require('glob')
@@ -44,6 +43,7 @@ const getBabelrc = cwd => {
 
 const getBabelrcDir = cwd => path.dirname(readBabelrcUp.sync({ cwd }).path)
 
+// eslint-disable-next-line max-lines-per-function
 module.exports = async (locales, pattern, opts) => {
   if (!Array.isArray(locales)) {
     throw new TypeError(`Expected a Array, got ${typeof locales}`)
@@ -67,16 +67,17 @@ module.exports = async (locales, pattern, opts) => {
 
   const { presets = [], plugins = [] } = babelrc
 
-  // eslint-disable-next-line global-require
   presets.unshift({
+    // eslint-disable-next-line global-require
     plugins: [[require('babel-plugin-react-intl').default, pluginOptions]]
   })
 
   const extractFromFile = async file => {
-    const { metadata: result } = await pify(transformFile)(file, {
+    const babelOpts = {
       presets: resolvePresets(presets, babelrcDir),
       plugins: resolvePlugins(plugins, babelrcDir)
-    })
+    }
+    const { metadata: result } = await pify(transformFile)(file, babelOpts)
     const localeObj = localeMap(locales)
     for (const { id, defaultMessage } of result['react-intl'].messages) {
       for (const locale of locales) {
