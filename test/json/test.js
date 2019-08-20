@@ -52,18 +52,6 @@ test('sort keys', async () => {
   expect(Object.keys(ja)).toMatchSnapshot()
 })
 
-test('delimiter - nest', async () => {
-  const tmp = tempy.directory()
-  await m(['en', 'ja'], 'test/fixtures/default/**/*.js', tmp, {
-    flat: false,
-    delimiter: '_'
-  })
-  const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
-  const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
-  expect(en).toMatchSnapshot()
-  expect(ja).toMatchSnapshot()
-})
-
 test('export using custom module', async () => {
   const tmp = tempy.directory()
   const opts = { moduleName: '../i18n' }

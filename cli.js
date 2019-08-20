@@ -16,7 +16,6 @@ const cli = meow(
   -f, --format          json | yaml [default: json]
   -d, --default-locale  default locale
   --flat                json [default: true] | yaml [default: false]
-  --delimiter           json | yaml [default: .]
   --module-name         module source name from where components are imported
 
   Example
@@ -44,10 +43,6 @@ const cli = meow(
       'default-locale': {
         type: 'string',
         alias: 'd'
-      },
-      delimiter: {
-        type: 'string',
-        default: '.'
       },
       'module-name': {
         type: 'string'
