@@ -22,7 +22,7 @@ const writeYaml = (outputPath, obj) => {
 
 const isJson = ext => ext === 'json'
 
-function loadLocaleFiles(locales, buildDir, ext, delimiter) {
+function loadLocaleFiles(locales, buildDir, ext) {
   const oldLocaleMaps = {}
 
   try {
@@ -45,7 +45,7 @@ function loadLocaleFiles(locales, buildDir, ext, delimiter) {
       ? loadJsonFile.sync(file)
       : yaml.safeLoad(fs.readFileSync(file, 'utf8'), { json: true })
 
-    messages = flatten(messages, { delimiter })
+    messages = flatten(messages)
 
     oldLocaleMaps[locale] = {}
     for (const messageKey of Object.keys(messages)) {
@@ -84,9 +84,7 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
   const { defaultLocale, moduleName } = opts
 
-  const delimiter = opts.delimiter ? opts.delimiter : '.'
-
-  const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext, delimiter)
+  const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext)
 
   delete opts.defaultLocale
 
@@ -115,7 +113,7 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
       const fomattedLocaleMap = opts.flat
         ? sortKeys(localeMap, { deep: true })
-        : unflatten(sortKeys(localeMap), { delimiter, object: true })
+        : unflatten(sortKeys(localeMap), { object: true })
 
       const fn = isJson(opts.format) ? writeJson : writeYaml
 
