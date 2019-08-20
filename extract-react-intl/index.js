@@ -55,6 +55,7 @@ module.exports = async (locales, pattern, opts = {}) => {
 
   const defaultLocale = opts.defaultLocale || 'en'
   const cwd = opts.cwd || process.cwd()
+  const withDescriptions = opts.withDescriptions || false
 
   const babelrc = getBabelrc(cwd) || {}
   const babelrcDir = getBabelrcDir(cwd)
@@ -79,10 +80,14 @@ module.exports = async (locales, pattern, opts = {}) => {
     const { metadata: result } = await pify(transformFile)(file, babelOpts)
     const localeObj = localeMap(locales)
     // eslint-disable-next-line no-unused-vars
-    for (const { id, defaultMessage } of result['react-intl'].messages) {
+    for (const { id, defaultMessage, description } of result['react-intl']
+      .messages) {
       // eslint-disable-next-line no-unused-vars
       for (const locale of locales) {
-        localeObj[locale][id] = defaultLocale === locale ? defaultMessage : ''
+        const message = defaultLocale === locale ? defaultMessage : ''
+        localeObj[locale][id] = withDescriptions
+          ? { message, description }
+          : message
       }
     }
     return localeObj

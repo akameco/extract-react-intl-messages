@@ -37,3 +37,12 @@ test('error', async () => {
     expect(error.message).toMatch('File not found')
   })
 })
+
+test('extract from file with descriptions', async () => {
+  process.env.BABEL_ENV = 'react-intl'
+  const x = await m(locales, pattern, {
+    cwd: './test/fixtures',
+    withDescriptions: true
+  })
+  expect(x).toMatchSnapshot()
+})

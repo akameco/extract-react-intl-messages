@@ -2,6 +2,7 @@
 import { defineMessages } from 'react-intl'
 
 export default defineMessages({
+  // Welcome message description
   welcome: {
     id: 'components/Greeting/welcome',
     defaultMessage: `
