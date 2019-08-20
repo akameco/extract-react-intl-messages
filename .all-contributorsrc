@@ -105,7 +105,17 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "gmaclennan",
+      "name": "Gregor MacLennan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/290457?v=4",
+      "profile": "http://ddem.us/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "commitConvention": "none"
 }
