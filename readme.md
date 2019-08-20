@@ -106,6 +106,7 @@ $ extract-messages --help
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
   $ extract-messages -l=ja,en -o i18n 'src/**/*.js'
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
+  $ extract-messages -l=ja,en -o i18n 'src/**/*.js' --extractFromFormatMessageCall
 ```
 
 ### create-react-app user
@@ -177,6 +178,10 @@ Type: `string`<br>
 Default: `react-intl`
 
 Set from where _defineMessages_, `<FormatterMessage />` and `<FormattedHTML />` are imported.
+
+##### babel-plugin-react-intl's Options
+
+See https://github.com/formatjs/formatjs/tree/master/packages/babel-plugin-react-intl#options
 
 ## Contributors
 

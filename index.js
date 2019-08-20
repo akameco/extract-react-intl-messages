@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict'
 const path = require('path')
 const fs = require('fs')
@@ -87,7 +88,9 @@ module.exports = async (locales, pattern, buildDir, opts) => {
 
   const oldLocaleMaps = loadLocaleFiles(locales, buildDir, ext, delimiter)
 
-  const extractorOptions = { defaultLocale }
+  delete opts.defaultLocale
+
+  const extractorOptions = { defaultLocale, ...opts }
 
   if (moduleName) {
     extractorOptions.moduleSourceName = moduleName
