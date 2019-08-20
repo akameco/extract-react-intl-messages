@@ -44,7 +44,7 @@ const getBabelrc = cwd => {
 const getBabelrcDir = cwd => path.dirname(readBabelrcUp.sync({ cwd }).path)
 
 // eslint-disable-next-line max-lines-per-function
-module.exports = async (locales, pattern, opts) => {
+module.exports = async (locales, pattern, opts = {}) => {
   if (!Array.isArray(locales)) {
     throw new TypeError(`Expected a Array, got ${typeof locales}`)
   }
@@ -53,23 +53,22 @@ module.exports = async (locales, pattern, opts) => {
     throw new TypeError(`Expected a string, got ${typeof pattern}`)
   }
 
-  opts = {
-    cwd: process.cwd(),
-    defaultLocale: 'en',
-    ...opts
-  }
+  const defaultLocale = opts.defaultLocale || 'en'
+  const cwd = opts.cwd || process.cwd()
 
-  const babelrc = getBabelrc(opts.cwd) || {}
-  const babelrcDir = getBabelrcDir(opts.cwd)
+  const babelrc = getBabelrc(cwd) || {}
+  const babelrcDir = getBabelrcDir(cwd)
 
-  const { moduleSourceName } = opts
-  const pluginOptions = moduleSourceName ? { moduleSourceName } : {}
+  delete opts.cwd
+  delete opts.defaultLocale
+
+  const pluginOptions = opts
 
   const { presets = [], plugins = [] } = babelrc
 
   presets.unshift({
     // eslint-disable-next-line global-require
-    plugins: [[require('babel-plugin-react-intl').default, pluginOptions]]
+    plugins: [[require('babel-plugin-react-intl'), pluginOptions]]
   })
 
   const extractFromFile = async file => {
@@ -79,10 +78,11 @@ module.exports = async (locales, pattern, opts) => {
     }
     const { metadata: result } = await pify(transformFile)(file, babelOpts)
     const localeObj = localeMap(locales)
+    // eslint-disable-next-line no-unused-vars
     for (const { id, defaultMessage } of result['react-intl'].messages) {
+      // eslint-disable-next-line no-unused-vars
       for (const locale of locales) {
-        localeObj[locale][id] =
-          opts.defaultLocale === locale ? defaultMessage : ''
+        localeObj[locale][id] = defaultLocale === locale ? defaultMessage : ''
       }
     }
     return localeObj
