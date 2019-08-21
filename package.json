@@ -52,7 +52,7 @@
     "mkdirp": "^0.5.1",
     "pify": "^4.0.1",
     "read-babelrc-up": "^0.4.0",
-    "sort-keys": "^3.0.0",
+    "sort-keys": "^4.0.0",
     "write-json-file": "^4.1.1"
   },
   "devDependencies": {
