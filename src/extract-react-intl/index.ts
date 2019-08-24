@@ -10,6 +10,7 @@ import {
   PluginItem
 } from '@babel/core'
 import readBabelrcUp from 'read-babelrc-up'
+import babelPluginReactIntl from 'babel-plugin-react-intl'
 
 type LocaleMap = Record<string, Record<string, {}>>
 
@@ -90,10 +91,7 @@ export default async (
   const presets = babelrc.presets || []
   const plugins = babelrc.plugins || []
 
-  presets.unshift({
-    // eslint-disable-next-line global-require, @typescript-eslint/no-require-imports
-    plugins: [[require('babel-plugin-react-intl'), pluginOptions]]
-  })
+  presets.unshift({ plugins: [[babelPluginReactIntl, pluginOptions]] })
 
   const extractFromFile = async (file: string) => {
     const babelOpts = {
