@@ -1,3 +1,5 @@
 node_modules
 lib
 example/i18n
+dist
+.eslintcache

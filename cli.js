@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable no-console */
+/* eslint-disable no-console, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires */
 'use strict'
 const meow = require('meow')
 const fn = require('.')
@@ -16,7 +16,6 @@ const cli = meow(
   -f, --format          json | yaml [default: json]
   -d, --default-locale  default locale
   --flat                json [default: true] | yaml [default: false]
-  --module-name         module source name from where components are imported
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -43,9 +42,6 @@ const cli = meow(
       'default-locale': {
         type: 'string',
         alias: 'd'
-      },
-      'module-name': {
-        type: 'string'
       },
       withDescriptions: {
         type: 'boolean',

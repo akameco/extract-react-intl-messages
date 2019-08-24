@@ -3,15 +3,7 @@
 exports[`babel plugin execution order 1`] = `
 Object {
   "en": Object {
-    "extract-react-intl.test.pluginOrdering.test": "auto",
-  },
-}
-`;
-
-exports[`babelrc path resolution 1`] = `
-Object {
-  "en": Object {
-    "test": "test",
+    "src.extract-react-intl.test.pluginOrdering.test": "auto",
   },
 }
 `;
