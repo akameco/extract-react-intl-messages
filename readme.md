@@ -26,7 +26,7 @@ $ npm install --save-dev extract-react-intl-messages
 app/components/App/messages.js
 
 ```js
-import { defineMessages } from 'react-intl'
+import { defineMessages, useIntl } from 'react-intl'
 
 export default defineMessages({
   hello: {
@@ -37,6 +37,15 @@ export default defineMessages({
     id: 'a.world',
     defaultMessage: 'world'
   }
+})
+
+export const SubmitButton = () => {
+  const intl = useIntl()
+  const label = intl.formatMessage({
+    id: 'a.submit',
+    defaultMessage: 'Submit Button'
+  })
+  return <button aria-label={label}>{label}</button>
 })
 ```
 
@@ -54,11 +63,8 @@ app/translations/en.json
 {
   "a": {
     "hello": "hello",
-    "world": "world"
-  },
-  "b": {
-    "hello": "hello",
-    "world": "world"
+    "world": "world",
+    "submit": "Submit Button"
   }
 }
 ```
@@ -69,11 +75,8 @@ app/translations/ja.json
 {
   "a": {
     "hello": "",
-    "world": ""
-  },
-  "b": {
-    "hello": "",
-    "world": ""
+    "world": "",
+    "submit": ""
   }
 }
 ```
