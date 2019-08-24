@@ -98,6 +98,7 @@ export default async (
     defaultLocale,
     withDescriptions: false,
     cwd: process.cwd(),
+    extractFromFormatMessageCall: true,
     ...opts
   }
 

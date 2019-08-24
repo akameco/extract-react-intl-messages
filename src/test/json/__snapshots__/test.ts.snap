@@ -4,6 +4,7 @@ exports[`export json - nest 1`] = `
 Object {
   "a": Object {
     "hello": "hello",
+    "submit": "Submit Button",
     "world": "world",
   },
   "b": Object {
@@ -17,6 +18,7 @@ exports[`export json - nest 2`] = `
 Object {
   "a": Object {
     "hello": "",
+    "submit": "",
     "world": "",
   },
   "b": Object {
@@ -29,6 +31,7 @@ Object {
 exports[`export json 1`] = `
 Object {
   "a.hello": "hello",
+  "a.submit": "Submit Button",
   "a.world": "world",
   "b.hello": "hello",
   "b.world": "world",
@@ -38,6 +41,7 @@ Object {
 exports[`export json 2`] = `
 Object {
   "a.hello": "",
+  "a.submit": "",
   "a.world": "",
   "b.hello": "",
   "b.world": "",
@@ -47,6 +51,7 @@ Object {
 exports[`export json with removed messages 1`] = `
 Object {
   "a.hello": "hello",
+  "a.submit": "Submit Button",
   "a.world": "world",
   "b.hello": "hello",
   "b.world": "world",
@@ -56,6 +61,7 @@ Object {
 exports[`export json with removed messages 2`] = `
 Object {
   "a.hello": "",
+  "a.submit": "",
   "a.world": "",
   "b.hello": "",
   "b.world": "",
