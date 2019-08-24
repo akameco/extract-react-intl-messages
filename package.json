@@ -16,7 +16,8 @@
     "add-contributor": "all-contributors add",
     "fmt": "prettier --write '**/*.{json,js,md}'",
     "example": "./cli.js -l=en,ja -o example/i18n -d en 'example/**/*.js'",
-    "lint": "eslint index.js cli.js ./extract-react-intl/index.js",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts --fix --cache",
     "test": "npm run lint && jest"
   },
   "bin": {
@@ -24,7 +25,7 @@
     "extract-messages": "cli.js"
   },
   "files": [
-    "extract-react-intl/index.js",
+    "dist",
     "index.js",
     "cli.js"
   ],
@@ -56,10 +57,21 @@
     "write-json-file": "^4.1.1"
   },
   "devDependencies": {
+    "@akameco/tsconfig": "^0.3.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@types/flat": "^0.0.28",
+    "@types/jest": "^24.0.18",
+    "@types/js-yaml": "^3.12.1",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/lodash.mergewith": "^4.6.6",
+    "@types/lodash.pick": "^4.4.6",
+    "@types/mkdirp": "^0.5.2",
+    "@types/pify": "^3.0.2",
+    "@types/temp-write": "^4.0.0",
+    "@types/tempy": "^0.3.0",
     "all-contributors-cli": "^6.8.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
@@ -71,9 +83,11 @@
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
-    "react-intl": "^3.1.10",
+    "react-intl": "^3.1.11",
     "temp-write": "^4.0.0",
-    "tempy": "^0.3.0"
+    "tempy": "^0.3.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
   },
   "lint-staged": {
     "*.{js}": [

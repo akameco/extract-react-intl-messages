@@ -1,32 +1,40 @@
-'use strict'
-const path = require('path')
-const glob = require('glob')
-const pify = require('pify')
-const merge = require('lodash.merge')
-const mergeWith = require('lodash.mergewith')
-const { resolvePlugin, resolvePreset, transformFile } = require('@babel/core')
-const readBabelrcUp = require('read-babelrc-up')
+import path from 'path'
+import glob from 'glob'
+import pify from 'pify'
+import merge from 'lodash.merge'
+import mergeWith from 'lodash.mergewith'
+import {
+  resolvePlugin,
+  resolvePreset,
+  transformFile,
+  PluginItem
+} from '@babel/core'
+import readBabelrcUp from 'read-babelrc-up'
 
-const localeMap = arr =>
-  arr.reduce((obj, x) => {
+type LocaleMap = Record<string, Record<string, {}>>
+
+const localeMap = (arr: string[]): LocaleMap =>
+  arr.reduce((obj: Record<string, {}>, x: string) => {
     obj[x] = {}
     return obj
   }, {})
 
-const concatArray = (obj, src) => {
+const concatArray = (obj: string[], src: string) => {
   if (Array.isArray(obj)) {
     return obj.concat(src)
   }
   return undefined
 }
 
-const createResolveList = fn => (list, cwd) =>
+const createResolveList = (
+  fn: (name: string, dirname: string) => string | null
+) => (list: PluginItem[], cwd: string) =>
   list.map(x => (typeof x === 'string' ? fn(x, cwd) : x))
 
 const resolvePresets = createResolveList(resolvePreset)
 const resolvePlugins = createResolveList(resolvePlugin)
 
-const getBabelrc = cwd => {
+const getBabelrc = (cwd: string) => {
   try {
     const babelrc = readBabelrcUp.sync({ cwd }).babel
     if (!babelrc.env) {
@@ -41,10 +49,33 @@ const getBabelrc = cwd => {
   }
 }
 
-const getBabelrcDir = cwd => path.dirname(readBabelrcUp.sync({ cwd }).path)
+const getBabelrcDir = (cwd: string) =>
+  path.dirname(readBabelrcUp.sync({ cwd }).path)
+
+type Options = {
+  defaultLocale?: string
+  cwd?: string
+  withDescriptions?: boolean
+  [key: string]: unknown
+}
+
+type Message = {
+  id: string
+  defaultMessage: string
+  description: string
+}
 
 // eslint-disable-next-line max-lines-per-function
-module.exports = async (locales, pattern, opts = {}) => {
+export default async (
+  locales: string[],
+  pattern: string,
+  {
+    defaultLocale = 'en',
+    withDescriptions = false,
+    cwd = process.cwd(),
+    ...pluginOptions
+  }: Options = {}
+) => {
   if (!Array.isArray(locales)) {
     throw new TypeError(`Expected a Array, got ${typeof locales}`)
   }
@@ -53,35 +84,26 @@ module.exports = async (locales, pattern, opts = {}) => {
     throw new TypeError(`Expected a string, got ${typeof pattern}`)
   }
 
-  const defaultLocale = opts.defaultLocale || 'en'
-  const cwd = opts.cwd || process.cwd()
-  const withDescriptions = opts.withDescriptions || false
-
   const babelrc = getBabelrc(cwd) || {}
   const babelrcDir = getBabelrcDir(cwd)
 
-  delete opts.cwd
-  delete opts.defaultLocale
-
-  const pluginOptions = opts
-
-  const { presets = [], plugins = [] } = babelrc
+  const presets = babelrc.presets || []
+  const plugins = babelrc.plugins || []
 
   presets.unshift({
-    // eslint-disable-next-line global-require
+    // eslint-disable-next-line global-require, @typescript-eslint/no-require-imports
     plugins: [[require('babel-plugin-react-intl'), pluginOptions]]
   })
 
-  const extractFromFile = async file => {
+  const extractFromFile = async (file: string) => {
     const babelOpts = {
       presets: resolvePresets(presets, babelrcDir),
       plugins: resolvePlugins(plugins, babelrcDir)
     }
-    const { metadata: result } = await pify(transformFile)(file, babelOpts)
+    const { metadata } = await pify(transformFile)(file, babelOpts)
     const localeObj = localeMap(locales)
-    // eslint-disable-next-line no-unused-vars
-    for (const { id, defaultMessage, description } of result['react-intl']
-      .messages) {
+    const result = metadata['react-intl'].messages as Message[]
+    for (const { id, defaultMessage, description } of result) {
       // eslint-disable-next-line no-unused-vars
       for (const locale of locales) {
         const message = defaultLocale === locale ? defaultMessage : ''
@@ -93,7 +115,7 @@ module.exports = async (locales, pattern, opts = {}) => {
     return localeObj
   }
 
-  const files = await pify(glob)(pattern)
+  const files: string[] = await pify(glob)(pattern)
   if (files.length === 0) {
     throw new Error(`File not found (${pattern})`)
   }

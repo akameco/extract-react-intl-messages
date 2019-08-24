@@ -99,7 +99,6 @@ $ extract-messages --help
   -f, --format       json|yaml [default: json]
   --flat             json [default: true] | yaml [default: false]
   --default-locale   default locale [default: en]
-  --module-name      module source name from where components are imported [default: react-intl]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -170,13 +169,6 @@ If format is `yaml`, set to `false`.
 
 Be careful if `false`.
 See [this issue](https://github.com/akameco/extract-react-intl-messages/issues/3).
-
-##### moduleName
-
-Type: `string`<br>
-Default: `react-intl`
-
-Set from where _defineMessages_, `<FormatterMessage />` and `<FormattedHTML />` are imported.
 
 ##### babel-plugin-react-intl's Options
 

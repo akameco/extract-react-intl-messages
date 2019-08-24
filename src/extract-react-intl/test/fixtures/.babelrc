@@ -23,7 +23,7 @@
         [
           "react-intl-auto",
           {
-            "removePrefix": "extract-react-intl.test.fixtures"
+            "removePrefix": "src.extract-react-intl.test.fixtures"
           }
         ]
       ]
