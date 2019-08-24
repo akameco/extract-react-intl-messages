@@ -52,7 +52,7 @@ export const SubmitButton = () => {
 ### Run Script
 
 ```
-$ extract-messages -l=en,ja -o app/translations -d en --flat false 'app/**/!(*.test).js'
+$ extract-messages -l=en,ja -o app/translations -d en --flat false --extractFromFormatMessageCall=true 'app/**/!(*.test).js'
 ```
 
 ### Output
