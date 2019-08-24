@@ -12,7 +12,6 @@ This package will generate json or yaml files from a glob. It will generate one 
 
 ### Babel
 
-- 1.x works with Babel 7
 - 0.x works with Babel 6
 
 ## Install
