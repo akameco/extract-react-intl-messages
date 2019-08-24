@@ -3,6 +3,7 @@
 exports[`export yaml - flat 1`] = `
 Object {
   "a.hello": "hello",
+  "a.submit": "Submit Button",
   "a.world": "world",
   "b.hello": "hello",
   "b.world": "world",
@@ -12,6 +13,7 @@ Object {
 exports[`export yaml - flat 2`] = `
 Object {
   "a.hello": "",
+  "a.submit": "",
   "a.world": "",
   "b.hello": "",
   "b.world": "",
@@ -22,6 +24,7 @@ exports[`export yaml 1`] = `
 Object {
   "a": Object {
     "hello": "hello",
+    "submit": "Submit Button",
     "world": "world",
   },
   "b": Object {
@@ -35,6 +38,7 @@ exports[`export yaml 2`] = `
 Object {
   "a": Object {
     "hello": "",
+    "submit": "",
     "world": "",
   },
   "b": Object {
@@ -48,6 +52,7 @@ exports[`exsit yaml 1`] = `
 Object {
   "a": Object {
     "hello": "hello",
+    "submit": "Submit Button",
     "world": "world",
   },
   "b": Object {
@@ -61,6 +66,7 @@ exports[`exsit yaml 2`] = `
 Object {
   "a": Object {
     "hello": "hello2",
+    "submit": "",
     "world": "",
   },
   "b": Object {
