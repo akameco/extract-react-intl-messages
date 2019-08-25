@@ -2,7 +2,7 @@
 /* eslint-disable no-console, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires */
 'use strict'
 const meow = require('meow')
-const fn = require('.')
+const fn = require('./dist').default
 
 const cli = meow(
   `

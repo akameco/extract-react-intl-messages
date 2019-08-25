@@ -12,6 +12,7 @@
   "engines": {
     "node": ">=8"
   },
+  "main": "dist/index.js",
   "scripts": {
     "add-contributor": "all-contributors add",
     "fmt": "prettier --write '**/*.{json,js,md}'",
@@ -26,7 +27,6 @@
   },
   "files": [
     "dist",
-    "index.js",
     "cli.js"
   ],
   "keywords": [
