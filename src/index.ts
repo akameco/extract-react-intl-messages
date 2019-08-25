@@ -8,7 +8,7 @@ import { flatten, unflatten } from 'flat'
 import loadJsonFile from 'load-json-file'
 import writeJsonFile from 'write-json-file'
 import sortKeys from 'sort-keys'
-import extractReactIntl from './extract-react-intl'
+import _extractReactIntl from './extract-react-intl'
 
 const writeJson = (outputPath: string, obj: object) => {
   return writeJsonFile(`${outputPath}.json`, obj, { indent: 2 })
@@ -64,6 +64,8 @@ type Opts = {
   [key: string]: unknown
 }
 
+export const extractReactIntl = _extractReactIntl
+
 // eslint-disable-next-line max-lines-per-function
 export default async (
   locales: string[],
@@ -102,7 +104,7 @@ export default async (
     ...opts
   }
 
-  const newLocaleMaps = await extractReactIntl(
+  const newLocaleMaps = await _extractReactIntl(
     locales,
     pattern,
     extractorOptions
