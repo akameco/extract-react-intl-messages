@@ -14,7 +14,13 @@ Object {
     "components.App.1248161314": "Submit button",
     "components.App.hello": "hello",
     "components.App.world": "world",
-    "components/Greeting/welcome": "Welcome {name}, you have received {unreadCount, plural, =0 {no new messages} one {{formattedUnreadCount} new message} other {{formattedUnreadCount} new messages}} since {formattedLastLoginTime}.",
+    "components/Greeting/welcome": "
+    Welcome {name}, you have received {unreadCount, plural,
+      =0 {no new messages}
+      one {{formattedUnreadCount} new message}
+      other {{formattedUnreadCount} new messages}
+    } since {formattedLastLoginTime}.
+    ",
   },
   "ja": Object {
     "components.App.1248161314": "",
@@ -38,7 +44,13 @@ Object {
     },
     "components/Greeting/welcome": Object {
       "description": "Welcome message description",
-      "message": "Welcome {name}, you have received {unreadCount, plural, =0 {no new messages} one {{formattedUnreadCount} new message} other {{formattedUnreadCount} new messages}} since {formattedLastLoginTime}.",
+      "message": "
+    Welcome {name}, you have received {unreadCount, plural,
+      =0 {no new messages}
+      one {{formattedUnreadCount} new message}
+      other {{formattedUnreadCount} new messages}
+    } since {formattedLastLoginTime}.
+    ",
     },
   },
   "ja": Object {
