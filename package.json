@@ -17,6 +17,7 @@
     "add-contributor": "all-contributors add",
     "fmt": "prettier --write '**/*.{json,js,md}'",
     "example": "./cli.js -l=en,ja -o example/i18n -d en --extractFromFormatMessageCall=true 'example/**/*.{js,tsx}'",
+    "prepublish": "npm run build",
     "build": "tsc",
     "lint": "eslint src/**/*.ts --fix --cache",
     "test": "npm run lint && jest"
