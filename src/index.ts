@@ -67,7 +67,7 @@ type Opts = {
 export const extractReactIntl = _extractReactIntl
 
 // eslint-disable-next-line max-lines-per-function
-export default async (
+const extractMessage = async (
   locales: string[],
   pattern: string,
   buildDir: string,
@@ -131,3 +131,9 @@ export default async (
     })
   )
 }
+
+export default extractMessage
+
+// For CommonJS default export support
+module.exports = extractMessage
+module.exports.default = extractMessage
