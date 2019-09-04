@@ -46,6 +46,19 @@ const cli = meow(
       withDescriptions: {
         type: 'boolean',
         default: false
+      },
+      // babel-plugin-react-intl boolean options
+      enforceDescriptions: {
+        type: 'boolean',
+        default: false
+      },
+      enforceDefaultMessage: {
+        type: 'boolean',
+        default: true
+      },
+      extractSourceLocation: {
+        type: 'boolean',
+        default: false
       }
     }
   }
