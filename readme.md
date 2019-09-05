@@ -101,6 +101,7 @@ $ extract-messages --help
   -f, --format       json|yaml [default: json]
   --flat             json [default: true] | yaml [default: false]
   --default-locale   default locale [default: en]
+  --moduleSourceName module source name from where components are imported [default: react-intl]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
