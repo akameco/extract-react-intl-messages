@@ -123,6 +123,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "panpanc",
+      "name": "Michael Pan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/29132669?v=4",
+      "profile": "https://github.com/panpanc",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "repoType": "github",
