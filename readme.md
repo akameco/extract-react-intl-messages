@@ -45,7 +45,7 @@ export const SubmitButton = () => {
     defaultMessage: 'Submit Button'
   })
   return <button aria-label={label}>{label}</button>
-})
+}
 ```
 
 ### Run Script
