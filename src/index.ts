@@ -75,6 +75,7 @@ const extractMessage = async (
     format = 'json',
     flat = isJson(format),
     defaultLocale = 'en',
+    overwriteDefault = true,
     ...opts
   }: Opts = {
     defaultLocale: 'en'
@@ -114,7 +115,7 @@ const extractMessage = async (
     locales.map(locale => {
       // If the default locale, overwrite the origin file
       let localeMap =
-        locale === defaultLocale
+        locale === defaultLocale && overwriteDefault
           ? // Create a clone so we can use only current valid messages below
             { ...oldLocaleMaps[locale], ...newLocaleMaps[locale] }
           : { ...newLocaleMaps[locale], ...oldLocaleMaps[locale] }
