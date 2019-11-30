@@ -15,7 +15,7 @@
   "main": "dist/index.js",
   "scripts": {
     "add-contributor": "all-contributors add",
-    "fmt": "prettier --write '**/*.{json,js,md}'",
+    "fmt": "prettier --write '**/*.{ts,json,js,md}'",
     "example": "./cli.js -l=en,ja -o example/i18n -d en --extractFromFormatMessageCall=true 'example/**/*.{js,tsx}'",
     "prepublish": "npm run build",
     "build": "tsc",
@@ -90,12 +90,12 @@
     "typescript": "^3.6.2"
   },
   "lint-staged": {
-    "*.{js}": [
+    "*.{ts}": [
       "prettier --write",
       "eslint --fix",
       "git add"
     ],
-    "*.{json,md}": [
+    "*.{js,json,md}": [
       "prettier --write",
       "git add"
     ]

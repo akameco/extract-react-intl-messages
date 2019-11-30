@@ -53,6 +53,16 @@ const getBabelrc = (cwd: string) => {
 const getBabelrcDir = (cwd: string) =>
   path.dirname(readBabelrcUp.sync({ cwd }).path)
 
+const babelPluginReactIntlOptions = [
+  'moduleSourceName',
+  'extractSourceLocation',
+  'messagesDir',
+  'overrideIdFn',
+  'removeDefaultMessage',
+  'extractFromFormatMessageCall',
+  'additionalComponentNames'
+]
+
 type Options = {
   defaultLocale?: string
   cwd?: string
@@ -91,7 +101,19 @@ export default async (
   const presets = babelrc.presets || []
   const plugins = babelrc.plugins || []
 
-  presets.unshift({ plugins: [[babelPluginReactIntl, pluginOptions]] })
+  presets.unshift({
+    plugins: [
+      [
+        babelPluginReactIntl,
+        Object.entries(pluginOptions).reduce((acc, [key, value]) => {
+          if (babelPluginReactIntlOptions.includes(key)) {
+            return { ...acc, [key]: value }
+          }
+          return acc
+        }, {})
+      ]
+    ]
+  })
 
   const extractFromFile = async (file: string) => {
     const babelOpts = {
