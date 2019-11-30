@@ -64,8 +64,6 @@ type Opts = {
   [key: string]: unknown
 }
 
-export const extractReactIntl = _extractReactIntl
-
 // eslint-disable-next-line max-lines-per-function
 const extractMessage = async (
   locales: string[],
@@ -131,6 +129,8 @@ const extractMessage = async (
     })
   )
 }
+
+extractMessage.extractReactIntl = _extractReactIntl
 
 export default extractMessage
 
