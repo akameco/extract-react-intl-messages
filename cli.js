@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable no-console, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires */
 'use strict'
 const meow = require('meow')
 const fn = require('./dist').default
@@ -48,17 +47,15 @@ const cli = meow(
         default: false
       },
       // babel-plugin-react-intl boolean options
-      enforceDescriptions: {
-        type: 'boolean',
-        default: false
-      },
-      enforceDefaultMessage: {
-        type: 'boolean',
-        default: true
-      },
       extractSourceLocation: {
         type: 'boolean',
         default: false
+      },
+      removeDefaultMessage: {
+        type: 'boolean'
+      },
+      extractFromFormatMessageCall: {
+        type: 'boolean'
       }
     }
   }

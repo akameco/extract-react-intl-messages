@@ -15,7 +15,7 @@
   "main": "dist/index.js",
   "scripts": {
     "add-contributor": "all-contributors add",
-    "fmt": "prettier --write '**/*.{json,js,md}'",
+    "fmt": "prettier --write '**/*.{ts,json,js,md}'",
     "example": "./cli.js -l=en,ja -o example/i18n -d en --extractFromFormatMessageCall=true 'example/**/*.{js,tsx}'",
     "prepublish": "npm run build",
     "build": "tsc",
@@ -41,7 +41,7 @@
   ],
   "dependencies": {
     "@babel/core": "^7.5.5",
-    "babel-plugin-react-intl": "^4.1.16",
+    "babel-plugin-react-intl": "^5.1.8",
     "flat": "^4.1.0",
     "glob": "^7.1.4",
     "js-yaml": "^3.13.1",
@@ -90,12 +90,12 @@
     "typescript": "^3.6.2"
   },
   "lint-staged": {
-    "*.{js}": [
+    "*.{ts}": [
       "prettier --write",
       "eslint --fix",
       "git add"
     ],
-    "*.{json,md}": [
+    "*.{js,json,md}": [
       "prettier --write",
       "git add"
     ]
