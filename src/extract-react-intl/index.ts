@@ -106,6 +106,7 @@ export default async (
       (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
     )
   ) {
+    // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
     presets.unshift({
       plugins: [
         [
