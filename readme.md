@@ -201,6 +201,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="http://ddem.us/"><img src="https://avatars1.githubusercontent.com/u/290457?v=4" width="100px;" alt="Gregor MacLennan"/><br /><sub><b>Gregor MacLennan</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=gmaclennan" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/zarv1k"><img src="https://avatars1.githubusercontent.com/u/6296643?v=4" width="100px;" alt="Dmitry Zarva"/><br /><sub><b>Dmitry Zarva</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=zarv1k" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/panpanc"><img src="https://avatars2.githubusercontent.com/u/29132669?v=4" width="100px;" alt="Michael Pan"/><br /><sub><b>Michael Pan</b></sub></a><br /><a href="#example-panpanc" title="Examples">💡</a></td>
+    <td align="center"><a href="https://github.com/lensbart"><img src="https://avatars2.githubusercontent.com/u/20876627?s=460&v=4" width="100px;" alt="Bart Lens"/><br /><sub><b>Bart Lens</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lensbart" title="Code">💻</a></td>
   </tr>
 </table>
 
