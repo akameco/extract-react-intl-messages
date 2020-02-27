@@ -15,6 +15,7 @@ const cli = meow(
   -f, --format          json | yaml [default: json]
   -d, --default-locale  default locale
   --flat                json [default: true] | yaml [default: false]
+  --sort-when-not-flat  keys are sorted even when flat option is false [default: false]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -23,6 +24,9 @@ const cli = meow(
   {
     flags: {
       flat: {
+        type: 'boolean'
+      },
+      'sort-when-not-flat': {
         type: 'boolean'
       },
       output: {
