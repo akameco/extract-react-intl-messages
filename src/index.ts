@@ -61,7 +61,6 @@ type Opts = {
   defaultLocale: string
   format?: string
   flat?: boolean
-  sortWhenNotFlat?: boolean
   [key: string]: unknown
 }
 
@@ -73,7 +72,6 @@ const extractMessage = async (
   {
     format = 'json',
     flat = isJson(format),
-    sortWhenNotFlat = false,
     defaultLocale = 'en',
     ...opts
   }: Opts = {
@@ -123,9 +121,7 @@ const extractMessage = async (
 
       const fomattedLocaleMap: object = flat
         ? sortKeys(localeMap, { deep: true })
-        : sortWhenNotFlat
-        ? sortKeys(unflatten(localeMap, { object: true }), { deep: true })
-        : unflatten(sortKeys(localeMap), { object: true })
+        : sortKeys(unflatten(localeMap, { object: true }), { deep: true })
 
       const fn = isJson(format) ? writeJson : writeYaml
 
