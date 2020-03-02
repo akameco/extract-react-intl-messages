@@ -101,19 +101,26 @@ export default async (
   const presets = babelrc.presets || []
   const plugins = babelrc.plugins || []
 
-  presets.unshift({
-    plugins: [
-      [
-        babelPluginReactIntl,
-        Object.entries(pluginOptions).reduce((acc, [key, value]) => {
-          if (babelPluginReactIntlOptions.includes(key)) {
-            return { ...acc, [key]: value }
-          }
-          return acc
-        }, {})
+  if (
+    !plugins.find(plugin =>
+      (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+    )
+  ) {
+    // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
+    presets.unshift({
+      plugins: [
+        [
+          babelPluginReactIntl,
+          Object.entries(pluginOptions).reduce((acc, [key, value]) => {
+            if (babelPluginReactIntlOptions.includes(key)) {
+              return { ...acc, [key]: value }
+            }
+            return acc
+          }, {})
+        ]
       ]
-    ]
-  })
+    })
+  }
 
   const extractFromFile = async (file: string) => {
     const babelOpts = {
