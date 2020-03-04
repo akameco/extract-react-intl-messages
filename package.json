@@ -1,6 +1,6 @@
 {
   "name": "extract-react-intl-messages",
-  "version": "2.3.5",
+  "version": "3.0.0",
   "description": "Extract react-intl messages",
   "license": "MIT",
   "repository": "akameco/extract-react-intl-messages",
