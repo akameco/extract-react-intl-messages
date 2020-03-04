@@ -102,8 +102,8 @@ export default async (
   const plugins = babelrc.plugins || []
 
   if (
-    !plugins.find(plugin =>
-      (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+    !plugins.find(
+      plugin => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
     )
   ) {
     // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
