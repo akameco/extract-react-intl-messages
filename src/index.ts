@@ -121,7 +121,7 @@ const extractMessage = async (
 
       const fomattedLocaleMap: object = flat
         ? sortKeys(localeMap, { deep: true })
-        : unflatten(sortKeys(localeMap), { object: true })
+        : sortKeys(unflatten(localeMap, { object: true }), { deep: true })
 
       const fn = isJson(format) ? writeJson : writeYaml
 
