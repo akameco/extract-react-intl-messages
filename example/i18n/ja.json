@@ -1,10 +1,10 @@
 {
-  "a": {
-    "hello": "",
-    "world": ""
-  },
   "App": {
     "hello": "",
     "submit": ""
+  },
+  "a": {
+    "hello": "",
+    "world": ""
   }
 }

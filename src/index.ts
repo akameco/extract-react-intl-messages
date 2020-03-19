@@ -58,10 +58,10 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
 }
 
 type Opts = {
+  [key: string]: unknown
   defaultLocale: string
   format?: string
   flat?: boolean
-  [key: string]: unknown
 }
 
 // eslint-disable-next-line max-lines-per-function

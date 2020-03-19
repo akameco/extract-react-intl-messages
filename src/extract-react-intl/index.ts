@@ -64,10 +64,10 @@ const babelPluginReactIntlOptions = [
 ]
 
 type Options = {
+  [key: string]: unknown
   defaultLocale?: string
   cwd?: string
   withDescriptions?: boolean
-  [key: string]: unknown
 }
 
 type Message = {
