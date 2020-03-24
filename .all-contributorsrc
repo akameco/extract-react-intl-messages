@@ -132,6 +132,15 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "testower",
+      "name": "Tom Erik Støwer",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/231492?v=4",
+      "profile": "https://github.com/testower",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",

@@ -10,11 +10,12 @@ const cli = meow(
   $ extract-messages <input>
 
   Options
-  -o, --output          Output directory [require: true]
-  -l, --locales         locales [require: true]
-  -f, --format          json | yaml [default: json]
-  -d, --default-locale  default locale
-  --flat                json [default: true] | yaml [default: false]
+  -o, --output            Output directory [require: true]
+  -l, --locales           locales [require: true]
+  -f, --format            json | yaml [default: json]
+  -d, --default-locale    default locale
+  --overwriteDefault      default: false
+  --flat                  json [default: true] | yaml [default: false]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -41,6 +42,10 @@ const cli = meow(
       'default-locale': {
         type: 'string',
         alias: 'd'
+      },
+      overwriteDefault: {
+        type: 'boolean',
+        default: true
       },
       withDescriptions: {
         type: 'boolean',

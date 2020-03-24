@@ -123,3 +123,19 @@ Array [
   "z.hello",
 ]
 `;
+
+exports[`with overwriteDefault 1`] = `
+Object {
+  "a.custom.hello": "hello",
+  "a.custom.world": "world",
+  "b.custom.message": "Default Message",
+}
+`;
+
+exports[`with overwriteDefault 2`] = `
+Object {
+  "a.custom.hello": "",
+  "a.custom.world": "",
+  "b.custom.message": "",
+}
+`;

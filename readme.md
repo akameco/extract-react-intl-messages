@@ -4,7 +4,7 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 
 This package will generate json or yaml files from a glob. It will generate one file per locale, with the ids of each message defined by the [`defineMessages`](https://github.com/yahoo/react-intl/wiki/API#definemessages) function of [react-intl](https://github.com/yahoo/react-intl). The value of each of these keys will be an empty string, except for your `defaultLocale` which will be populated with the [`defaultMessage`](https://github.com/yahoo/react-intl/wiki/API#message-descriptor).
 
@@ -96,12 +96,12 @@ $ extract-messages --help
   $ extract-messages <input>
 
   Options
-  -o, --output       Output directory [require: true]
-  -l, --locales      locales [require: true]
-  -f, --format       json|yaml [default: json]
-  --flat             json [default: true] | yaml [default: false]
-  --default-locale   default locale [default: en]
-  --moduleSourceName module source name from where components are imported [default: react-intl]
+  -o, --output            Output directory [require: true]
+  -l, --locales           locales [require: true]
+  -f, --format            json | yaml [default: json]
+  -d, --default-locale    default locale
+  --overwriteDefault      default: false
+  --flat                  json [default: true] | yaml [default: false]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -163,6 +163,13 @@ Default: `json`
 
 Set extension to output.
 
+##### overwriteDefault
+
+Type: `boolean`<br>
+Default: true
+
+If overwriteDefault is `false`, it will not overwrite messages in the default locale.
+
 ##### flat
 
 Type: `boolean`<br>
@@ -201,6 +208,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="http://ddem.us/"><img src="https://avatars1.githubusercontent.com/u/290457?v=4" width="100px;" alt="Gregor MacLennan"/><br /><sub><b>Gregor MacLennan</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=gmaclennan" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/zarv1k"><img src="https://avatars1.githubusercontent.com/u/6296643?v=4" width="100px;" alt="Dmitry Zarva"/><br /><sub><b>Dmitry Zarva</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=zarv1k" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/panpanc"><img src="https://avatars2.githubusercontent.com/u/29132669?v=4" width="100px;" alt="Michael Pan"/><br /><sub><b>Michael Pan</b></sub></a><br /><a href="#example-panpanc" title="Examples">💡</a></td>
+    <td align="center"><a href="https://webstep.no"><img src="https://avatars2.githubusercontent.com/u/231492?v=4" width="100px;" alt="Tom Erik Støwer"/><br /><sub><b>Tom Erik Støwer</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=testower" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/lensbart"><img src="https://avatars2.githubusercontent.com/u/20876627?s=460&v=4" width="100px;" alt="Bart Lens"/><br /><sub><b>Bart Lens</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lensbart" title="Code">💻</a></td>
   </tr>
 </table>

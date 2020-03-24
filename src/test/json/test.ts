@@ -66,3 +66,29 @@ test('export using custom module', async () => {
   expect(en).toMatchSnapshot()
   expect(ja).toMatchSnapshot()
 })
+
+test('with overwriteDefault', async () => {
+  const tmp = tempy.directory()
+  fs.writeFileSync(
+    path.resolve(tmp, 'en.json'),
+    JSON.stringify(
+      {
+        'a.custom.hello': 'hello',
+        'a.custom.world': 'world',
+        'b.custom.message': 'Default Message'
+      },
+      null,
+      2
+    ),
+    'utf8'
+  )
+  await m(['en', 'ja'], 'src/test/fixtures/custom/**/*.js', tmp, {
+    defaultLocale: 'en',
+    moduleSourceName: '../i18n',
+    overwriteDefault: false
+  })
+  const en = JSON.parse(fs.readFileSync(path.resolve(tmp, 'en.json'), 'utf8'))
+  const ja = JSON.parse(fs.readFileSync(path.resolve(tmp, 'ja.json'), 'utf8'))
+  expect(en).toMatchSnapshot()
+  expect(ja).toMatchSnapshot()
+})
