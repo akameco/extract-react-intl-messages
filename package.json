@@ -15,7 +15,7 @@
   "main": "dist/index.js",
   "scripts": {
     "add-contributor": "all-contributors add",
-    "fmt": "prettier --write '**/*.{ts,json,js,md}'",
+    "fmt": "prettier --write .",
     "example": "./cli.js -l=en,ja -o example/i18n -d en --extractFromFormatMessageCall=true 'example/**/*.{js,tsx}'",
     "prepublish": "npm run build",
     "build": "tsc",
@@ -81,7 +81,7 @@
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "react": "^16.13.0",
     "react-intl": "^3.2.0",
     "temp-write": "^4.0.0",

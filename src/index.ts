@@ -109,7 +109,7 @@ const extractMessage = async (
   )
 
   return Promise.all(
-    locales.map(locale => {
+    locales.map((locale) => {
       // If the default locale, overwrite the origin file
       let localeMap =
         locale === defaultLocale

@@ -30,7 +30,7 @@ const concatArray = (obj: string[], src: string) => {
 const createResolveList = (
   fn: (name: string, dirname: string) => string | null
 ) => (list: PluginItem[], cwd: string) =>
-  list.map(x => (typeof x === 'string' ? fn(x, cwd) : x))
+  list.map((x) => (typeof x === 'string' ? fn(x, cwd) : x))
 
 const resolvePresets = createResolveList(resolvePreset)
 const resolvePlugins = createResolveList(resolvePlugin)
@@ -103,7 +103,7 @@ export default async (
 
   if (
     !plugins.find(
-      plugin => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+      (plugin) => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
     )
   ) {
     // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
