@@ -10,7 +10,7 @@
     "url": "https://akameco.github.io"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "main": "dist/index.js",
   "scripts": {
