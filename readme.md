@@ -107,7 +107,6 @@ $ extract-messages --help
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
   $ extract-messages -l=ja,en -o i18n 'src/**/*.js'
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
-  $ extract-messages -l=ja,en -o i18n 'src/**/*.js' --extractFromFormatMessageCall
 ```
 
 ### create-react-app user
