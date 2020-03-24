@@ -19,7 +19,7 @@
     "prepublish": "npm run build",
     "build": "tsc",
     "lint": "eslint src/**/*.ts --fix --cache",
-    "test": "npm run lint && jest"
+    "test": "jest"
   },
   "bin": {
     "extract-react-intl-messages": "cli.js",
