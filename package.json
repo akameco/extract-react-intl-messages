@@ -15,7 +15,8 @@
   "main": "dist/index.js",
   "scripts": {
     "fmt": "prettier --write .",
-    "example": "./cli.js -l=en,ja -o example/i18n -d en --extractFromFormatMessageCall=true 'example/**/*.{js,tsx}'",
+    "example": "./cli.js -l=en,ja -o example/i18n -d en 'example/**/*.{js,tsx}'",
+    "example:yaml": "./cli.js -l=en,ja -f=yaml -o example/i18n -d en 'example/**/*.{js,tsx}'",
     "prepublish": "npm run build",
     "build": "tsc",
     "lint": "eslint src/**/*.ts --fix --cache",
