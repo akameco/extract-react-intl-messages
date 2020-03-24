@@ -60,7 +60,8 @@ const cli = meow(
         type: 'boolean'
       },
       extractFromFormatMessageCall: {
-        type: 'boolean'
+        type: 'boolean',
+        default: true
       }
     }
   }
