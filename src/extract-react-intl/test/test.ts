@@ -36,7 +36,7 @@ test('error', async () => {
   await m(locales, 'notfound', {
     defaultLocale: 'en',
     cwd: `${__dirname}/fixtures`
-  }).catch(error => {
+  }).catch((error) => {
     expect(error.message).toMatch('File not found')
   })
 })

@@ -1,3 +1,4 @@
 **/test/fixtures/**
 .github
+dist
 package.json

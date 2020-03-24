@@ -30,7 +30,7 @@ const concatArray = (obj: string[], src: string) => {
 const createResolveList = (
   fn: (name: string, dirname: string) => string | null
 ) => (list: PluginItem[], cwd: string) =>
-  list.map(x => (typeof x === 'string' ? fn(x, cwd) : x))
+  list.map((x) => (typeof x === 'string' ? fn(x, cwd) : x))
 
 const resolvePresets = createResolveList(resolvePreset)
 const resolvePlugins = createResolveList(resolvePlugin)
@@ -53,11 +53,21 @@ const getBabelrc = (cwd: string) => {
 const getBabelrcDir = (cwd: string) =>
   path.dirname(readBabelrcUp.sync({ cwd }).path)
 
+const babelPluginReactIntlOptions = [
+  'moduleSourceName',
+  'extractSourceLocation',
+  'messagesDir',
+  'overrideIdFn',
+  'removeDefaultMessage',
+  'extractFromFormatMessageCall',
+  'additionalComponentNames'
+]
+
 type Options = {
+  [key: string]: unknown
   defaultLocale?: string
   cwd?: string
   withDescriptions?: boolean
-  [key: string]: unknown
 }
 
 type Message = {
@@ -91,7 +101,26 @@ export default async (
   const presets = babelrc.presets || []
   const plugins = babelrc.plugins || []
 
-  presets.unshift({ plugins: [[babelPluginReactIntl, pluginOptions]] })
+  if (
+    !plugins.find(
+      (plugin) => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+    )
+  ) {
+    // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
+    presets.unshift({
+      plugins: [
+        [
+          babelPluginReactIntl,
+          Object.entries(pluginOptions).reduce((acc, [key, value]) => {
+            if (babelPluginReactIntlOptions.includes(key)) {
+              return { ...acc, [key]: value }
+            }
+            return acc
+          }, {})
+        ]
+      ]
+    })
+  }
 
   const extractFromFile = async (file: string) => {
     const babelOpts = {

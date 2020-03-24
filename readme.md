@@ -1,6 +1,6 @@
 # extract-react-intl-messages
 
-[![Build Status](https://travis-ci.org/akameco/extract-react-intl-messages.svg?branch=master)](https://travis-ci.org/akameco/extract-react-intl-messages)
+[![test](https://github.com/akameco/extract-react-intl-messages/workflows/test/badge.svg)](https://github.com/akameco/extract-react-intl-messages/actions?query=workflow%3Atest)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
@@ -209,6 +209,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/zarv1k"><img src="https://avatars1.githubusercontent.com/u/6296643?v=4" width="100px;" alt="Dmitry Zarva"/><br /><sub><b>Dmitry Zarva</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=zarv1k" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/panpanc"><img src="https://avatars2.githubusercontent.com/u/29132669?v=4" width="100px;" alt="Michael Pan"/><br /><sub><b>Michael Pan</b></sub></a><br /><a href="#example-panpanc" title="Examples">💡</a></td>
     <td align="center"><a href="https://webstep.no"><img src="https://avatars2.githubusercontent.com/u/231492?v=4" width="100px;" alt="Tom Erik Støwer"/><br /><sub><b>Tom Erik Støwer</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=testower" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/lensbart"><img src="https://avatars2.githubusercontent.com/u/20876627?s=460&v=4" width="100px;" alt="Bart Lens"/><br /><sub><b>Bart Lens</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lensbart" title="Code">💻</a></td>
   </tr>
 </table>
 

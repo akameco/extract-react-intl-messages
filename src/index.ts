@@ -58,13 +58,11 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
 }
 
 type Opts = {
+  [key: string]: unknown
   defaultLocale: string
   format?: string
   flat?: boolean
-  [key: string]: unknown
 }
-
-export const extractReactIntl = _extractReactIntl
 
 // eslint-disable-next-line max-lines-per-function
 const extractMessage = async (
@@ -112,7 +110,7 @@ const extractMessage = async (
   )
 
   return Promise.all(
-    locales.map(locale => {
+    locales.map((locale) => {
       // If the default locale, overwrite the origin file
       let localeMap =
         locale === defaultLocale && overwriteDefault
@@ -124,7 +122,7 @@ const extractMessage = async (
 
       const fomattedLocaleMap: object = flat
         ? sortKeys(localeMap, { deep: true })
-        : unflatten(sortKeys(localeMap), { object: true })
+        : sortKeys(unflatten(localeMap, { object: true }), { deep: true })
 
       const fn = isJson(format) ? writeJson : writeYaml
 
@@ -132,6 +130,8 @@ const extractMessage = async (
     })
   )
 }
+
+extractMessage.extractReactIntl = _extractReactIntl
 
 export default extractMessage
 
