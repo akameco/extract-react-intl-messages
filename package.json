@@ -14,7 +14,6 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "add-contributor": "all-contributors add",
     "fmt": "prettier --write .",
     "example": "./cli.js -l=en,ja -o example/i18n -d en --extractFromFormatMessageCall=true 'example/**/*.{js,tsx}'",
     "prepublish": "npm run build",
@@ -73,7 +72,6 @@
     "@types/pify": "^3.0.2",
     "@types/temp-write": "^4.0.0",
     "@types/tempy": "^0.3.0",
-    "all-contributors-cli": "^6.14.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-react-intl-auto": "^2.2.0",
     "eslint": "^6.8.0",
