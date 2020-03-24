@@ -1,7 +1,6 @@
 # extract-react-intl-messages
 
 [![test](https://github.com/akameco/extract-react-intl-messages/workflows/test/badge.svg)](https://github.com/akameco/extract-react-intl-messages/actions?query=workflow%3Atest)
-[![Build Status](https://travis-ci.org/akameco/extract-react-intl-messages.svg?branch=master)](https://travis-ci.org/akameco/extract-react-intl-messages)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
