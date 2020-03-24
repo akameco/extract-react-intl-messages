@@ -14,7 +14,7 @@ const cli = meow(
   -l, --locales           locales [require: true]
   -f, --format            json | yaml [default: json]
   -d, --default-locale    default locale
-  --overwriteDefault      default: false
+  --overwriteDefault      [default: true]
   --flat                  json [default: true] | yaml [default: false]
 
   Example
