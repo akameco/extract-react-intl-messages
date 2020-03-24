@@ -80,9 +80,9 @@
     "eslint-config-precure": "^5.3.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.8",
+    "lint-staged": "^10.0.9",
     "prettier": "^2.0.2",
-    "react": "^16.13.0",
+    "react": "^16.13.1",
     "react-intl": "^3.2.0",
     "temp-write": "^4.0.0",
     "tempy": "^0.5.0",
@@ -92,12 +92,10 @@
   "lint-staged": {
     "*.{ts}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{js,json,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "husky": {
