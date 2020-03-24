@@ -14,7 +14,7 @@ const cli = meow(
   -l, --locales           locales [require: true]
   -f, --format            json | yaml [default: json]
   -d, --default-locale    default locale
-  -w, --overwrite-default default: false
+  --overwriteDefault      default: false
   --flat                  json [default: true] | yaml [default: false]
 
   Example
@@ -43,13 +43,13 @@ const cli = meow(
         type: 'string',
         alias: 'd'
       },
+      overwriteDefault: {
+        type: 'boolean',
+        default: true
+      },
       withDescriptions: {
         type: 'boolean',
         default: false
-      },
-      'overwrite-default': {
-        type: 'boolean',
-        default: true
       },
       // babel-plugin-react-intl boolean options
       extractSourceLocation: {

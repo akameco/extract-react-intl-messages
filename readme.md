@@ -100,7 +100,7 @@ $ extract-messages --help
   -l, --locales           locales [require: true]
   -f, --format            json | yaml [default: json]
   -d, --default-locale    default locale
-  -w, --overwrite-default default: false
+  --overwriteDefault      default: false
   --flat                  json [default: true] | yaml [default: false]
 
   Example

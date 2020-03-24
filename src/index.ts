@@ -62,6 +62,7 @@ type Opts = {
   defaultLocale: string
   format?: string
   flat?: boolean
+  overwriteDefault?: boolean
 }
 
 // eslint-disable-next-line max-lines-per-function
