@@ -209,6 +209,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/panpanc"><img src="https://avatars2.githubusercontent.com/u/29132669?v=4" width="100px;" alt=""/><br /><sub><b>Michael Pan</b></sub></a><br /><a href="#example-panpanc" title="Examples">💡</a></td>
     <td align="center"><a href="https://github.com/testower"><img src="https://avatars2.githubusercontent.com/u/231492?v=4" width="100px;" alt=""/><br /><sub><b>Tom Erik Støwer</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=testower" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://nextbook.io"><img src="https://avatars0.githubusercontent.com/u/20876627?v=4" width="100px;" alt=""/><br /><sub><b>Bart Lens</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lensbart" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
