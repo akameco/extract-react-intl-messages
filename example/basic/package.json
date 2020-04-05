@@ -1,0 +1,18 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "i18n": "NODE_ENV=development extract-messages -l=en,ja -o i18n -d en 'src/**/*.{js,tsx}'"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-intl": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "babel-preset-react-app": "^9.1.2",
+    "extract-react-intl-messages": "latest"
+  }
+}
