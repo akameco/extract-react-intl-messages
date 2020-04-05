@@ -129,7 +129,7 @@ $ NODE_ENV=development extract-messages ...
 
 babel required.
 
-See [./example/with-typescript]
+See [example/with-typescript](example/with-typescript)
 
 ```
 npm install --save-dev @babel/core @babel/preset-typescript @babel/preset-react
