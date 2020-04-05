@@ -1,0 +1,10 @@
+{
+  "App": {
+    "hello": "Hello Button",
+    "submit": "Submit Button"
+  },
+  "a": {
+    "hello": "hello",
+    "world": "world"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "with-typescript",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "i18n": "extract-messages -l=en,ja -o i18n -d en 'src/**/*.{ts,tsx}'"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-intl": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "extract-react-intl-messages": "latest",
+    "typescript": "^3.8.3"
+  }
+}

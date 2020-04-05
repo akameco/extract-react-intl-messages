@@ -125,6 +125,28 @@ Run with `NODE_ENV=development`.
 $ NODE_ENV=development extract-messages ...
 ```
 
+### TypeScript
+
+babel required.
+
+See [./example/with-typescript]
+
+```
+npm install --save-dev @babel/core @babel/preset-typescript @babel/preset-react
+```
+
+`babel.config.js`
+
+```js
+module.exports = function (api) {
+  api.cache(true)
+
+  return {
+    presets: ['@babel/preset-react', '@babel/preset-typescript']
+  }
+}
+```
+
 ## API
 
 ### extractReactIntlMessages(locales, input, buildDir, [options])
