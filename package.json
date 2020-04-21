@@ -23,12 +23,11 @@
     "test": "jest"
   },
   "bin": {
-    "extract-react-intl-messages": "cli.js",
-    "extract-messages": "cli.js"
+    "extract-react-intl-messages": "dist/cli.js",
+    "extract-messages": "dist/cli.js"
   },
   "files": [
-    "dist",
-    "cli.js"
+    "dist"
   ],
   "keywords": [
     "react",

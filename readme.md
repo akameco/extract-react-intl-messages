@@ -99,7 +99,7 @@ $ extract-messages --help
   -o, --output            Output directory [require: true]
   -l, --locales           locales [require: true]
   -f, --format            json | yaml [default: json]
-  -d, --default-locale    default locale
+  -d, --defaultLocale     default locale
   --overwriteDefault      default: false
   --flat                  json [default: true] | yaml [default: false]
 
