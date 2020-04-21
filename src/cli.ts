@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-'use strict'
-const meow = require('meow')
-const fn = require('./dist').default
+import meow from 'meow'
+import extractMessage from '.'
 
 const cli = meow(
   `
@@ -39,7 +38,7 @@ const cli = meow(
         alias: 'f',
         default: 'json'
       },
-      'default-locale': {
+      defaultLocale: {
         type: 'string',
         alias: 'd'
       },
@@ -81,4 +80,4 @@ if (!locales || typeof locales !== 'string') {
 
 const localesMap = locales.split(',')
 
-fn(localesMap, cli.input[0], output, cli.flags)
+extractMessage(localesMap, cli.input[0], output, cli.flags)
