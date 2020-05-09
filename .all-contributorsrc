@@ -150,8 +150,20 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "revskill10",
+      "name": "Truong Hoang Dung",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1390196?v=4",
+      "profile": "https://github.com/revskill10",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "repoType": "github",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributorsPerLine": 7
 }
