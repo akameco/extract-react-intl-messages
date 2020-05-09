@@ -233,12 +233,12 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
   </tr>
   <tr>
     <td align="center"><a href="https://nextbook.io"><img src="https://avatars0.githubusercontent.com/u/20876627?v=4" width="100px;" alt=""/><br /><sub><b>Bart Lens</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lensbart" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/revskill10"><img src="https://avatars3.githubusercontent.com/u/1390196?v=4" width="100px;" alt=""/><br /><sub><b>Truong Hoang Dung</b></sub></a><br /><a href="#example-revskill10" title="Examples">💡</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
