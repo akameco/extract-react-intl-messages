@@ -1165,6 +1165,13 @@
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
   integrity sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
 
+"@types/file-entry-cache@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/file-entry-cache/-/file-entry-cache-5.0.0.tgz#84dced293b3b80485afd454696eb4c420c7591ae"
+  integrity sha512-K1Q4O4PwDaMG3hOfvnWNtmjbUHHRkxeYfMlUCoT1abxeaYM0H8aDLE5wFcI29PNWhBdcES9VtACAMnAM8IerOQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/flat@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@types/flat/-/flat-5.0.0.tgz#de18742aea57ce3dd2c093c7d2ba8fd3a4135b53"

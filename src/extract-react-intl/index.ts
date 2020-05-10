@@ -11,6 +11,7 @@ import {
 } from '@babel/core'
 import readBabelrcUp from 'read-babelrc-up'
 import babelPluginReactIntl from 'babel-plugin-react-intl'
+import fileEntryCache, { FileDescriptor } from 'file-entry-cache'
 
 type LocaleMap = Record<string, Record<string, {}>>
 
@@ -67,6 +68,8 @@ type Options = {
   [key: string]: unknown
   defaultLocale?: string
   cwd?: string
+  cache?: boolean
+  cacheLocation?: string
   withDescriptions?: boolean
 }
 
@@ -74,6 +77,17 @@ type Message = {
   id: string
   defaultMessage: string
   description: string
+}
+
+type CacheData = {
+  defaultLocale: string
+  localeMap: LocaleMap
+}
+
+type File = FileDescriptor & {
+  meta: {
+    data: CacheData
+  }
 }
 
 // eslint-disable-next-line max-lines-per-function
@@ -84,6 +98,8 @@ export default async (
     defaultLocale = 'en',
     withDescriptions = false,
     cwd = process.cwd(),
+    cache: cacheEnabled = false,
+    cacheLocation = '.extract-react-intl-messages-cache',
     ...pluginOptions
   }: Options = {}
 ) => {
@@ -122,6 +138,19 @@ export default async (
     })
   }
 
+  const files: string[] = await pify(glob)(pattern)
+  if (files.length === 0) {
+    throw new Error(`File not found (${pattern})`)
+  }
+
+  const cachePath = path.resolve(cacheLocation)
+  const cacheDirname = path.dirname(cachePath)
+  const cacheBasename = path.basename(cachePath)
+
+  const cache = cacheEnabled
+    ? fileEntryCache.create(cacheBasename, cacheDirname)
+    : null
+
   const extractFromFile = async (file: string) => {
     const babelOpts = {
       presets: resolvePresets(presets, babelrcDir),
@@ -131,7 +160,6 @@ export default async (
     const localeObj = localeMap(locales)
     const result = metadata['react-intl'].messages as Message[]
     for (const { id, defaultMessage, description } of result) {
-      // eslint-disable-next-line no-unused-vars
       for (const locale of locales) {
         const message = defaultLocale === locale ? defaultMessage : ''
         localeObj[locale][id] = withDescriptions
@@ -142,10 +170,36 @@ export default async (
     return localeObj
   }
 
-  const files: string[] = await pify(glob)(pattern)
-  if (files.length === 0) {
-    throw new Error(`File not found (${pattern})`)
+  const extractFromCache = async (file: string) => {
+    if (cache === null) {
+      return extractFromFile(file)
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+    const cachedLocaleObj = cache?.getFileDescriptor(file) as File | undefined
+    const changed = cachedLocaleObj?.changed
+    const data = cachedLocaleObj?.meta.data
+
+    if (changed === false && data?.defaultLocale === defaultLocale) {
+      return data.localeMap
+    }
+
+    const localeObj = await extractFromFile(file)
+
+    if (cachedLocaleObj) {
+      cachedLocaleObj.meta.data = { defaultLocale, localeMap: localeObj }
+    }
+
+    return localeObj
   }
-  const arr = await Promise.all(files.map(extractFromFile))
+
+  const extract = cacheEnabled ? extractFromCache : extractFromFile
+
+  const arr = await Promise.all(files.map(extract))
+
+  if (cache) {
+    cache.reconcile()
+  }
+
   return arr.reduce((h, obj) => merge(h, obj), localeMap(locales))
 }
