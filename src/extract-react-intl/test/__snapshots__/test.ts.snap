@@ -31,6 +31,52 @@ Object {
 }
 `;
 
+exports[`extract from file by enabling cache and extract from cache 1`] = `
+Object {
+  "en": Object {
+    "components.App.1248161314": "Submit button",
+    "components.App.hello": "hello",
+    "components.App.world": "world",
+    "components/Greeting/welcome": "
+    Welcome {name}, you have received {unreadCount, plural,
+      =0 {no new messages}
+      one {{formattedUnreadCount} new message}
+      other {{formattedUnreadCount} new messages}
+    } since {formattedLastLoginTime}.
+    ",
+  },
+  "ja": Object {
+    "components.App.1248161314": "",
+    "components.App.hello": "",
+    "components.App.world": "",
+    "components/Greeting/welcome": "",
+  },
+}
+`;
+
+exports[`extract from file by enabling cache and extract from cache 2`] = `
+Object {
+  "en": Object {
+    "components.App.1248161314": "Submit button",
+    "components.App.hello": "hello",
+    "components.App.world": "world",
+    "components/Greeting/welcome": "
+    Welcome {name}, you have received {unreadCount, plural,
+      =0 {no new messages}
+      one {{formattedUnreadCount} new message}
+      other {{formattedUnreadCount} new messages}
+    } since {formattedLastLoginTime}.
+    ",
+  },
+  "ja": Object {
+    "components.App.1248161314": "",
+    "components.App.hello": "",
+    "components.App.world": "",
+    "components/Greeting/welcome": "",
+  },
+}
+`;
+
 exports[`extract from file with descriptions 1`] = `
 Object {
   "en": Object {
