@@ -15,6 +15,8 @@ const cli = meow(
   -d, --default-locale    default locale
   --overwriteDefault      [default: true]
   --flat                  json [default: true] | yaml [default: false]
+  --cache                 [default: false]
+  --cacheLocation         [default: .extract-react-intl-messages-cache]
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
