@@ -102,6 +102,8 @@ $ extract-messages --help
   -d, --defaultLocale     default locale
   --overwriteDefault      default: false
   --flat                  json [default: true] | yaml [default: false]
+  --indent                default: 2
+
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -191,6 +193,11 @@ Default: true
 
 If overwriteDefault is `false`, it will not overwrite messages in the default locale.
 
+##### indent
+
+Type: `number`<br>
+Default: `2`
+
 ##### flat
 
 Type: `boolean`<br>
@@ -239,6 +246,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
