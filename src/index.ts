@@ -10,12 +10,12 @@ import writeJsonFile from 'write-json-file'
 import sortKeys from 'sort-keys'
 import _extractReactIntl from './extract-react-intl'
 
-const writeJson = (outputPath: string, obj: object) => {
-  return writeJsonFile(`${outputPath}.json`, obj, { indent: 2 })
+const writeJson = (outputPath: string, obj: object, indent: number) => {
+  return writeJsonFile(`${outputPath}.json`, obj, { indent })
 }
 
-const writeYaml = (outputPath: string, obj: object) => {
-  return pify(fs.writeFile)(`${outputPath}.yml`, yaml.safeDump(obj), 'utf8')
+const writeYaml = (outputPath: string, obj: object, indent: number) => {
+  return pify(fs.writeFile)(`${outputPath}.yml`, yaml.safeDump(obj, { indent }), 'utf8')
 }
 
 const isJson = (ext: string) => ext === 'json'
@@ -63,6 +63,7 @@ type Opts = {
   format?: string
   flat?: boolean
   overwriteDefault?: boolean
+  indent?: number
 }
 
 // eslint-disable-next-line max-lines-per-function
@@ -127,7 +128,7 @@ const extractMessage = async (
 
       const fn = isJson(format) ? writeJson : writeYaml
 
-      return fn(path.resolve(buildDir, locale), fomattedLocaleMap)
+      return fn(path.resolve(buildDir, locale), fomattedLocaleMap, indent)
     })
   )
 }

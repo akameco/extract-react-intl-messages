@@ -63,7 +63,11 @@ const cli = meow(
       extractFromFormatMessageCall: {
         type: 'boolean',
         default: true
-      }
+      },
+      indent: {
+        type: 'number',
+        default: 2
+      },
     }
   }
 )
