@@ -74,6 +74,12 @@ type Message = {
   id: string
   defaultMessage: string
   description: string
+  partners?: string;
+  partnerVariations?: PartnerVariations
+}
+
+interface PartnerVariations {
+  [key: string]: string
 }
 
 // eslint-disable-next-line max-lines-per-function
@@ -127,16 +133,20 @@ export default async (
       presets: resolvePresets(presets, babelrcDir),
       plugins: resolvePlugins(plugins, babelrcDir)
     }
+
     const { metadata } = await pify(transformFile)(file, babelOpts)
+    
     const localeObj = localeMap(locales)
+    console.log('>>>', localeMap(locales))
     const result = metadata['react-intl'].messages as Message[]
+    console.log('json===', JSON.parse(JSON.stringify(result, null, 2)))
     for (const { id, defaultMessage, description, partners, partnerVariations } of result) {
       // eslint-disable-next-line no-unused-vars
       for (const locale of locales) {
         const message = defaultLocale === locale ? defaultMessage : ''
         localeObj[locale][id] = withDescriptions
         ? { message, description, partners, partnerVariations }
-        : {message, partners, partnerVariations};
+        : {message, partners, partnerVariations}; 
       }
     }
     return localeObj

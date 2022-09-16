@@ -2,8 +2,6 @@ import path from 'path'
 import fs from 'fs'
 import mkdirp from 'mkdirp'
 import pick from 'lodash.pick'
-import pickBy from 'lodash.pickby'
-import mapValues from 'lodash.mapvalues'
 import yaml from 'js-yaml'
 import pify from 'pify'
 import { flatten, unflatten } from 'flat'
@@ -124,58 +122,12 @@ const extractMessage = async (
       localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
 
       const fomattedLocaleMap: object = flat
-        ? sortKeys(flatten(mapValues(localeMap, (a) => a.message)), {
-            deep: true
-          })
+        ? sortKeys(localeMap, { deep: true })
         : sortKeys(unflatten(localeMap, { object: true }), { deep: true })
 
-      const fomattedPartnerVariationMap = {}
-      const partnerVariationMap = pickBy(
-        mapValues(localeMap, (a) => a.partnerVariations),
-        (a) => a
-      )
-      for (const [key, value] of Object.entries(partnerVariationMap)) {
-        for (const [partnerKey, partnerValue] of Object.entries(value)) {
-          Object.assign(fomattedPartnerVariationMap, {
-            [partnerKey]: {
-              ...fomattedPartnerVariationMap[partnerKey],
-              [key]: partnerValue
-            }
-          })
-        }
-      }
-      const partnerMap = sortKeys(localeMap, { deep: true })
-      for (const key in partnerMap) {
-        if (key) {
-          partnerMap[key] = partnerMap[key].partners
-        }
-      }
       const fn = isJson(format) ? writeJson : writeYaml
 
-      return Promise.all([
-        fn(path.default.resolve(buildDir, locale), fomattedLocaleMap),
-        Object.keys(fomattedPartnerVariationMap).map((partnerKey) =>
-          fn(
-            path_1.default.resolve(
-              buildDir,
-              `${locale}__[partner]${partnerKey}`
-            ),
-            sort_keys_1.default(fomattedPartnerVariationMap[partnerKey], {
-              deep: true
-            })
-          )
-        ),
-        fn(
-          path_1.default.resolve(
-            buildDir,
-            '..',
-            '..',
-            'partners',
-            'partner-strings'
-          ),
-          partnerMap
-        )
-      ])
+      return fn(path.resolve(buildDir, locale), fomattedLocaleMap)
     })
   )
 }
