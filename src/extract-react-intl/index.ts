@@ -70,10 +70,16 @@ type Options = {
   withDescriptions?: boolean
 }
 
+type PartnerVariation = {
+  [key: string]: string
+}
+
 type Message = {
   id: string
   defaultMessage: string
   description: string
+  partners: string
+  partnerVariations: PartnerVariation
 }
 
 // eslint-disable-next-line max-lines-per-function
@@ -130,13 +136,19 @@ export default async (
     const { metadata } = await pify(transformFile)(file, babelOpts)
     const localeObj = localeMap(locales)
     const result = metadata['react-intl'].messages as Message[]
-    for (const { id, defaultMessage, description } of result) {
+    for (const {
+      id,
+      defaultMessage,
+      description,
+      partners,
+      partnerVariations
+    } of result) {
       // eslint-disable-next-line no-unused-vars
       for (const locale of locales) {
         const message = defaultLocale === locale ? defaultMessage : ''
         localeObj[locale][id] = withDescriptions
-          ? { message, description }
-          : message
+          ? { message, description, partners, partnerVariations }
+          : { message, partners, partnerVariations }
       }
     }
     return localeObj

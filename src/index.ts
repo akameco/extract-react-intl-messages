@@ -1,7 +1,11 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable no-console */
 import path from 'path'
 import fs from 'fs'
 import mkdirp from 'mkdirp'
 import pick from 'lodash.pick'
+import pickBy from 'lodash.pickby'
+import mapValues from 'lodash.mapvalues'
 import yaml from 'js-yaml'
 import pify from 'pify'
 import { flatten, unflatten } from 'flat'
@@ -9,6 +13,16 @@ import loadJsonFile from 'load-json-file'
 import writeJsonFile from 'write-json-file'
 import sortKeys from 'sort-keys'
 import _extractReactIntl from './extract-react-intl'
+
+type PartnerVariation = {
+  [key: string]: string
+}
+
+type ReturnedLocale = {
+  message: string
+  partners?: string[]
+  partnerVariations?: PartnerVariation
+}
 
 const writeJson = (outputPath: string, obj: object) => {
   return writeJsonFile(`${outputPath}.json`, obj, { indent: 2 })
@@ -121,13 +135,68 @@ const extractMessage = async (
       // Only keep existing keys
       localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
 
-      const fomattedLocaleMap: object = flat
-        ? sortKeys(localeMap, { deep: true })
-        : sortKeys(unflatten(localeMap, { object: true }), { deep: true })
+      const fomattedLocaleMap: ReturnedLocale = flat
+        ? sortKeys(
+            flatten(mapValues(localeMap, (a: ReturnedLocale) => a.message)),
+            {
+              deep: true
+            }
+          )
+        : sortKeys(unflatten(localeMap, { object: true }), {
+            deep: true
+          })
 
       const fn = isJson(format) ? writeJson : writeYaml
 
-      return fn(path.resolve(buildDir, locale), fomattedLocaleMap)
+      const formattedPartnerVariationMap: {
+        [key: string]: { [key: string]: string }
+      } = {}
+
+      const partnerVariationMap = pickBy(
+        mapValues(localeMap, (a: ReturnedLocale) => a.partnerVariations),
+        (a) => a
+      )
+
+      for (const [key, value] of Object.entries(partnerVariationMap)) {
+        for (const [partnerKey, partnerValue] of Object.entries(value)) {
+          Object.assign(formattedPartnerVariationMap, {
+            [partnerKey]: {
+              ...formattedPartnerVariationMap[partnerKey],
+              [key]: partnerValue
+            }
+          })
+        }
+      }
+
+      const partnerMap = sortKeys(localeMap, { deep: true }) as {
+        [key: string]: ReturnedLocale
+      }
+
+      const formattedPartnerMap = {}
+
+      for (const key in partnerMap) {
+        if (partnerMap[key].partners) {
+          Object.assign(formattedPartnerMap, {
+            [key]: partnerMap[key].partners
+          })
+        }
+      }
+      return Promise.all([
+        fn(path.resolve(buildDir, locale), fomattedLocaleMap),
+        Object.keys(formattedPartnerVariationMap).map(
+          (partnerKey) =>
+            fn(
+              path.resolve(buildDir, `${locale}__[partner]${partnerKey}`),
+              sortKeys(formattedPartnerVariationMap[partnerKey], {
+                deep: true
+              })
+            ),
+          fn(
+            path.resolve(buildDir, '..', '..', 'partners', 'partner-strings'),
+            formattedPartnerMap
+          )
+        )
+      ])
     })
   )
 }
