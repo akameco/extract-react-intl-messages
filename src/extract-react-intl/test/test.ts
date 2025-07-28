@@ -13,6 +13,27 @@ test('extract from file', async () => {
   expect(x).toMatchSnapshot()
 })
 
+test('extract from file by enabling cache and extract from cache', async () => {
+  process.env.BABEL_ENV = 'react-intl'
+  const x = await m(locales, pattern, {
+    defaultLocale: 'en',
+    cwd: `${__dirname}/fixtures`,
+    extractFromFormatMessageCall: true,
+    cache: true,
+    cacheLocation: '.test-cache'
+  })
+  expect(x).toMatchSnapshot()
+
+  const y = await m(locales, pattern, {
+    defaultLocale: 'en',
+    cwd: `${__dirname}/fixtures`,
+    extractFromFormatMessageCall: true,
+    cache: true,
+    cacheLocation: '.test-cache'
+  })
+  expect(y).toMatchSnapshot()
+})
+
 // TODO: fix
 test.skip('babelrc path resolution', async () => {
   const x = await m(['en'], './extract-react-intl/test/resolution/**/*.js', {
