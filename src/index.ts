@@ -15,7 +15,11 @@ const writeJson = (outputPath: string, obj: object, indent: number) => {
 }
 
 const writeYaml = (outputPath: string, obj: object, indent: number) => {
-  return pify(fs.writeFile)(`${outputPath}.yml`, yaml.safeDump(obj, { indent }), 'utf8')
+  return pify(fs.writeFile)(
+    `${outputPath}.yml`,
+    yaml.safeDump(obj, { indent }),
+    'utf8'
+  )
 }
 
 const isJson = (ext: string) => ext === 'json'
