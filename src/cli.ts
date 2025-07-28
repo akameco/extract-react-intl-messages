@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import meow from 'meow'
 import extractMessage from '.'
 

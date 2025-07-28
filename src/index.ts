@@ -1,7 +1,6 @@
 import path from 'path'
 import fs from 'fs'
 import mkdirp from 'mkdirp'
-import pick from 'lodash.pick'
 import yaml from 'js-yaml'
 import pify from 'pify'
 import { flatten, unflatten } from 'flat'
@@ -38,6 +37,7 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
       const output = isJson(ext) ? JSON.stringify({}) : yaml.safeDump({})
       fs.writeFileSync(file, output, { flag: 'wx' })
     } catch (error) {
+      // @ts-expect-error
       if (error.code !== 'EEXIST') {
         throw error
       }
@@ -50,9 +50,12 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
     messages = flatten(messages)
 
     oldLocaleMaps[locale] = {}
+    // @ts-expect-error
     for (const messageKey of Object.keys(messages)) {
+      // @ts-expect-error
       const message = messages[messageKey]
       if (message && typeof message === 'string' && message !== '') {
+        // @ts-expect-error
         oldLocaleMaps[locale][messageKey] = messages[messageKey]
       }
     }
@@ -125,7 +128,11 @@ const extractMessage = async (
             { ...oldLocaleMaps[locale], ...newLocaleMaps[locale] }
           : { ...newLocaleMaps[locale], ...oldLocaleMaps[locale] }
       // Only keep existing keys
-      localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
+      localeMap = Object.fromEntries(
+        Object.entries(localeMap).filter(([key]) =>
+          Object.keys(newLocaleMaps[locale]).includes(key)
+        )
+      )
 
       const fomattedLocaleMap: object = flat
         ? sortKeys(localeMap, { deep: true })

@@ -13,10 +13,10 @@ import readBabelrcUp from 'read-babelrc-up'
 import babelPluginReactIntl from 'babel-plugin-react-intl'
 import fileEntryCache, { FileDescriptor } from 'file-entry-cache'
 
-type LocaleMap = Record<string, Record<string, {}>>
+type LocaleMap = Record<string, Record<string, unknown>>
 
 const localeMap = (arr: string[]): LocaleMap =>
-  arr.reduce((obj: Record<string, {}>, x: string) => {
+  arr.reduce((obj: LocaleMap, x: string) => {
     obj[x] = {}
     return obj
   }, {})
@@ -28,10 +28,10 @@ const concatArray = (obj: string[], src: string) => {
   return undefined
 }
 
-const createResolveList = (
-  fn: (name: string, dirname: string) => string | null
-) => (list: PluginItem[], cwd: string) =>
-  list.map((x) => (typeof x === 'string' ? fn(x, cwd) : x))
+const createResolveList =
+  (fn: (name: string, dirname: string) => string | null) =>
+  (list: PluginItem[], cwd: string) =>
+    list.map((x) => (typeof x === 'string' ? fn(x, cwd) : x))
 
 const resolvePresets = createResolveList(resolvePreset)
 const resolvePlugins = createResolveList(resolvePlugin)
@@ -46,7 +46,7 @@ const getBabelrc = (cwd: string) => {
     const env = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
 
     return mergeWith(babelrc, babelrc.env[env], concatArray)
-  } catch (error) {
+  } catch {
     return { presets: [], plugins: [] }
   }
 }
@@ -54,7 +54,7 @@ const getBabelrc = (cwd: string) => {
 const getBabelrcDir = (cwd: string) =>
   path.dirname(readBabelrcUp.sync({ cwd }).path)
 
-const babelPluginReactIntlOptions = [
+const babelPluginReactIntlOptions = new Set([
   'moduleSourceName',
   'extractSourceLocation',
   'messagesDir',
@@ -62,7 +62,7 @@ const babelPluginReactIntlOptions = [
   'removeDefaultMessage',
   'extractFromFormatMessageCall',
   'additionalComponentNames'
-]
+])
 
 type Options = {
   [key: string]: unknown
@@ -90,7 +90,6 @@ type File = FileDescriptor & {
   }
 }
 
-// eslint-disable-next-line max-lines-per-function
 export default async (
   locales: string[],
   pattern: string,
@@ -128,7 +127,7 @@ export default async (
         [
           babelPluginReactIntl,
           Object.entries(pluginOptions).reduce((acc, [key, value]) => {
-            if (babelPluginReactIntlOptions.includes(key)) {
+            if (babelPluginReactIntlOptions.has(key)) {
               return { ...acc, [key]: value }
             }
             return acc
@@ -175,7 +174,6 @@ export default async (
       return extractFromFile(file)
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const cachedLocaleObj = cache?.getFileDescriptor(file) as File | undefined
     const changed = cachedLocaleObj?.changed
     const data = cachedLocaleObj?.meta.data
