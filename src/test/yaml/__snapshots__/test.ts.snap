@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`export yaml - flat 1`] = `
-Object {
+{
   "a.hello": "hello",
   "a.submit": "Submit Button",
   "a.world": "world",
@@ -11,7 +11,7 @@ Object {
 `;
 
 exports[`export yaml - flat 2`] = `
-Object {
+{
   "a.hello": "",
   "a.submit": "",
   "a.world": "",
@@ -21,13 +21,13 @@ Object {
 `;
 
 exports[`export yaml 1`] = `
-Object {
-  "a": Object {
+{
+  "a": {
     "hello": "hello",
     "submit": "Submit Button",
     "world": "world",
   },
-  "b": Object {
+  "b": {
     "hello": "hello",
     "world": "world",
   },
@@ -35,13 +35,13 @@ Object {
 `;
 
 exports[`export yaml 2`] = `
-Object {
-  "a": Object {
+{
+  "a": {
     "hello": "",
     "submit": "",
     "world": "",
   },
-  "b": Object {
+  "b": {
     "hello": "",
     "world": "",
   },
@@ -49,13 +49,13 @@ Object {
 `;
 
 exports[`exsit yaml 1`] = `
-Object {
-  "a": Object {
+{
+  "a": {
     "hello": "hello",
     "submit": "Submit Button",
     "world": "world",
   },
-  "b": Object {
+  "b": {
     "hello": "hello",
     "world": "world",
   },
@@ -63,13 +63,13 @@ Object {
 `;
 
 exports[`exsit yaml 2`] = `
-Object {
-  "a": Object {
+{
+  "a": {
     "hello": "hello2",
     "submit": "",
     "world": "",
   },
-  "b": Object {
+  "b": {
     "hello": "",
     "world": "",
   },
