@@ -28,10 +28,10 @@ const concatArray = (obj: string[], src: string) => {
   return undefined
 }
 
-const createResolveList = (
-  fn: (name: string, dirname: string) => string | null
-) => (list: PluginItem[], cwd: string) =>
-  list.map((x) => (typeof x === 'string' ? fn(x, cwd) : x))
+const createResolveList =
+  (fn: (name: string, dirname: string) => string | null) =>
+  (list: PluginItem[], cwd: string) =>
+    list.map((x) => (typeof x === 'string' ? fn(x, cwd) : x))
 
 const resolvePresets = createResolveList(resolvePreset)
 const resolvePlugins = createResolveList(resolvePlugin)

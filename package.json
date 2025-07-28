@@ -10,7 +10,7 @@
     "url": "https://akameco.github.io"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=20"
   },
   "main": "dist/index.js",
   "scripts": {
@@ -44,7 +44,7 @@
     "@babel/core": "^7.9.0",
     "babel-plugin-react-intl": "^7.0.0",
     "file-entry-cache": "^5.0.1",
-    "flat": "^5.0.0",
+    "flat": "^5.0.1",
     "glob": "^7.1.6",
     "js-yaml": "^3.13.1",
     "load-json-file": "^6.2.0",
@@ -69,12 +69,15 @@
     "@types/glob": "^7.1.1",
     "@types/jest": "^25.1.4",
     "@types/js-yaml": "^3.12.2",
+    "@types/load-json-file": "^2.0.7",
     "@types/lodash.merge": "^4.6.6",
     "@types/lodash.mergewith": "^4.6.6",
     "@types/lodash.pick": "^4.4.6",
     "@types/mkdirp": "^1.0.0",
+    "@types/node": "^24.1.0",
     "@types/pify": "^3.0.2",
     "@types/temp-write": "^4.0.0",
+    "@types/write-json-file": "^2.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-react-intl-auto": "^3.2.0",
     "eslint": "^6.8.0",
@@ -89,7 +92,7 @@
     "temp-write": "^4.0.0",
     "tempy": "^0.5.0",
     "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3"
+    "typescript": "^5.8.3"
   },
   "lint-staged": {
     "*.{ts}": [

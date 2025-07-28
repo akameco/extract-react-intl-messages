@@ -38,7 +38,7 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
       const output = isJson(ext) ? JSON.stringify({}) : yaml.safeDump({})
       fs.writeFileSync(file, output, { flag: 'wx' })
     } catch (error) {
-      if (error.code !== 'EEXIST') {
+      if ((error as any).code !== 'EEXIST') {
         throw error
       }
     }
@@ -50,9 +50,12 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
     messages = flatten(messages)
 
     oldLocaleMaps[locale] = {}
+    // @ts-expect-error
     for (const messageKey of Object.keys(messages)) {
+      // @ts-expect-error
       const message = messages[messageKey]
       if (message && typeof message === 'string' && message !== '') {
+        // @ts-expect-error
         oldLocaleMaps[locale][messageKey] = messages[messageKey]
       }
     }
