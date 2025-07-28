@@ -90,7 +90,6 @@ type File = FileDescriptor & {
   }
 }
 
- 
 export default async (
   locales: string[],
   pattern: string,
@@ -175,7 +174,6 @@ export default async (
       return extractFromFile(file)
     }
 
-     
     const cachedLocaleObj = cache?.getFileDescriptor(file) as File | undefined
     const changed = cachedLocaleObj?.changed
     const data = cachedLocaleObj?.meta.data

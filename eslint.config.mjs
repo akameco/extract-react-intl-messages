@@ -6,12 +6,12 @@ export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["src/**/*.ts"],
+    files: ['src/**/*.ts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         ecmaVersion: 2022,
-        sourceType: "module"
+        sourceType: 'module'
       }
     }
   },
