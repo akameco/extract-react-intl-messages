@@ -104,7 +104,6 @@ $ extract-messages --help
   --flat                  json [default: true] | yaml [default: false]
   --indent                default: 2
 
-
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
   $ extract-messages -l=ja,en -o i18n 'src/**/*.js'

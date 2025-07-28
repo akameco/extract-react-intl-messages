@@ -17,6 +17,7 @@ const cli = meow(
   --flat                  json [default: true] | yaml [default: false]
   --cache                 [default: false]
   --cacheLocation         [default: .extract-react-intl-messages-cache]
+  --indent                default: 2
 
   Example
   $ extract-messages --locales=ja,en --output app/translations 'app/**/*.js'
@@ -67,7 +68,7 @@ const cli = meow(
       indent: {
         type: 'number',
         default: 2
-      },
+      }
     }
   }
 )

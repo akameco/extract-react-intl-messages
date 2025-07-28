@@ -76,6 +76,7 @@ const extractMessage = async (
     flat = isJson(format),
     defaultLocale = 'en',
     overwriteDefault = true,
+    indent = 2,
     ...opts
   }: Opts = {
     defaultLocale: 'en'
