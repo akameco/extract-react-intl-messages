@@ -242,6 +242,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
       <td align="center" valign="top" width="14.28%"><a href="https://nextbook.io"><img src="https://avatars0.githubusercontent.com/u/20876627?v=4?s=100" width="100px;" alt="Bart Lens"/><br /><sub><b>Bart Lens</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lensbart" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/revskill10"><img src="https://avatars3.githubusercontent.com/u/1390196?v=4?s=100" width="100px;" alt="Truong Hoang Dung"/><br /><sub><b>Truong Hoang Dung</b></sub></a><br /><a href="#example-revskill10" title="Examples">💡</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Nestoro"><img src="https://avatars.githubusercontent.com/u/13397845?v=4?s=100" width="100px;" alt="Nestoro"/><br /><sub><b>Nestoro</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=Nestoro" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://lightnet328.com/"><img src="https://avatars.githubusercontent.com/u/2351326?v=4?s=100" width="100px;" alt="Yutaro Kido"/><br /><sub><b>Yutaro Kido</b></sub></a><br /><a href="https://github.com/akameco/extract-react-intl-messages/commits?author=lightnet328" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

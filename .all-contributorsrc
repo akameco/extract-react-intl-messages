@@ -123,6 +123,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/13397845?v=4",
       "profile": "https://github.com/Nestoro",
       "contributions": ["code"]
+    },
+    {
+      "login": "lightnet328",
+      "name": "Yutaro Kido",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2351326?v=4",
+      "profile": "https://lightnet328.com/",
+      "contributions": ["code"]
     }
   ],
   "repoType": "github",
