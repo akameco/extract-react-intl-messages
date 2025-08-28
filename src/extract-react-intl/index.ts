@@ -1,6 +1,6 @@
 import path from 'path'
 import { glob } from 'glob'
-import pify from 'pify'
+import { promisify } from 'util'
 import merge from 'lodash.merge'
 import deepmerge from 'deepmerge'
 import {
@@ -149,7 +149,13 @@ export default async (
       presets: resolvePresets(presets, babelrcDir),
       plugins: resolvePlugins(plugins, babelrcDir)
     }
-    const { metadata } = await pify(transformFile)(file, babelOpts)
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const transformResult = await promisify(transformFile as any)(
+      file,
+      babelOpts
+    )
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const { metadata } = transformResult as { metadata: any }
     const localeObj = localeMap(locales)
     const result = metadata['react-intl'].messages as Message[]
     for (const { id, defaultMessage, description } of result) {

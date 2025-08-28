@@ -1,8 +1,7 @@
 import path from 'path'
 import fs from 'fs'
-import mkdirp from 'mkdirp'
 import yaml from 'js-yaml'
-import pify from 'pify'
+import { promisify } from 'util'
 import { flatten, unflatten } from 'flat'
 import loadJsonFile from 'load-json-file'
 import writeJsonFile from 'write-json-file'
@@ -14,7 +13,7 @@ const writeJson = (outputPath: string, obj: object, indent: number) => {
 }
 
 const writeYaml = (outputPath: string, obj: object, indent: number) => {
-  return pify(fs.writeFile)(
+  return promisify(fs.writeFile)(
     `${outputPath}.yml`,
     yaml.dump(obj, { indent }),
     'utf8'
@@ -27,7 +26,7 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
   const oldLocaleMaps: Record<string, Record<string, object>> = {}
 
   try {
-    mkdirp.sync(buildDir)
+    fs.mkdirSync(buildDir, { recursive: true })
   } catch {
     // Directory already exists or other error, continue
   }
@@ -56,7 +55,7 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
       if (message && typeof message === 'string' && message !== '') {
         oldLocaleMaps[locale][messageKey] = (
           messages as Record<string, unknown>
-        )[messageKey]
+        )[messageKey] as object
       }
     }
   }
@@ -73,7 +72,6 @@ type Opts = {
   indent?: number
 }
 
- 
 const extractMessage = async (
   locales: string[],
   pattern: string,
