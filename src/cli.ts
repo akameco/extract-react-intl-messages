@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-/* eslint-disable no-console */
+ 
 import meow from 'meow'
-import extractMessage from '.'
+import extractMessage from './index.js'
 
 const cli = meow(
   `
@@ -25,26 +25,27 @@ const cli = meow(
   $ extract-messages -l=ja,en -o app/translations -f yaml 'app/**/messages.js'
 `,
   {
+    importMeta: import.meta,
     flags: {
       flat: {
         type: 'boolean'
       },
       output: {
         type: 'string',
-        alias: 'o'
+        shortFlag: 'o'
       },
       locales: {
         type: 'string',
-        alias: 'l'
+        shortFlag: 'l'
       },
       format: {
         type: 'string',
-        alias: 'f',
+        shortFlag: 'f',
         default: 'json'
       },
       defaultLocale: {
         type: 'string',
-        alias: 'd'
+        shortFlag: 'd'
       },
       overwriteDefault: {
         type: 'boolean',
@@ -88,4 +89,5 @@ if (!locales || typeof locales !== 'string') {
 
 const localesMap = locales.split(',')
 
-extractMessage(localesMap, cli.input[0], output, cli.flags)
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+extractMessage(localesMap, cli.input[0], output, cli.flags as any)

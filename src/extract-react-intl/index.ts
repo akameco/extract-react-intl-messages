@@ -1,6 +1,6 @@
 import path from 'path'
-import glob from 'glob'
-import pify from 'pify'
+import { glob } from 'glob'
+import { promisify } from 'util'
 import merge from 'lodash.merge'
 import deepmerge from 'deepmerge'
 import {
@@ -20,7 +20,6 @@ const localeMap = (arr: string[]): LocaleMap =>
     obj[x] = {}
     return obj
   }, {})
-
 
 const createResolveList =
   (fn: (name: string, dirname: string) => string | null) =>
@@ -112,7 +111,8 @@ export default async (
 
   if (
     !plugins.find(
-      (plugin: PluginItem) => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+      (plugin: PluginItem) =>
+        (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
     )
   ) {
     // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
@@ -131,7 +131,7 @@ export default async (
     })
   }
 
-  const files: string[] = await pify(glob)(pattern)
+  const files: string[] = await glob(pattern)
   if (files.length === 0) {
     throw new Error(`File not found (${pattern})`)
   }
@@ -149,7 +149,13 @@ export default async (
       presets: resolvePresets(presets, babelrcDir),
       plugins: resolvePlugins(plugins, babelrcDir)
     }
-    const { metadata } = await pify(transformFile)(file, babelOpts)
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const transformResult = await promisify(transformFile as any)(
+      file,
+      babelOpts
+    )
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const { metadata } = transformResult as { metadata: any }
     const localeObj = localeMap(locales)
     const result = metadata['react-intl'].messages as Message[]
     for (const { id, defaultMessage, description } of result) {
