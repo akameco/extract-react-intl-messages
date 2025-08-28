@@ -2,7 +2,7 @@ import path from 'path'
 import glob from 'glob'
 import pify from 'pify'
 import merge from 'lodash.merge'
-import mergeWith from 'lodash.mergewith'
+import deepmerge from 'deepmerge'
 import {
   resolvePlugin,
   resolvePreset,
@@ -21,12 +21,6 @@ const localeMap = (arr: string[]): LocaleMap =>
     return obj
   }, {})
 
-const concatArray = (obj: string[], src: string) => {
-  if (Array.isArray(obj)) {
-    return obj.concat(src)
-  }
-  return undefined
-}
 
 const createResolveList =
   (fn: (name: string, dirname: string) => string | null) =>
@@ -45,7 +39,7 @@ const getBabelrc = (cwd: string) => {
 
     const env = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
 
-    return mergeWith(babelrc, babelrc.env[env], concatArray)
+    return deepmerge(babelrc, babelrc.env[env] || {})
   } catch {
     return { presets: [], plugins: [] }
   }
@@ -118,7 +112,7 @@ export default async (
 
   if (
     !plugins.find(
-      (plugin) => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+      (plugin: PluginItem) => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
     )
   ) {
     // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
