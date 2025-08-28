@@ -7,7 +7,7 @@ import { flatten, unflatten } from 'flat'
 import loadJsonFile from 'load-json-file'
 import writeJsonFile from 'write-json-file'
 import sortKeys from 'sort-keys'
-import _extractReactIntl from './extract-react-intl'
+import _extractReactIntl from './extract-react-intl/index.js'
 
 const writeJson = (outputPath: string, obj: object, indent: number) => {
   return writeJsonFile(`${outputPath}.json`, obj, { indent })
@@ -16,7 +16,7 @@ const writeJson = (outputPath: string, obj: object, indent: number) => {
 const writeYaml = (outputPath: string, obj: object, indent: number) => {
   return pify(fs.writeFile)(
     `${outputPath}.yml`,
-    yaml.safeDump(obj, { indent }),
+    yaml.dump(obj, { indent }),
     'utf8'
   )
 }
@@ -28,35 +28,35 @@ function loadLocaleFiles(locales: string[], buildDir: string, ext: string) {
 
   try {
     mkdirp.sync(buildDir)
-  } catch (error) {}
+  } catch {
+    // Directory already exists or other error, continue
+  }
 
   for (const locale of locales) {
     const file = path.resolve(buildDir, `${locale}.${ext}`)
     // Initialize json file
     try {
-      const output = isJson(ext) ? JSON.stringify({}) : yaml.safeDump({})
+      const output = isJson(ext) ? JSON.stringify({}) : yaml.dump({})
       fs.writeFileSync(file, output, { flag: 'wx' })
-    } catch (error) {
-      // @ts-expect-error
-      if (error.code !== 'EEXIST') {
+    } catch (error: unknown) {
+      if ((error as NodeJS.ErrnoException).code !== 'EEXIST') {
         throw error
       }
     }
 
     let messages = isJson(ext)
       ? loadJsonFile.sync(file)
-      : yaml.safeLoad(fs.readFileSync(file, 'utf8'), { json: true })
+      : yaml.load(fs.readFileSync(file, 'utf8'), { json: true })
 
     messages = flatten(messages)
 
     oldLocaleMaps[locale] = {}
-    // @ts-expect-error
-    for (const messageKey of Object.keys(messages)) {
-      // @ts-expect-error
-      const message = messages[messageKey]
+    for (const messageKey of Object.keys(messages as object)) {
+      const message = (messages as Record<string, unknown>)[messageKey]
       if (message && typeof message === 'string' && message !== '') {
-        // @ts-expect-error
-        oldLocaleMaps[locale][messageKey] = messages[messageKey]
+        oldLocaleMaps[locale][messageKey] = (
+          messages as Record<string, unknown>
+        )[messageKey]
       }
     }
   }
@@ -73,7 +73,7 @@ type Opts = {
   indent?: number
 }
 
-// eslint-disable-next-line max-lines-per-function
+ 
 const extractMessage = async (
   locales: string[],
   pattern: string,
@@ -148,7 +148,3 @@ const extractMessage = async (
 extractMessage.extractReactIntl = _extractReactIntl
 
 export default extractMessage
-
-// For CommonJS default export support
-module.exports = extractMessage
-module.exports.default = extractMessage

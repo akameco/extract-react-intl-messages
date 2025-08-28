@@ -2,7 +2,11 @@
   "extends": "@akameco/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "module": "Node16",
+    "target": "ES2020",
+    "moduleResolution": "node16",
+    "isolatedModules": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/test.*", "dist"]

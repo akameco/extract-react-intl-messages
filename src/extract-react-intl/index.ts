@@ -1,5 +1,5 @@
 import path from 'path'
-import glob from 'glob'
+import { glob } from 'glob'
 import pify from 'pify'
 import merge from 'lodash.merge'
 import deepmerge from 'deepmerge'
@@ -20,7 +20,6 @@ const localeMap = (arr: string[]): LocaleMap =>
     obj[x] = {}
     return obj
   }, {})
-
 
 const createResolveList =
   (fn: (name: string, dirname: string) => string | null) =>
@@ -112,7 +111,8 @@ export default async (
 
   if (
     !plugins.find(
-      (plugin: PluginItem) => (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
+      (plugin: PluginItem) =>
+        (Array.isArray(plugin) ? plugin[0] : plugin) === 'react-intl'
     )
   ) {
     // Append a the `react-intl` babel plugin only when it isn’t already included in the babel config
@@ -131,7 +131,7 @@ export default async (
     })
   }
 
-  const files: string[] = await pify(glob)(pattern)
+  const files: string[] = await glob(pattern)
   if (files.length === 0) {
     throw new Error(`File not found (${pattern})`)
   }
